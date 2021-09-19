@@ -1,10 +1,13 @@
 document.getElementById("start-button").addEventListener("click", createGrids)
 
+// Set Aliens constant
 const aliens = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ]
+
+// Set current position constant
 const currentPosition = 21
 
 /**
@@ -20,6 +23,9 @@ function createGrids() {
     positionAliens()
 }
 
+/**
+ * Function to position aliens. It takes the current position constant.
+ */
 function positionAliens() {
     let gridCell = document.getElementsByClassName("empty-cell")
     for (let alien of aliens) {
