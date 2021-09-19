@@ -12,9 +12,11 @@ const aliens = [
 // Set current position constant
 var currentPosition = 21
 
-const unusedCells = [0, 19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80, 89,
-90, 99, 100, 109, 110, 119, 120, 129, 130, 139, 140, 149, 150, 159, 160, 169, 170, 179,
-180, 189, 190, 199]
+const unusedCells = [0, 19, 20, 39, 40, 59, 60, 79, 80, 99, 
+100, 119, 120, 139, 140, 159, 160, 179,
+180, 199, 200, 219, 220, 239, 240, 259, 260, 279, 280, 299, 
+300, 319, 320, 339, 340, 359, 360, 379,
+380, 399]
 
 var movement = "right"
 
@@ -28,6 +30,9 @@ function createGrids() {
     for (let x = 0; x < 400; x++) {
         let gridCell = document.createElement("div")
         gridCell.classList.add("empty-cell")
+        if (unusedCells.includes(x)) {
+        gridCell.classList.add("unused-cell")
+        }
         document.getElementById("game-area").appendChild(gridCell)
     }
     positionAliens()
@@ -51,6 +56,12 @@ function moveRight() {
     gridCell[currentPosition - 1].classList.remove("alien")
     gridCell[currentPosition + 19].classList.remove("alien")
     gridCell[currentPosition + 39].classList.remove("alien")
+
+    let lastCell1 = gridCell[currentPosition + 11].nextElementSibling.classList.contains("unused-cell")
+    let lastCell2 = gridCell[currentPosition + 31].nextElementSibling.classList.contains("unused-cell")
+    let lastCell3 = gridCell[currentPosition + 51].nextElementSibling.classList.contains("unused-cell")
+
+    //Find a way to check for the last cell
 }
 
 function moveLeft() {
