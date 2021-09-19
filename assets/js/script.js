@@ -1,4 +1,6 @@
 document.getElementById("start-button").addEventListener("click", createGrids)
+document.getElementById("right-button").addEventListener("click", moveRight)
+document.getElementById("left-button").addEventListener("click", moveLeft)
 
 // Set Aliens constant
 const aliens = [
@@ -8,15 +10,15 @@ const aliens = [
 ]
 
 // Set current position constant
-const currentPosition = 21
+var currentPosition = 21
 
 const unusedCells = [0, 19, 20, 29, 30, 39, 40, 49, 50, 59, 60, 69, 70, 79, 80, 89,
 90, 99, 100, 109, 110, 119, 120, 129, 130, 139, 140, 149, 150, 159, 160, 169, 170, 179,
 180, 189, 190, 199]
 
-const movement = "right"
+var movement = "right"
 
-const totalMoves = 6
+var totalMoves = 6
 
 /**
  * Creates the grids in the HTML file.
@@ -46,10 +48,16 @@ function moveRight() {
     let gridCell = document.getElementsByClassName("empty-cell")
     currentPosition += 1;
     positionAliens();
+    gridCell[currentPosition - 1].classList.remove("alien")
+    gridCell[currentPosition + 19].classList.remove("alien")
+    gridCell[currentPosition + 39].classList.remove("alien")
 }
 
 function moveLeft() {
     let gridCell = document.getElementsByClassName("empty-cell")
     currentPosition -= 1;
     positionAliens();
+    gridCell[currentPosition + 12].classList.remove("alien")
+    gridCell[currentPosition + 32].classList.remove("alien")
+    gridCell[currentPosition + 52].classList.remove("alien")
 }
