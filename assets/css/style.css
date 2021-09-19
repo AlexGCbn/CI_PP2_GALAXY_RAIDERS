@@ -1,0 +1,31 @@
+/* Font families
+font-family: 'Anton', sans-serif;
+font-family: 'Space Mono', monospace; */
+
+/* Remove margin and padding for easier styling */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation styling */
+
+.navigation {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: 15% 20% 30% 20% 15%;
+    text-align: center;
+}
+
+/* Make grid start from second column */
+#nav-button1 {
+    grid-column-start: 2;
+}
+
+.navigation > * {
+    margin: auto;
+}
+
+.navigation a {
+    text-decoration: none;
+}
