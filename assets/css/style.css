@@ -40,3 +40,18 @@ font-family: 'Space Mono', monospace; */
     font-family: 'Anton', sans-serif;
     text-align: center;
 }
+
+/* Game area styling */
+
+#game-area {
+    margin: 5% 2% 5% 2%;
+    width: 96%;
+    height: 60vh;
+    display: inline-grid;
+    grid-template-columns: repeat(20, 5%);
+    grid-template-rows: repeat(20, 5%);
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: rgba(000, 000, 000, 0.7);
+}
+
