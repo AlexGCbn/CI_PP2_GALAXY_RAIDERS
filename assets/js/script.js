@@ -11,11 +11,11 @@ function createGrids() {
             
             if (y >= 1 && y <=12 && x >=1 && x <=3) {
                 document.getElementById("game-area").innerHTML += 
-                `<div id="col${x}row${y}" class="alien"></div>
+                `<div id="row${x}col${y}" class="alien"></div>
                 `
             } else {
             document.getElementById("game-area").innerHTML += 
-            `<div id="col${x}row${y}"></div>
+            `<div id="row${x}col${y}"></div>
             `
             }
         }
@@ -28,10 +28,12 @@ function alienMove() {
     console.log(alienPositions)
 
     let direction = "right"
+    let newAlienPositions = []
 
     if (direction === "right") {
         for (let i = 0; i < alienPositions.length; i++){
-            console.log(alienPositions[i].id)
+            newAlienPositions.push(alienPositions[i].nextElementSibling.id)
         }
     }
+    console.log(newAlienPositions)
 }
