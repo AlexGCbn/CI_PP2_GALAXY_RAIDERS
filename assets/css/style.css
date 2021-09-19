@@ -55,3 +55,6 @@ font-family: 'Space Mono', monospace; */
     background-color: rgba(000, 000, 000, 0.7);
 }
 
+.alien {
+    background-color: red;
+}
