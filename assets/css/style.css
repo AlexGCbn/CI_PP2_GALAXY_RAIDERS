@@ -47,15 +47,11 @@ font-family: 'Space Mono', monospace; */
     margin: 5% 2% 5% 2%;
     width: 96%;
     height: 60vh;
-    /* display: inline-grid;
+    display: inline-grid;
     grid-template-columns: repeat(20, 5%);
-    grid-template-rows: repeat(20, 5%); */
+    grid-template-rows: repeat(20, 5%);
     border: solid 1px black;
     border-radius: 10px;
     background-color: rgba(000, 000, 000, 0.7);
 }
 
-#game-area div {
-    width: 5%;
-    height: 5%;
-}
