@@ -1,39 +1,19 @@
 document.getElementById("start-button").addEventListener("click", createGrids)
 
+const aliens = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+    31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+]
+
 /**
- * Creates the grids in the HTML file, for the game-area.
+ * Creates the grids in the HTML file.
  * They are created in JS so the HTML file is cleaner and faster to load.
- * In the If statement we declare the starting positions for our aliens.
  */
 function createGrids() {
-    for (let x = 0; x < 20; x++) {
-        for (let y = 0; y < 20; y++) {
-            
-            if (y >= 1 && y <=12 && x >=1 && x <=3) {
-                document.getElementById("game-area").innerHTML += 
-                `<div id="row${x}col${y}" class="alien"></div>
-                `
-            } else {
-            document.getElementById("game-area").innerHTML += 
-            `<div id="row${x}col${y}"></div>
-            `
-            }
-        }
+    for (let x = 0; x < 400; x++) {
+        let gridCell = document.createElement("div")
+        document.getElementById("game-area").appendChild(gridCell)
     }
-    alienMove()
 }
 
-function alienMove() {
-    let alienPositions = document.getElementsByClassName("alien")
-    console.log(alienPositions)
-
-    let direction = "right"
-    let newAlienPositions = []
-
-    if (direction === "right") {
-        for (let i = 0; i < alienPositions.length; i++){
-            newAlienPositions.push(alienPositions[i].nextElementSibling.id)
-        }
-    }
-    console.log(newAlienPositions)
-}
