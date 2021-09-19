@@ -14,12 +14,17 @@ font-family: 'Space Mono', monospace; */
     width: 100%;
     display: inline-grid;
     grid-template-columns: 15% 20% 30% 20% 15%;
-    text-align: center;
+    border-bottom: 2px solid #000;
 }
 
 /* Make grid start from second column */
 #nav-button1 {
     grid-column-start: 2;
+    margin-right: 0;
+}
+
+#nav-button2 {
+    margin-left: 0;
 }
 
 .navigation > * {
@@ -28,4 +33,10 @@ font-family: 'Space Mono', monospace; */
 
 .navigation a {
     text-decoration: none;
+    color: inherit;
+}
+
+#logo {
+    font-family: 'Anton', sans-serif;
+    text-align: center;
 }
