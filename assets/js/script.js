@@ -51,24 +51,80 @@ function positionAliens() {
 
 function moveRight() {
     let gridCell = document.getElementsByClassName("empty-cell")
-    currentPosition += 1;
-    positionAliens();
-    gridCell[currentPosition - 1].classList.remove("alien")
-    gridCell[currentPosition + 19].classList.remove("alien")
-    gridCell[currentPosition + 39].classList.remove("alien")
 
+    // Check whether the next cell is the last cell, which is unused
     let lastCell1 = gridCell[currentPosition + 11].nextElementSibling.classList.contains("unused-cell")
     let lastCell2 = gridCell[currentPosition + 31].nextElementSibling.classList.contains("unused-cell")
     let lastCell3 = gridCell[currentPosition + 51].nextElementSibling.classList.contains("unused-cell")
+    
+    if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
+        console.log(totalMoves)
+        let gridCell = document.getElementsByClassName("empty-cell")
+        currentPosition += 1
+        positionAliens()
+        gridCell[currentPosition - 1].classList.remove("alien")
+        gridCell[currentPosition + 19].classList.remove("alien")
+        gridCell[currentPosition + 39].classList.remove("alien")
+    } else {
+        moveDown()
+    }
 
-    //Find a way to check for the last cell
+    
+    // currentPosition += 1
+    // positionAliens()
+    // gridCell[currentPosition - 1].classList.remove("alien")
+    // gridCell[currentPosition + 19].classList.remove("alien")
+    // gridCell[currentPosition + 39].classList.remove("alien")
+
+    // let lastCell1 = gridCell[currentPosition + 11].nextElementSibling.classList.contains("unused-cell")
+    // let lastCell2 = gridCell[currentPosition + 31].nextElementSibling.classList.contains("unused-cell")
+    // let lastCell3 = gridCell[currentPosition + 51].nextElementSibling.classList.contains("unused-cell")
+    
 }
 
 function moveLeft() {
     let gridCell = document.getElementsByClassName("empty-cell")
-    currentPosition -= 1;
-    positionAliens();
-    gridCell[currentPosition + 12].classList.remove("alien")
-    gridCell[currentPosition + 32].classList.remove("alien")
-    gridCell[currentPosition + 52].classList.remove("alien")
+
+    let lastCell1 = gridCell[currentPosition].previousElementSibling.classList.contains("unused-cell")
+    let lastCell2 = gridCell[currentPosition + 20].previousElementSibling.classList.contains("unused-cell")
+    let lastCell3 = gridCell[currentPosition + 40].previousElementSibling.classList.contains("unused-cell")
+    
+    if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
+        console.log(totalMoves)
+        let gridCell = document.getElementsByClassName("empty-cell")
+        currentPosition -= 1
+        positionAliens()
+        gridCell[currentPosition + 12].classList.remove("alien")
+        gridCell[currentPosition + 32].classList.remove("alien")
+        gridCell[currentPosition + 52].classList.remove("alien")
+    } else {
+        moveDown()
+    }
+
+    // currentPosition -= 1;
+    // positionAliens();
+    // gridCell[currentPosition + 12].classList.remove("alien")
+    // gridCell[currentPosition + 32].classList.remove("alien")
+    // gridCell[currentPosition + 52].classList.remove("alien")
+}
+
+function moveDown() {
+    let gridCell = document.getElementsByClassName("empty-cell")
+    
+    for (let i = 0; i < 12; i++) {
+        gridCell[currentPosition + i].classList.remove("alien")
+    }
+
+    if (movement === "right") {
+        currentPosition += 20
+        positionAliens()
+        movement = "left"
+        // Call moveLeft function after 1 second, for continuity
+        setTimeout(moveLeft, 1000)
+    } else {
+        currentPosition += 20
+        positionAliens()
+        // Call moveRight function after 1 second, for continuity
+        setTimeout(moveRight, 1000)
+    }
 }
