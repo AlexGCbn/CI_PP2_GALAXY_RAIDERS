@@ -46,6 +46,7 @@ font-family: 'Space Mono', monospace; */
 #game-area {
     margin: 5% 2% 5% 2%;
     width: 96%;
+    max-width: 60vh;
     height: 60vh;
     display: inline-grid;
     grid-template-columns: repeat(20, 5%);
@@ -56,9 +57,14 @@ font-family: 'Space Mono', monospace; */
 }
 
 .alien {
-    background-color: red;
+    background-image: url(../images/alien.png);
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .spaceship {
-    background-color: blue;
+    background-image: url(../images/spaceship.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
