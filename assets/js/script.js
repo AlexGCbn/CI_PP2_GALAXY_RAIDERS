@@ -59,7 +59,8 @@ function positionAliens() {
 }
 
 /**
- * Move right function
+ * Moves aliens to the right. 
+ * Checks the cells on the right to see if the aliens should not move there.
  */
 function moveRight() {
     let gridCell = document.getElementsByClassName("empty-cell")
@@ -81,6 +82,10 @@ function moveRight() {
     } 
 }
 
+/**
+ * Moves aliens to the left. 
+ * Checks the cells on the left to see if the aliens should not move there.
+ */
 function moveLeft() {
     let gridCell = document.getElementsByClassName("empty-cell")
 
@@ -101,6 +106,11 @@ function moveLeft() {
     }
 }
 
+
+/**
+ * Moves aliens down by changing the current position and calling the positionAliens function.
+ * It then calls the movement functions in 1 second intervals
+ */
 function moveDown() {
     let gridCell = document.getElementsByClassName("empty-cell")
     
@@ -123,6 +133,10 @@ function moveDown() {
     }
 }
 
+/**
+ * Moves spaceship to the right by adding the class name 
+ * to the next element and removing it from the current one
+ */
 function moveShipRight() {
     let shipPosition = document.getElementsByClassName("spaceship")[0];
 
@@ -132,6 +146,10 @@ function moveShipRight() {
     }
 }
 
+/**
+ * Moves spaceship to the left by adding the class name 
+ * to the previous element and removing it from the current one
+ */
 function moveShipLeft() {
     let shipPosition = document.getElementsByClassName("spaceship")[0];
 
