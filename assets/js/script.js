@@ -1,7 +1,7 @@
 document.getElementById("start-button").addEventListener("click", createGrids)
-document.getElementById("right-button").addEventListener("click", moveRight)
-document.getElementById("left-button").addEventListener("click", moveLeft)
-document.getElementById("down-button").addEventListener("click", moveDown)
+// document.getElementById("right-button").addEventListener("click", moveShipRight)
+// document.getElementById("left-button").addEventListener("click", moveShipLeft)
+// document.getElementById("initiate-button").addEventListener("click", startGame)
 
 // Set Aliens constant
 const aliens = [
@@ -39,7 +39,9 @@ function createGrids() {
         }
         document.getElementById("game-area").appendChild(gridCell)
     }
+
     positionAliens()
+
 }
 
 /**
@@ -50,6 +52,9 @@ function positionAliens() {
     for (let alien of aliens) {
         gridCell[currentPosition - 1 + alien].classList.add("alien")
     }
+
+    // Position spaceship
+    gridCell[390].classList.add("spaceship")
 }
 
 /**
@@ -116,3 +121,4 @@ function moveDown() {
         movement = "right"
     }
 }
+

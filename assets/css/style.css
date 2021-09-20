@@ -58,3 +58,7 @@ font-family: 'Space Mono', monospace; */
 .alien {
     background-color: red;
 }
+
+.spaceship {
+    background-color: blue;
+}
