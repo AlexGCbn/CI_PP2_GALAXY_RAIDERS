@@ -1,6 +1,7 @@
 document.getElementById("start-button").addEventListener("click", createGrids)
 document.getElementById("right-button").addEventListener("click", moveRight)
 document.getElementById("left-button").addEventListener("click", moveLeft)
+document.getElementById("down-button").addEventListener("click", moveDown)
 
 // Set Aliens constant
 const aliens = [
@@ -21,6 +22,9 @@ const unusedCells = [0, 19, 20, 39, 40, 59, 60, 79, 80, 99,
 var movement = "right"
 
 var totalMoves = 6
+
+// Interval ID to be able to clear the movement interval in future functions
+var intervalID = null;
 
 /**
  * Creates the grids in the HTML file.
@@ -48,17 +52,18 @@ function positionAliens() {
     }
 }
 
-
+/**
+ * Move right function
+ */
 function moveRight() {
     let gridCell = document.getElementsByClassName("empty-cell")
 
-    // Check whether the next cell is the last cell, which is unused
+    // Check whether the next (right) cell is the last cell (unused) so aliens can stop moving
     let lastCell1 = gridCell[currentPosition + 11].nextElementSibling.classList.contains("unused-cell")
     let lastCell2 = gridCell[currentPosition + 31].nextElementSibling.classList.contains("unused-cell")
     let lastCell3 = gridCell[currentPosition + 51].nextElementSibling.classList.contains("unused-cell")
     
     if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
-        console.log(totalMoves)
         let gridCell = document.getElementsByClassName("empty-cell")
         currentPosition += 1
         positionAliens()
@@ -67,30 +72,18 @@ function moveRight() {
         gridCell[currentPosition + 39].classList.remove("alien")
     } else {
         moveDown()
-    }
-
-    
-    // currentPosition += 1
-    // positionAliens()
-    // gridCell[currentPosition - 1].classList.remove("alien")
-    // gridCell[currentPosition + 19].classList.remove("alien")
-    // gridCell[currentPosition + 39].classList.remove("alien")
-
-    // let lastCell1 = gridCell[currentPosition + 11].nextElementSibling.classList.contains("unused-cell")
-    // let lastCell2 = gridCell[currentPosition + 31].nextElementSibling.classList.contains("unused-cell")
-    // let lastCell3 = gridCell[currentPosition + 51].nextElementSibling.classList.contains("unused-cell")
-    
+    } 
 }
 
 function moveLeft() {
     let gridCell = document.getElementsByClassName("empty-cell")
 
+    // Check whether the next (left) cell is the last cell (unused) so aliens can stop moving
     let lastCell1 = gridCell[currentPosition].previousElementSibling.classList.contains("unused-cell")
     let lastCell2 = gridCell[currentPosition + 20].previousElementSibling.classList.contains("unused-cell")
     let lastCell3 = gridCell[currentPosition + 40].previousElementSibling.classList.contains("unused-cell")
     
     if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
-        console.log(totalMoves)
         let gridCell = document.getElementsByClassName("empty-cell")
         currentPosition -= 1
         positionAliens()
@@ -100,12 +93,6 @@ function moveLeft() {
     } else {
         moveDown()
     }
-
-    // currentPosition -= 1;
-    // positionAliens();
-    // gridCell[currentPosition + 12].classList.remove("alien")
-    // gridCell[currentPosition + 32].classList.remove("alien")
-    // gridCell[currentPosition + 52].classList.remove("alien")
 }
 
 function moveDown() {
@@ -115,16 +102,17 @@ function moveDown() {
         gridCell[currentPosition + i].classList.remove("alien")
     }
 
+    currentPosition += 20
+    positionAliens()
+
+    // Switch the movement after 1 second, so it seems like it never stopped
     if (movement === "right") {
-        currentPosition += 20
-        positionAliens()
+        clearInterval(intervalID)
+        intervalID = setInterval(moveLeft, 1000)
         movement = "left"
-        // Call moveLeft function after 1 second, for continuity
-        setTimeout(moveLeft, 1000)
     } else {
-        currentPosition += 20
-        positionAliens()
-        // Call moveRight function after 1 second, for continuity
-        setTimeout(moveRight, 1000)
+        clearInterval(intervalID)
+        intervalID = setInterval(moveRight, 1000)
+        movement = "right"
     }
 }
