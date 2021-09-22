@@ -5,7 +5,7 @@ document.getElementById("initiate-button").addEventListener("click", mainMovemen
 
 // Set Aliens global variable
 var aliens = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0,
+    0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0,
     0, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 0,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 0
 ]
@@ -169,6 +169,13 @@ function positionAliens() {
     }
 }
 
+function removeAliens() {
+    let gridCell = document.getElementsByClassName("empty-cell")
+    for (let i = 0; i < gridCell.length; i++) {
+        gridCell[i].classList.remove("alien")
+    }
+}
+
 function mainMovement() {
     movesLeft = Math.max(rightRow1, rightRow2, rightRow3)
     console.log(movesLeft)
@@ -188,7 +195,7 @@ function switchMovement() {
         leftRow3 = leftMovesRow3()
         movesLeft = Math.max(leftRow1, leftRow2, leftRow3)
         console.log("Moves for LEFT =" + movesLeft)
-        intervalID = setInterval(moveLeft(), 1000)
+        intervalID = setInterval(moveLeft, 1000)
     } else {
         // clearInterval(intervalID)
         movement = "right"
@@ -197,7 +204,7 @@ function switchMovement() {
         rightRow3 = rightMovesRow3()
         movesLeft = Math.max(rightRow1, rightRow2, rightRow3)
         console.log("Moves for RIGHT =" + movesLeft)
-        intervalID = setInterval(moveRight(), 1000)
+        intervalID = setInterval(moveRight, 1000)
     }
 }
 
@@ -217,12 +224,9 @@ function moveRight() {
     // if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
     if (movesLeft > 0) {
         console.log(movesLeft)
-        let gridCell = document.getElementsByClassName("empty-cell")
         currentPosition += 1
+        removeAliens()
         positionAliens()
-        gridCell[currentPosition + leftRow1 - 7].classList.remove("alien")
-        gridCell[currentPosition + leftRow2 + 13].classList.remove("alien")
-        gridCell[currentPosition + leftRow3 + 33].classList.remove("alien")
         movesLeft -= 1
     } else {
         clearInterval(intervalID)
@@ -251,12 +255,9 @@ function moveLeft() {
     // if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
     if (movesLeft > 0) {
         console.log(movesLeft)
-        let gridCell = document.getElementsByClassName("empty-cell")
         currentPosition -= 1
+        removeAliens()
         positionAliens()
-        gridCell[currentPosition + rightRow1].classList.remove("alien")
-        gridCell[currentPosition + rightRow2].classList.remove("alien")
-        gridCell[currentPosition + rightRow3].classList.remove("alien")
         movesLeft -= 1
     } else {
         clearInterval(intervalID)
@@ -274,13 +275,14 @@ function moveLeft() {
  */
 function moveDown() {
     console.log("Moving down!")
-    let gridCell = document.getElementsByClassName("empty-cell")
+    // let gridCell = document.getElementsByClassName("empty-cell")
     
-    for (let i = 0; i < 12; i++) {
-        gridCell[currentPosition + i].classList.remove("alien")
-    }
+    // for (let i = 0; i < 12; i++) {
+    //     gridCell[currentPosition + i].classList.remove("alien")
+    // }
 
     currentPosition += 20
+    removeAliens()
     positionAliens()
 
     switchMovement()
