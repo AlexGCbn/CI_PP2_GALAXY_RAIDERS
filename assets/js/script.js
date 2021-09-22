@@ -3,6 +3,7 @@ document.getElementById("right-button").addEventListener("click", moveShipRight)
 document.getElementById("left-button").addEventListener("click", moveShipLeft)
 document.getElementById("initiate-button").addEventListener("click", mainMovement)
 document.getElementById("shoot-button").addEventListener("click", shootRocket)
+window.addEventListener("keydown", gameButtons)
 
 // Set Aliens global variable
 var aliens = [
@@ -281,3 +282,19 @@ function moveRocket(rockets) {
     setTimeout(positionRockets, 250)
 }
 
+/**
+ * Moving and shooting functions for keyboard events
+ */
+function gameButtons(e) {
+    if (e.key === "ArrowRight") {
+        moveShipRight()
+    } else if (e.key === "ArrowLeft") {
+        moveShipLeft()
+    } else if (e.key === "Control") {
+        shootRocket()
+    }
+}
+
+function rocketTimer() {
+    
+}
