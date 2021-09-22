@@ -47,11 +47,8 @@ function rightMovesAllRows() {
     rightMoves = leftMoves
 
     for (let i = 0; i < 12; i++) {
-        console.log("Calculating moves...")
         if (aliensReverse1[i] === 0 && aliensReverse2[i] === 0 && aliensReverse3[i] === 0) {
-            console.log("+1 moves right!")
             rightMoves++
-            console.log(rightMoves)
         } else {
             break
         }
@@ -141,17 +138,14 @@ function mainMovement() {
  * Switches the aliens' movement to the left or right, depending on the current direction (movement variable)
  */
 function switchMovement() {
-    console.log("switching movement!")
     // Switch the movement after 1 second, so it seems like it never stopped
     if (movement === "right") {
         movement = "left"
         movesLeft = leftMovesAllRows()
-        console.log("Moves for LEFT =" + leftMoves)
         intervalID = setInterval(moveLeft, 1000)
     } else {
         movement = "right"
         movesLeft = rightMovesAllRows()
-        console.log("Moves for RIGHT =" + rightMoves)
         intervalID = setInterval(moveRight, 1000)
     }
 }
@@ -161,10 +155,8 @@ function switchMovement() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveRight() {
-    console.log("Moving right!")
 
     if (movesLeft > 0) {
-        console.log(movesLeft)
         currentPosition++
         removeAliens()
         positionAliens()
@@ -180,10 +172,8 @@ function moveRight() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveLeft() {
-    console.log("Moving left!")
 
     if (movesLeft > 0) {
-        console.log(movesLeft)
         currentPosition -= 1
         removeAliens()
         positionAliens()
@@ -200,7 +190,6 @@ function moveLeft() {
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
-    console.log("Moving down!")
 
     currentPosition += 20
     removeAliens()
@@ -242,12 +231,12 @@ function moveShipLeft() {
  * Adds a rocket in front of the spaceship (20 cells before it)
  */
 function shootRocket() {
-    if (rocketCanFire) {
+    if (rocketCanFire === true) {
         gridCell[shipPosition - 20].classList.add("rocket")
         rocketCanFire = false
-        waitingForInterval = true
-    }
-    rocketTimer()
+        waitingForInterval = false
+        rocketTimer()
+    } 
 }
 
 /**
@@ -263,7 +252,6 @@ function positionRockets() {
         for (let x = 0; x < rocketCell.length; x++) {
             if (gridCell[i] == rocketCell[x]) {
                 rocketIndex.push(indexNum)
-                console.log("ADD MORE ROCKETS")
             }
         }
         indexNum++
@@ -278,7 +266,6 @@ function moveRocket(rockets) {
     let cellNum = 0
     for (let i = 0; i < rockets.length; i++) {
         cellNum = rockets[i]
-        console.log(gridCell[cellNum - 20])
         if (gridCell[cellNum - 20].classList.contains("alien")) {
             gridCell[cellNum].classList.remove("rocket")
         } else if (gridCell[cellNum - 20].classList.contains("unused-cell")) {
@@ -305,10 +292,10 @@ function gameButtons(e) {
 }
 
 function rocketTimer() {
-    if (waitingForInterval) {
+    if (!rocketCanFire) {
         setTimeout(() => {
             rocketCanFire = true
-            waitingForInterval = false
+            waitingForInterval = true
         }, 1000);
     }
 }
