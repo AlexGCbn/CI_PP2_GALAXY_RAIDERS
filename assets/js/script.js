@@ -13,11 +13,8 @@ var aliens = [
 // Set current position global variable
 var currentPosition = 21
 
-const unusedCells = [0, 19, 20, 39, 40, 59, 60, 79, 80, 99, 
-100, 119, 120, 139, 140, 159, 160, 179,
-180, 199, 200, 219, 220, 239, 240, 259, 260, 279, 280, 299, 
-300, 319, 320, 339, 340, 359, 360, 379,
-380, 399]
+const unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+    16, 17, 18, 19, 20, 380, 399]
 
 // Interval ID to be able to clear the movement interval in future functions
 var intervalID = null;
@@ -44,7 +41,7 @@ function rightMovesAllRows() {
         console.log("Calculating moves...")
         if (aliensReverse1[i] === 0 && aliensReverse2[i] === 0 && aliensReverse3[i] === 0) {
             console.log("+1 moves right!")
-            rightMoves += 1
+            rightMoves++
             console.log(rightMoves)
         } else {
             break
@@ -65,7 +62,7 @@ function leftMovesAllRows() {
 
     for (let i = 0; i < 12; i++) {
         if (aliensRow1[i] === 0 && aliensRow2[i] === 0 && aliensRow3[i] === 0) {
-            leftMoves += 1
+            leftMoves++
         } else {
             break
         }
@@ -80,12 +77,12 @@ function leftMovesAllRows() {
  */
 function createGrids() {
     for (let x = 0; x < 400; x++) {
-        let gridCell = document.createElement("div")
-        gridCell.classList.add("empty-cell")
+        let gridCellCreator = document.createElement("div")
+        gridCellCreator.classList.add("empty-cell")
         if (unusedCells.includes(x)) {
-        gridCell.classList.add("unused-cell")
+        gridCellCreator.classList.add("unused-cell")
         }
-        document.getElementById("game-area").appendChild(gridCell)
+        document.getElementById("game-area").appendChild(gridCellCreator)
     }
 
     positionAliens()
@@ -94,13 +91,18 @@ function createGrids() {
     // Position spaceship
     let gridCell = document.getElementsByClassName("empty-cell")
     gridCell[390].classList.add("spaceship")
+
+    gridCell[370].classList.add("bullet")
+    gridCell[336].classList.add("bullet")
+    positionBullets()
 }
+
+var gridCell = document.getElementsByClassName("empty-cell")
 
 /**
  * Function to position aliens. It takes the current position variable so it can be called any time.
  */
 function positionAliens() {
-    let gridCell = document.getElementsByClassName("empty-cell")
     for (let alien of aliens) {
         if (alien > 0) {
         gridCell[currentPosition - 1 + alien].classList.add("alien")
@@ -112,7 +114,6 @@ function positionAliens() {
  * Used to clear the board any time the aliens move, so it does not have to be declared or calculated.
  */
 function removeAliens() {
-    let gridCell = document.getElementsByClassName("empty-cell")
     for (let i = 0; i < gridCell.length; i++) {
         gridCell[i].classList.remove("alien")
     }
@@ -156,7 +157,7 @@ function moveRight() {
 
     if (movesLeft > 0) {
         console.log(movesLeft)
-        currentPosition += 1
+        currentPosition++
         removeAliens()
         positionAliens()
         movesLeft -= 1
@@ -225,4 +226,43 @@ function moveShipLeft() {
         shipPosition.previousElementSibling.classList.add("spaceship")
         shipPosition.classList.remove("spaceship")
     }
+}
+
+function shootBullet() {
+    
+}
+
+function positionBullets() {
+    let bulletCell = document.getElementsByClassName("bullet")
+    let indexNum = 0
+    let bulletIndex = []
+
+    // Calculate as many bullets as needed
+    for (let i = 0; i < gridCell.length; i++) {
+        if (gridCell[i] == bulletCell[0] || gridCell[i] == bulletCell[1] || gridCell[i] == bulletCell[2]) {
+            bulletIndex.push(indexNum)
+        }
+        indexNum++
+    }
+    setTimeout(moveBullet(bulletIndex), 300)
+}
+
+/**
+ * Makes all bullets either move up one space or disappear.
+ */
+function moveBullet(bullets) {
+    let cellNum = 0
+    for (let i = 0; i < bullets.length; i++) {
+        cellNum = bullets[i]
+        console.log(gridCell[cellNum - 20])
+        if (gridCell[cellNum - 20].classList.contains("alien")) {
+            gridCell[cellNum].classList.remove("bullet")
+        } else if (gridCell[cellNum - 20].classList.contains("unused-cell")) {
+            gridCell[cellNum].classList.remove("bullet")
+        } else if (gridCell[cellNum - 20].classList.contains("empty-cell")) {
+            gridCell[cellNum].classList.remove("bullet")
+            gridCell[cellNum - 20].classList.add("bullet")
+        }
+    }
+    setTimeout(positionBullets, 300)
 }
