@@ -2,6 +2,7 @@ document.getElementById("start-button").addEventListener("click", createGrids)
 document.getElementById("right-button").addEventListener("click", moveShipRight)
 document.getElementById("left-button").addEventListener("click", moveShipLeft)
 document.getElementById("initiate-button").addEventListener("click", mainMovement)
+document.getElementById("shoot-button").addEventListener("click", shootRocket)
 
 // Set Aliens global variable
 var aliens = [
@@ -24,6 +25,9 @@ var movement = "right"
 var movesLeft = 0
 var rightMoves = 6
 var leftMoves = 6
+
+// Global variable for ship position
+var shipPosition = 390
 
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
@@ -90,10 +94,7 @@ function createGrids() {
 
     // Position spaceship
     let gridCell = document.getElementsByClassName("empty-cell")
-    gridCell[390].classList.add("spaceship")
-
-    gridCell[370].classList.add("rocket")
-    gridCell[336].classList.add("rocket")
+    gridCell[shipPosition].classList.add("spaceship")
     positionRockets()
 }
 
@@ -207,11 +208,12 @@ function moveDown() {
  * to the next element and removing it from the current one.
  */
 function moveShipRight() {
-    let shipPosition = document.getElementsByClassName("spaceship")[0];
+    // let shipPosition = document.getElementsByClassName("spaceship")[0];
 
-    if (!shipPosition.nextElementSibling.classList.contains("unused-cell")) {
-        shipPosition.nextElementSibling.classList.add("spaceship")
-        shipPosition.classList.remove("spaceship")
+    if (!gridCell[shipPosition + 1].classList.contains("unused-cell")) {
+        gridCell[shipPosition + 1].classList.add("spaceship")
+        gridCell[shipPosition].classList.remove("spaceship")
+        shipPosition++
     }
 }
 
@@ -220,16 +222,18 @@ function moveShipRight() {
  * to the previous element and removing it from the current one.
  */
 function moveShipLeft() {
-    let shipPosition = document.getElementsByClassName("spaceship")[0];
+    // let shipPosition = document.getElementsByClassName("spaceship")[0];
 
-    if (!shipPosition.previousElementSibling.classList.contains("unused-cell")) {
-        shipPosition.previousElementSibling.classList.add("spaceship")
-        shipPosition.classList.remove("spaceship")
+    if (!gridCell[shipPosition - 1].classList.contains("unused-cell")) {
+        gridCell[shipPosition - 1].classList.add("spaceship")
+        gridCell[shipPosition].classList.remove("spaceship")
+        shipPosition--
     }
 }
 
 function shootRocket() {
-
+    // let spaceshipPosition = document.getElementsByClassName("spaceship")[0]
+    gridCell[shipPosition - 20].classList.add("rocket")
 }
 
 function positionRockets() {
@@ -239,12 +243,14 @@ function positionRockets() {
 
     // Calculate as many rockets as needed
     for (let i = 0; i < gridCell.length; i++) {
-        if (gridCell[i] == rocketCell[0] || gridCell[i] == rocketCell[1] || gridCell[i] == rocketCell[2]) {
-            rocketIndex.push(indexNum)
+        for (let x = 0; x < rocketCell.length; x++) {
+            if (gridCell[i] == rocketCell[x]) {
+                rocketIndex.push(indexNum)
+            }
         }
         indexNum++
     }
-    setTimeout(moveRocket(rocketIndex), 300)
+    setTimeout(moveRocket(rocketIndex), 250)
 }
 
 /**
@@ -264,5 +270,6 @@ function moveRocket(rockets) {
             gridCell[cellNum - 20].classList.add("rocket")
         }
     }
-    setTimeout(positionRockets, 300)
+    setTimeout(positionRockets, 250)
 }
+

@@ -63,13 +63,13 @@ font-family: 'Space Mono', monospace; */
 }
 
 .spaceship {
-    background-image: url(../images/spaceship.png);
+    background-image: url(../images/spaceship.png)!important;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
-.bullet {
+.rocket {
     background-image: url(../images/bullet.png);
     background-repeat: no-repeat;
     background-size: 30%;
