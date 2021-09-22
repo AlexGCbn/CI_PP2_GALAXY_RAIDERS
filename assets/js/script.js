@@ -5,9 +5,9 @@ document.getElementById("initiate-button").addEventListener("click", mainMovemen
 
 // Set Aliens global variable
 var aliens = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0,
+    0, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 0,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 0
 ]
 
 // Set current position global variable
@@ -23,13 +23,72 @@ var movement = "right"
 
 var movesLeft = 0
 
+
+var rightRow1 = rightMovesRow1()
+var rightRow2 = rightMovesRow2()
+var rightRow3 = rightMovesRow3()
+
+var leftRow1 = leftMovesRow1()
+var leftRow2 = leftMovesRow2()
+var leftRow3 = leftMovesRow3()
+
+
 /**
  * Cuts the first row of the aliens array and calculates how many moves are on the left and right
  */
-function totalMovesRow1() {
+function rightMovesRow1() {
     let aliensRow1 = aliens.slice(0, 12)
     let aliensReverse = aliensRow1.slice().reverse()
     let rightMoves = 6
+
+    for (let alien of aliensReverse) {
+        if (alien === 0) {
+            rightMoves += 1
+        } else {
+            break
+        }
+    }
+    return rightMoves
+}
+
+/**
+ * Cuts the second row of the aliens array and calculates how many moves are on the left and right
+ */
+function rightMovesRow2() {
+    let aliensRow2 = aliens.slice(12, 24)
+    let aliensReverse = aliensRow2.slice().reverse()
+    let rightMoves = 6
+
+    for (let alien of aliensReverse) {
+        if (alien === 0) {
+            rightMoves += 1
+        } else {
+            break
+        }
+    }
+    return rightMoves
+}
+
+/**
+ * Cuts the third row of the aliens array and calculates how many moves are on the left and right
+ */
+function rightMovesRow3() {
+    let aliensRow3 = aliens.slice(24, 36)
+    let aliensReverse = aliensRow3.slice().reverse()
+    let rightMoves = 6
+
+    for (let alien of aliensReverse) {
+        if (alien === 0) {
+            rightMoves += 1
+        } else {
+            break
+        }
+    }
+    return rightMoves
+}
+
+function leftMovesRow1() {
+    let aliensRow1 = aliens.slice(0, 12)
     let leftMoves = 6
 
     
@@ -40,31 +99,14 @@ function totalMovesRow1() {
             break
         }
     }
-
-    for (let neila of aliensReverse) {
-        if (neila === 0) {
-            rightMoves += 1
-        } else {
-            break
-        }
-    }
-
-    if (movement === "right") {
-        return rightMoves
-    } else {
-        return leftMoves
-    }
+    return leftMoves
 }
 
-/**
- * Cuts the second row of the aliens array and calculates how many moves are on the left and right
- */
-function totalMovesRow2() {
+function leftMovesRow2() {
     let aliensRow2 = aliens.slice(12, 24)
-    let aliensReverse = aliensRow2.slice().reverse()
-    let rightMoves = 6
     let leftMoves = 6
 
+    
     for (let alien of aliensRow2) {
         if (alien === 0) {
             leftMoves += 1
@@ -72,31 +114,14 @@ function totalMovesRow2() {
             break
         }
     }
-
-    for (let neila of aliensReverse) {
-        if (neila === 0) {
-            rightMoves += 1
-        } else {
-            break
-        }
-    }
-
-    if (movement === "right") {
-        return rightMoves
-    } else {
-        return leftMoves
-    }
+    return leftMoves
 }
 
-/**
- * Cuts the third row of the aliens array and calculates how many moves are on the left and right
- */
-function totalMovesRow3() {
+function leftMovesRow3() {
     let aliensRow3 = aliens.slice(24, 36)
-    let aliensReverse = aliensRow3.slice().reverse()
-    let rightMoves = 6
     let leftMoves = 6
 
+    
     for (let alien of aliensRow3) {
         if (alien === 0) {
             leftMoves += 1
@@ -104,20 +129,7 @@ function totalMovesRow3() {
             break
         }
     }
-
-    for (let neila of aliensReverse) {
-        if (neila === 0) {
-            rightMoves += 1
-        } else {
-            break
-        }
-    }
-
-    if (movement === "right") {
-        return rightMoves
-    } else {
-        return leftMoves
-    }
+    return leftMoves
 }
 
 // Interval ID to be able to clear the movement interval in future functions
@@ -151,17 +163,14 @@ function createGrids() {
 function positionAliens() {
     let gridCell = document.getElementsByClassName("empty-cell")
     for (let alien of aliens) {
-        if (alien > 0)
+        if (alien > 0) {
         gridCell[currentPosition - 1 + alien].classList.add("alien")
+        }
     }
 }
 
 function mainMovement() {
-    let row1 = totalMovesRow1()
-    let row2 = totalMovesRow2()
-    let row3 = totalMovesRow3()
-
-    movesLeft = Math.max(row1, row2, row3)
+    movesLeft = Math.max(rightRow1, rightRow2, rightRow3)
     console.log(movesLeft)
     // This might be the only line needed from this function. We can put it in initialization function
     intervalID = setInterval(moveRight, 1000)
@@ -174,21 +183,21 @@ function switchMovement() {
     if (movement === "right") {
         // clearInterval(intervalID)
         movement = "left"
-        let row1 = totalMovesRow1()
-        let row2 = totalMovesRow2()
-        let row3 = totalMovesRow3()
-        movesLeft = Math.max(row1, row2, row3)
+        leftRow1 = leftMovesRow1()
+        leftRow2 = leftMovesRow2()
+        leftRow3 = leftMovesRow3()
+        movesLeft = Math.max(leftRow1, leftRow2, leftRow3)
         console.log("Moves for LEFT =" + movesLeft)
-        intervalID = setInterval(moveLeft, 1000)
+        intervalID = setInterval(moveLeft(), 1000)
     } else {
         // clearInterval(intervalID)
         movement = "right"
-        let row1 = totalMovesRow1()
-        let row2 = totalMovesRow2()
-        let row3 = totalMovesRow3()
-        movesLeft = Math.max(row1, row2, row3)
+        rightRow1 = rightMovesRow1()
+        rightRow2 = rightMovesRow2()
+        rightRow3 = rightMovesRow3()
+        movesLeft = Math.max(rightRow1, rightRow2, rightRow3)
         console.log("Moves for RIGHT =" + movesLeft)
-        intervalID = setInterval(moveRight, 1000)
+        intervalID = setInterval(moveRight(), 1000)
     }
 }
 
@@ -211,9 +220,9 @@ function moveRight() {
         let gridCell = document.getElementsByClassName("empty-cell")
         currentPosition += 1
         positionAliens()
-        gridCell[currentPosition - 1].classList.remove("alien")
-        gridCell[currentPosition + 19].classList.remove("alien")
-        gridCell[currentPosition + 39].classList.remove("alien")
+        gridCell[currentPosition + leftRow1 - 7].classList.remove("alien")
+        gridCell[currentPosition + leftRow2 + 13].classList.remove("alien")
+        gridCell[currentPosition + leftRow3 + 33].classList.remove("alien")
         movesLeft -= 1
     } else {
         clearInterval(intervalID)
@@ -245,9 +254,9 @@ function moveLeft() {
         let gridCell = document.getElementsByClassName("empty-cell")
         currentPosition -= 1
         positionAliens()
-        gridCell[currentPosition + 12].classList.remove("alien")
-        gridCell[currentPosition + 32].classList.remove("alien")
-        gridCell[currentPosition + 52].classList.remove("alien")
+        gridCell[currentPosition + rightRow1].classList.remove("alien")
+        gridCell[currentPosition + rightRow2].classList.remove("alien")
+        gridCell[currentPosition + rightRow3].classList.remove("alien")
         movesLeft -= 1
     } else {
         clearInterval(intervalID)
