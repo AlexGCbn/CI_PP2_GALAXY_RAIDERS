@@ -19,73 +19,14 @@ const unusedCells = [0, 19, 20, 39, 40, 59, 60, 79, 80, 99,
 300, 319, 320, 339, 340, 359, 360, 379,
 380, 399]
 
+// Interval ID to be able to clear the movement interval in future functions
+var intervalID = null;
+
 // Global variables needed for functions to communicate
 var movement = "right"
 var movesLeft = 0
 var rightMoves = 6
 var leftMoves = 6
-// var rightRow1 = rightMovesRow1()
-// var rightRow2 = rightMovesRow2()
-// var rightRow3 = rightMovesRow3()
-
-// var leftRow1 = leftMovesRow1()
-// var leftRow2 = leftMovesRow2()
-// var leftRow3 = leftMovesRow3()
-
-
-// /**
-//  * Cuts the first row of the aliens array and calculates how many moves are on the left and right
-//  */
-// function rightMovesRow1() {
-//     let aliensRow1 = aliens.slice(0, 12)
-//     let aliensReverse = aliensRow1.slice().reverse()
-//     let rightMoves = 6
-
-//     for (let alien of aliensReverse) {
-//         if (alien === 0) {
-//             rightMoves += 1
-//         } else {
-//             break
-//         }
-//     }
-//     return rightMoves
-// }
-
-// /**
-//  * Cuts the second row of the aliens array and calculates how many moves are on the left and right
-//  */
-// function rightMovesRow2() {
-//     let aliensRow2 = aliens.slice(12, 24)
-//     let aliensReverse = aliensRow2.slice().reverse()
-//     let rightMoves = 6
-
-//     for (let alien of aliensReverse) {
-//         if (alien === 0) {
-//             rightMoves += 1
-//         } else {
-//             break
-//         }
-//     }
-//     return rightMoves
-// }
-
-// /**
-//  * Cuts the third row of the aliens array and calculates how many moves are on the left and right
-//  */
-// function rightMovesRow3() {
-//     let aliensRow3 = aliens.slice(24, 36)
-//     let aliensReverse = aliensRow3.slice().reverse()
-//     let rightMoves = 6
-
-//     for (let alien of aliensReverse) {
-//         if (alien === 0) {
-//             rightMoves += 1
-//         } else {
-//             break
-//         }
-//     }
-//     return rightMoves
-// }
 
 function rightMovesAllRows() {
     let aliensRow1 = aliens.slice(0, 12)
@@ -127,54 +68,6 @@ function leftMovesAllRows() {
     return leftMoves
 }
 
-// function leftMovesRow1() {
-//     let aliensRow1 = aliens.slice(0, 12)
-//     let leftMoves = 6
-
-    
-//     for (let alien of aliensRow1) {
-//         if (alien === 0) {
-//             leftMoves += 1
-//         } else {
-//             break
-//         }
-//     }
-//     return leftMoves
-// }
-
-// function leftMovesRow2() {
-//     let aliensRow2 = aliens.slice(12, 24)
-//     let leftMoves = 6
-
-    
-//     for (let alien of aliensRow2) {
-//         if (alien === 0) {
-//             leftMoves += 1
-//         } else {
-//             break
-//         }
-//     }
-//     return leftMoves
-// }
-
-// function leftMovesRow3() {
-//     let aliensRow3 = aliens.slice(24, 36)
-//     let leftMoves = 6
-
-    
-//     for (let alien of aliensRow3) {
-//         if (alien === 0) {
-//             leftMoves += 1
-//         } else {
-//             break
-//         }
-//     }
-//     return leftMoves
-// }
-
-// Interval ID to be able to clear the movement interval in future functions
-var intervalID = null;
-
 /**
  * Creates the grids in the HTML file.
  * They are created in JS so the HTML file is cleaner and faster to load.
@@ -198,7 +91,7 @@ function createGrids() {
 }
 
 /**
- * Function to position aliens. It takes the current position constant.
+ * Function to position aliens. It takes the current position variable so it can be called any time.
  */
 function positionAliens() {
     let gridCell = document.getElementsByClassName("empty-cell")
@@ -209,6 +102,9 @@ function positionAliens() {
     }
 }
 
+/** Function to remove all aliens.
+ * Used to clear the board any time the aliens move, so it does not have to be declared or calculated.
+ */
 function removeAliens() {
     let gridCell = document.getElementsByClassName("empty-cell")
     for (let i = 0; i < gridCell.length; i++) {
@@ -216,53 +112,42 @@ function removeAliens() {
     }
 }
 
+/**
+ * Movement starting function.
+ */
 function mainMovement() {
     movesLeft = rightMovesAllRows()
     console.log(movesLeft)
     rightMovesAllRows()
-    // This might be the only line needed from this function. We can put it in initialization function
     intervalID = setInterval(moveRight, 1000)
 }
 
-
+/**
+ * Switches the aliens' movement to the left or right, depending on the current direction (movement variable)
+ */
 function switchMovement() {
     console.log("switching movement!")
     // Switch the movement after 1 second, so it seems like it never stopped
     if (movement === "right") {
-        // clearInterval(intervalID)
         movement = "left"
         movesLeft = leftMovesAllRows()
-        // leftMoves
-        // movesLeft = Math.max(leftRow1, leftRow2, leftRow3)
         console.log("Moves for LEFT =" + leftMoves)
         intervalID = setInterval(moveLeft, 1000)
     } else {
-        // clearInterval(intervalID)
         movement = "right"
         movesLeft = rightMovesAllRows()
-        // rightRow1 = rightMovesRow1()
-        // rightRow2 = rightMovesRow2()
-        // // rightRow3 = rightMovesRow3()
-        // movesLeft = Math.max(rightRow1, rightRow2, rightRow3)
         console.log("Moves for RIGHT =" + rightMoves)
         intervalID = setInterval(moveRight, 1000)
     }
 }
 
 /**
- * Moves aliens to the right. 
- * Checks the cells on the right to see if the aliens should not move there.
+ * Moves aliens to the right as many times as movesLeft permits.
+ * Calls functions to remove all aliens then place them again.
  */
 function moveRight() {
     console.log("Moving right!")
-    // let gridCell = document.getElementsByClassName("empty-cell")
 
-    // Check whether the next (right) cell is the last cell (unused) so aliens can stop moving
-    // let lastCell1 = gridCell[currentPosition + movesLeft].nextElementSibling.classList.contains("unused-cell")
-    // let lastCell2 = gridCell[currentPosition + movesLeft].nextElementSibling.classList.contains("unused-cell")
-    // let lastCell3 = gridCell[currentPosition + movesLeft].nextElementSibling.classList.contains("unused-cell")
-    
-    // if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
     if (movesLeft > 0) {
         console.log(movesLeft)
         currentPosition += 1
@@ -273,27 +158,15 @@ function moveRight() {
         clearInterval(intervalID)
         moveDown()
     }
-
-    
-    // } else {
-    //     moveDown()
-    // } 
 }
 
 /**
- * Moves aliens to the left. 
- * Checks the cells on the left to see if the aliens should not move there.
+ * Moves aliens to the left as many times as movesLeft permits.
+ * Calls functions to remove all aliens then place them again.
  */
 function moveLeft() {
     console.log("Moving left!")
-    // let gridCell = document.getElementsByClassName("empty-cell")
 
-    // // Check whether the next (left) cell is the last cell (unused) so aliens can stop moving
-    // let lastCell1 = gridCell[currentPosition - movesLeft].previousElementSibling.classList.contains("unused-cell")
-    // let lastCell2 = gridCell[currentPosition - movesLeft].previousElementSibling.classList.contains("unused-cell")
-    // let lastCell3 = gridCell[currentPosition - movesLeft].previousElementSibling.classList.contains("unused-cell")
-    
-    // if (lastCell1 === false || lastCell2 === false || lastCell3 === false) {
     if (movesLeft > 0) {
         console.log(movesLeft)
         currentPosition -= 1
@@ -304,23 +177,15 @@ function moveLeft() {
         clearInterval(intervalID)
         moveDown()
     }
-    // } else {
-    //     moveDown()
-    // }
 }
 
 
 /**
- * Moves aliens down by changing the current position and calling the positionAliens function.
- * It then calls the movement functions in 1 second intervals
+ * Moves aliens down once.
+ * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
     console.log("Moving down!")
-    // let gridCell = document.getElementsByClassName("empty-cell")
-    
-    // for (let i = 0; i < 12; i++) {
-    //     gridCell[currentPosition + i].classList.remove("alien")
-    // }
 
     currentPosition += 20
     removeAliens()
@@ -332,7 +197,7 @@ function moveDown() {
 
 /**
  * Moves spaceship to the right by adding the class name 
- * to the next element and removing it from the current one
+ * to the next element and removing it from the current one.
  */
 function moveShipRight() {
     let shipPosition = document.getElementsByClassName("spaceship")[0];
@@ -345,7 +210,7 @@ function moveShipRight() {
 
 /**
  * Moves spaceship to the left by adding the class name 
- * to the previous element and removing it from the current one
+ * to the previous element and removing it from the current one.
  */
 function moveShipLeft() {
     let shipPosition = document.getElementsByClassName("spaceship")[0];
