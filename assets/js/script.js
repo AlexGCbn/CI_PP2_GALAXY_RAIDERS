@@ -30,6 +30,10 @@ var leftMoves = 6
 // Global variable for ship position
 var shipPosition = 390
 
+// Global variable to control rocket fire
+var rocketCanFire = true
+var waitingForInterval = false
+
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
  */
@@ -238,7 +242,12 @@ function moveShipLeft() {
  * Adds a rocket in front of the spaceship (20 cells before it)
  */
 function shootRocket() {
-    gridCell[shipPosition - 20].classList.add("rocket")
+    if (rocketCanFire) {
+        gridCell[shipPosition - 20].classList.add("rocket")
+        rocketCanFire = false
+        waitingForInterval = true
+    }
+    rocketTimer()
 }
 
 /**
@@ -296,5 +305,10 @@ function gameButtons(e) {
 }
 
 function rocketTimer() {
-    
+    if (waitingForInterval) {
+        setTimeout(() => {
+            rocketCanFire = true
+            waitingForInterval = false
+        }, 1000);
+    }
 }
