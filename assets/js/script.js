@@ -233,10 +233,16 @@ function moveShipLeft() {
     }
 }
 
+/**
+ * Adds a rocket in front of the spaceship (20 cells before it)
+ */
 function shootRocket() {
     gridCell[shipPosition - 20].classList.add("rocket")
 }
 
+/**
+ * Rocket positioning function. Works in tandem with moveRocket()
+ */
 function positionRockets() {
     let rocketCell = document.getElementsByClassName("rocket")
     let indexNum = 0
