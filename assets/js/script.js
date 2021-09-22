@@ -92,9 +92,9 @@ function createGrids() {
     let gridCell = document.getElementsByClassName("empty-cell")
     gridCell[390].classList.add("spaceship")
 
-    gridCell[370].classList.add("bullet")
-    gridCell[336].classList.add("bullet")
-    positionBullets()
+    gridCell[370].classList.add("rocket")
+    gridCell[336].classList.add("rocket")
+    positionRockets()
 }
 
 var gridCell = document.getElementsByClassName("empty-cell")
@@ -228,41 +228,41 @@ function moveShipLeft() {
     }
 }
 
-function shootBullet() {
-    
+function shootRocket() {
+
 }
 
-function positionBullets() {
-    let bulletCell = document.getElementsByClassName("bullet")
+function positionRockets() {
+    let rocketCell = document.getElementsByClassName("rocket")
     let indexNum = 0
-    let bulletIndex = []
+    let rocketIndex = []
 
-    // Calculate as many bullets as needed
+    // Calculate as many rockets as needed
     for (let i = 0; i < gridCell.length; i++) {
-        if (gridCell[i] == bulletCell[0] || gridCell[i] == bulletCell[1] || gridCell[i] == bulletCell[2]) {
-            bulletIndex.push(indexNum)
+        if (gridCell[i] == rocketCell[0] || gridCell[i] == rocketCell[1] || gridCell[i] == rocketCell[2]) {
+            rocketIndex.push(indexNum)
         }
         indexNum++
     }
-    setTimeout(moveBullet(bulletIndex), 300)
+    setTimeout(moveRocket(rocketIndex), 300)
 }
 
 /**
- * Makes all bullets either move up one space or disappear.
+ * Makes all rockets either move up one space or disappear.
  */
-function moveBullet(bullets) {
+function moveRocket(rockets) {
     let cellNum = 0
-    for (let i = 0; i < bullets.length; i++) {
-        cellNum = bullets[i]
+    for (let i = 0; i < rockets.length; i++) {
+        cellNum = rockets[i]
         console.log(gridCell[cellNum - 20])
         if (gridCell[cellNum - 20].classList.contains("alien")) {
-            gridCell[cellNum].classList.remove("bullet")
+            gridCell[cellNum].classList.remove("rocket")
         } else if (gridCell[cellNum - 20].classList.contains("unused-cell")) {
-            gridCell[cellNum].classList.remove("bullet")
+            gridCell[cellNum].classList.remove("rocket")
         } else if (gridCell[cellNum - 20].classList.contains("empty-cell")) {
-            gridCell[cellNum].classList.remove("bullet")
-            gridCell[cellNum - 20].classList.add("bullet")
+            gridCell[cellNum].classList.remove("rocket")
+            gridCell[cellNum - 20].classList.add("rocket")
         }
     }
-    setTimeout(positionBullets, 300)
+    setTimeout(positionRockets, 300)
 }
