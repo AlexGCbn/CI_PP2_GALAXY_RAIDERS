@@ -95,6 +95,8 @@ function createGrids() {
     // Position spaceship
     let gridCell = document.getElementsByClassName("empty-cell")
     gridCell[shipPosition].classList.add("spaceship")
+
+    // Start rocket positioning function
     positionRockets()
 }
 
@@ -232,7 +234,6 @@ function moveShipLeft() {
 }
 
 function shootRocket() {
-    // let spaceshipPosition = document.getElementsByClassName("spaceship")[0]
     gridCell[shipPosition - 20].classList.add("rocket")
 }
 
@@ -246,6 +247,7 @@ function positionRockets() {
         for (let x = 0; x < rocketCell.length; x++) {
             if (gridCell[i] == rocketCell[x]) {
                 rocketIndex.push(indexNum)
+                console.log("ADD MORE ROCKETS")
             }
         }
         indexNum++
