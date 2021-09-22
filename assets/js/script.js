@@ -6,8 +6,8 @@ document.getElementById("initiate-button").addEventListener("click", mainMovemen
 // Set Aliens global variable
 var aliens = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    21, 0, 23, 24, 25, 26, 27, 28, 29, 30, 31, 0,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 0
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ]
 
 // Set current position global variable
@@ -28,6 +28,9 @@ var movesLeft = 0
 var rightMoves = 6
 var leftMoves = 6
 
+/**
+ * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
+ */
 function rightMovesAllRows() {
     let aliensRow1 = aliens.slice(0, 12)
     let aliensReverse1 = aliensRow1.slice().reverse()
@@ -35,7 +38,7 @@ function rightMovesAllRows() {
     let aliensReverse2 = aliensRow2.slice().reverse()
     let aliensRow3 = aliens.slice(24, 36)
     let aliensReverse3 = aliensRow3.slice().reverse()
-    rightMoves = 6
+    rightMoves = leftMoves
 
     for (let i = 0; i < 12; i++) {
         console.log("Calculating moves...")
@@ -51,6 +54,9 @@ function rightMovesAllRows() {
     return rightMoves
 }
 
+/**
+ * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
+ */
 function leftMovesAllRows() {
     let aliensRow1 = aliens.slice(0, 12)
     let aliensRow2 = aliens.slice(12, 24)
