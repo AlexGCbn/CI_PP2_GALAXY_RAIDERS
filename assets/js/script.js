@@ -356,6 +356,9 @@ function explodeAlien(cellNum) {
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom")}, 100)
 }
 
+/**
+ * Increases score and checks for victory or defeat.
+ */
 function scoreIncrease() {
     score++
     document.getElementById("score").innerHTML = `${score}`
@@ -364,6 +367,10 @@ function scoreIncrease() {
     }
 }
 
+/**
+ * Removes everything from the grid and replaces it with the victory banner.
+ */
 function victory () {
     document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`
 }
+
