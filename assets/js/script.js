@@ -204,15 +204,17 @@ function moveLeft() {
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
-    let lastAlien = document.getElementsByClassName("alien").length
-    let lastAlienPosition = document.getElementsByClassName("alien")[lastAlien]
-    if (gridCell[lastAlienPosition + 20] < 399 &&gridCell[lastAlienPosition + 20] >380) {
-        gameOver()
-    } else {
-        currentPosition += 20
-        removeAliens()
-        positionAliens()
-        switchMovement()
+    // let lastAlien = document.getElementsByClassName("alien").length
+    // let lastAlienPosition = document.getElementsByClassName("alien")[lastAlien]
+    // for (let x = 380; x < 400; x++) {
+    //     if (lastAlienPosition.nextElementSibling === gridCell[x]) {
+    //         gameOver()
+    //     } else {
+            currentPosition += 20
+            removeAliens()
+            positionAliens()
+            switchMovement()
+        }
     }
 }
 
