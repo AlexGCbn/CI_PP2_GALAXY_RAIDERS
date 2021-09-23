@@ -144,7 +144,7 @@ function mainMovement() {
     movesLeft = rightMovesAllRows()
     console.log(movesLeft)
     rightMovesAllRows()
-    intervalID = setInterval(moveRight, (1000 - difficultyScore))
+    intervalID = setInterval(moveRight, (100 - difficultyScore))
 }
 
 /**
@@ -155,11 +155,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left"
         movesLeft = leftMovesAllRows()
-        intervalID = setInterval(moveLeft, (1000 - difficultyScore))
+        intervalID = setInterval(moveLeft, (100 - difficultyScore))
     } else {
         movement = "right"
         movesLeft = rightMovesAllRows()
-        intervalID = setInterval(moveRight, (1000 - difficultyScore))
+        intervalID = setInterval(moveRight, (100 - difficultyScore))
     }
 }
 
@@ -199,16 +199,21 @@ function moveLeft() {
 
 
 /**
+ * Checks if Aliens can move down or it's game over.
  * Moves aliens down once.
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
-
-    currentPosition += 20
-    removeAliens()
-    positionAliens()
-
-    switchMovement()
+    let lastAlien = document.getElementsByClassName("alien").length
+    let lastAlienPosition = document.getElementsByClassName("alien")[lastAlien]
+    if (gridCell[lastAlienPosition + 20] < 399 &&gridCell[lastAlienPosition + 20] >380) {
+        gameOver()
+    } else {
+        currentPosition += 20
+        removeAliens()
+        positionAliens()
+        switchMovement()
+    }
 }
 
 
@@ -370,7 +375,10 @@ function scoreIncrease() {
 /**
  * Removes everything from the grid and replaces it with the victory banner.
  */
-function victory () {
+function victory() {
     document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`
 }
 
+function gameOver() {
+    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`
+}
