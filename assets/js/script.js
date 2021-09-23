@@ -43,6 +43,10 @@ var shipMovingLeft = false
 var shipShootingInterval = null
 var shipShooting = false
 
+// Global score variable
+var score = 0
+var difficultyScore = 0
+
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
  */
@@ -140,7 +144,7 @@ function mainMovement() {
     movesLeft = rightMovesAllRows()
     console.log(movesLeft)
     rightMovesAllRows()
-    intervalID = setInterval(moveRight, 1000)
+    intervalID = setInterval(moveRight, (1000 - difficultyScore))
 }
 
 /**
@@ -151,11 +155,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left"
         movesLeft = leftMovesAllRows()
-        intervalID = setInterval(moveLeft, 1000)
+        intervalID = setInterval(moveLeft, (1000 - difficultyScore))
     } else {
         movement = "right"
         movesLeft = rightMovesAllRows()
-        intervalID = setInterval(moveRight, 1000)
+        intervalID = setInterval(moveRight, (1000 - difficultyScore))
     }
 }
 
@@ -284,7 +288,7 @@ function moveRocket(rockets) {
             gridCell[cellNum - 20].classList.add("rocket")
         }
     }
-    setTimeout(positionRockets, 250)
+    setTimeout(positionRockets, 225) // Change timeout for rocket speed
 }
 
 /**
@@ -346,9 +350,20 @@ function explodeAlien(cellNum) {
     gridCell[cellNum - 20].classList.remove("alien")
     gridCell[cellNum - 20].classList.add("boom")
     aliens[arrayIndex] = 0
-    console.log(aliens)
-    console.log("Destroyed array index " + arrayIndex)
-    console.log(cellNum)
-    console.log(currentPosition)
+    scoreIncrease()
+    difficultyScore = score * 10
+    console.log(1000 - difficultyScore)
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom")}, 100)
+}
+
+function scoreIncrease() {
+    score++
+    document.getElementById("score").innerHTML = `${score}`
+    if (score === 36) {
+        victory()
+    }
+}
+
+function victory () {
+    document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`
 }
