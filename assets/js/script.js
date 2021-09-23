@@ -276,7 +276,7 @@ function moveRocket(rockets) {
     for (let i = 0; i < rockets.length; i++) {
         cellNum = rockets[i]
         if (gridCell[cellNum - 20].classList.contains("alien")) {
-            gridCell[cellNum].classList.remove("rocket")
+            explodeAlien(cellNum)
         } else if (gridCell[cellNum - 20].classList.contains("unused-cell")) {
             gridCell[cellNum].classList.remove("rocket")
         } else if (gridCell[cellNum - 20].classList.contains("empty-cell")) {
@@ -288,15 +288,29 @@ function moveRocket(rockets) {
 }
 
 /**
- * Moving and shooting functions for keyboard events
+ * Controls rocket firing rate. Change timeout ms to change firing rate.
+ */
+function rocketTimer() {
+    if (!rocketCanFire) {
+        setTimeout(() => {
+            rocketCanFire = true
+            waitingForInterval = true
+        }, 1000);
+    }
+}
+
+/**
+ * Moving and shooting functions for keyboard events.
+ * Variables provide the functionality to shoot while moving 
+ * and also stop the ship from moving in 2 directions at the same time.
  */
 function gameButtons(e) {
-    if (e.key === "ArrowRight" && !shipMovingRight) {
-        moveShipRight()
+    if (e.key === "ArrowRight" && !shipMovingRight && !shipMovingLeft) {
+        setTimeout(moveShipRight, 10)
         moveRightInterval = setInterval(moveShipRight, 100)
         shipMovingRight = true
-    } else if (e.key === "ArrowLeft" && !shipMovingLeft) {
-        moveShipLeft()
+    } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
+        setTimeout(moveShipLeft, 10)
         moveLeftInterval = setInterval(moveShipLeft, 100)
         shipMovingLeft = true
     } else if (e.key === "Control" && !shipShooting) {
@@ -306,6 +320,9 @@ function gameButtons(e) {
     }
 }
 
+/**
+ * Clears interval from gameButtons() function when they keys are released
+ */
 function clearMovementInterval(e) {
     if (e.key === "ArrowRight") {
         shipMovingRight = false
@@ -319,12 +336,19 @@ function clearMovementInterval(e) {
     }
 }
 
-function rocketTimer() {
-    if (!rocketCanFire) {
-        setTimeout(() => {
-            rocketCanFire = true
-            waitingForInterval = true
-        }, 1000);
-    }
+/**
+ * Gets the cell number of the rocket and calculates the array index to change to 0.
+ * Adds the "boom" class for 100ms, to give the effect of an explosion.
+ */
+function explodeAlien(cellNum) {
+    let arrayIndex = aliens.indexOf(cellNum - 19 - currentPosition)
+    gridCell[cellNum].classList.remove("rocket")
+    gridCell[cellNum - 20].classList.remove("alien")
+    gridCell[cellNum - 20].classList.add("boom")
+    aliens[arrayIndex] = 0
+    console.log(aliens)
+    console.log("Destroyed array index " + arrayIndex)
+    console.log(cellNum)
+    console.log(currentPosition)
+    setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom")}, 100)
 }
-
