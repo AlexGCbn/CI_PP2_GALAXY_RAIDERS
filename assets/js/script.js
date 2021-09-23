@@ -40,6 +40,8 @@ var moveRightInterval = null
 var shipMovingRight = false
 var moveLeftInterval = null
 var shipMovingLeft = false
+var shipShootingInterval = null
+var shipShooting = false
 
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
@@ -297,8 +299,10 @@ function gameButtons(e) {
         moveShipLeft()
         moveLeftInterval = setInterval(moveShipLeft, 100)
         shipMovingLeft = true
-    } else if (e.key === "Control") {
+    } else if (e.key === "Control" && !shipShooting) {
         shootRocket()
+        shipShootingInterval = setInterval(shootRocket, 1)
+        shipShooting = true
     }
 }
 
@@ -309,6 +313,9 @@ function clearMovementInterval(e) {
     } else if (e.key === "ArrowLeft") {
         shipMovingLeft = false
         clearInterval(moveLeftInterval)
+    } else if (e.key === "Control") {
+        shipShooting = false
+        clearInterval(shipShootingInterval)
     }
 }
 
