@@ -3,7 +3,8 @@ document.getElementById("right-button").addEventListener("click", moveShipRight)
 document.getElementById("left-button").addEventListener("click", moveShipLeft)
 document.getElementById("initiate-button").addEventListener("click", mainMovement)
 document.getElementById("shoot-button").addEventListener("click", shootRocket)
-// window.addEventListener("keydown", gameButtons)
+window.addEventListener("keydown", gameButtons)
+window.addEventListener("keyup", clearMovementInterval)
 
 // Set Aliens global variable
 var aliens = [
@@ -34,52 +35,11 @@ var shipPosition = 390
 var rocketCanFire = true
 var waitingForInterval = false
 
-// Controller function. Is used to remove the issue of one keypress cancelling the other
-// Credits: https://medium.com/@dovern42/handling-multiple-key-presses-at-once-in-vanilla-javascript-for-game-controllers-6dcacae931b7
-const controller = {
-    "ArrowRight": {
-        pressed: false,
-        func: moveShipRight
-    },
-    "ArrowLeft": {
-        pressed: false,
-        func: moveShipLeft
-    },
-    "Control": {
-        pressed: false,
-        func: shootRocket
-    }
-}
-
-document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
-        controller["ArrowRight"].pressed = true
-    } else if (e.key === "ArrowLeft") {
-        controller["ArrowLeft"].pressed = true
-    } else if (e.key === "Control") {
-        controller["Control"].pressed = true
-    }
-    executeMoves()
-})
-document.addEventListener("keyup", (e) => {
-    if (e.key === "ArrowRight") {
-        controller["ArrowRight"].pressed = false
-    } else if (e.key === "ArrowLeft") {
-        controller["ArrowLeft"].pressed = false
-    } else if (e.key === "Control") {
-        controller["Control"].pressed = false
-    }
-    executeMoves()
-})
-
-function executeMoves() {
-    for (i = 0; i < 3; i++){
-        if (controller[i].pressed){
-            controller[i].func()
-        }
-    }
-}
-// End of borrowed code
+// Global interval IDs for keyboard buttons
+var moveRightInterval = null
+var shipMovingRight = false
+var moveLeftInterval = null
+var shipMovingLeft = false
 
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
@@ -328,18 +288,29 @@ function moveRocket(rockets) {
 /**
  * Moving and shooting functions for keyboard events
  */
-// function gameButtons(e) {
-    // if (e.key === "ArrowRight") {
-    //     moveShipRight()
-    // } else if (e.key === "ArrowLeft") {
-    //     moveShipLeft()
-    // } else if (e.key === "Control") {
-    //     shootRocket()
-    // }
-    // if (controller[e.key]) {
-    //     controller[e.key].pressed = true
-    // }
-// }
+function gameButtons(e) {
+    if (e.key === "ArrowRight" && !shipMovingRight) {
+        moveShipRight()
+        moveRightInterval = setInterval(moveShipRight, 100)
+        shipMovingRight = true
+    } else if (e.key === "ArrowLeft" && !shipMovingLeft) {
+        moveShipLeft()
+        moveLeftInterval = setInterval(moveShipLeft, 100)
+        shipMovingLeft = true
+    } else if (e.key === "Control") {
+        shootRocket()
+    }
+}
+
+function clearMovementInterval(e) {
+    if (e.key === "ArrowRight") {
+        shipMovingRight = false
+        clearInterval(moveRightInterval)
+    } else if (e.key === "ArrowLeft") {
+        shipMovingLeft = false
+        clearInterval(moveLeftInterval)
+    }
+}
 
 function rocketTimer() {
     if (!rocketCanFire) {
