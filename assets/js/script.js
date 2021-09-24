@@ -79,12 +79,10 @@ function rightMovesAllRows() {
     let aliensRow3 = aliens.slice(24, 36);
     let aliensReverse3 = aliensRow3.slice().reverse();
     rightMoves = 0;
-    console.log("RIGHT moves are: " + rightMoves);
 
     for (let i = 0; i < 12; i++) {
         if (aliensReverse1[i] === 0 && aliensReverse2[i] === 0 && aliensReverse3[i] === 0) {
             rightMoves++;
-            console.log("Add 1 to RIGHT moves. Total: " + rightMoves);
         } else {
             break;
         }
@@ -101,12 +99,10 @@ function leftMovesAllRows() {
     let aliensRow2 = aliens.slice(12, 24);
     let aliensRow3 = aliens.slice(24, 36);
     leftMoves = 0;
-    console.log("LEFT moves are: " + leftMoves);
 
     for (let i = 0; i < 12; i++) {
         if (aliensRow1[i] === 0 && aliensRow2[i] === 0 && aliensRow3[i] === 0) {
             leftMoves++;
-            console.log("Add 1 to LEFT moves. Total: " + rightMoves);
         } else {
             break;
         }
@@ -194,7 +190,6 @@ function switchMovement() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveRight() {
-    console.log("Moving right " + movesLeft + " times");
     if (movesLeft > 0) {
         currentPosition++;
         removeAliens();
@@ -211,7 +206,6 @@ function moveRight() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveLeft() {
-    console.log("Moving left " + movesLeft + " times");
     if (movesLeft > 0) {
         currentPosition -= 1;
         removeAliens();
@@ -386,7 +380,6 @@ function explodeAlien(cellNum) {
     scoreIncrease();
     difficultyScore = score * 10;
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
-    console.log("BOOM ON CELL " + cellNum);
 }
 
 /**
