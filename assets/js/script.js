@@ -7,16 +7,10 @@ window.addEventListener("keydown", gameButtons)
 window.addEventListener("keyup", clearMovementInterval)
 
 // Set Aliens global variable
-// var aliens = [
-//     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-//     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-//     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
-// ]
-
 var aliens = [
-    1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    21, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    41, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ]
 
 // Set current position global variable
@@ -53,6 +47,28 @@ var shipShooting = false
 // Global score variable
 var score = 0
 var difficultyScore = 0
+
+/**
+ * Removes everything from the grid and replaces it with the victory banner.
+ */
+function victory() {
+    document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`
+    clearInterval(moveLeftInterval)
+    clearInterval(moveRightInterval)
+    clearInterval(shipShootingInterval)
+    return
+}
+
+/**
+ * Removes everything from the grid and replaces it with the game over banner.
+ */
+function gameOver() {
+    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`
+    clearInterval(moveLeftInterval)
+    clearInterval(moveRightInterval)
+    clearInterval(shipShootingInterval)
+    return
+}
 
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
@@ -153,7 +169,7 @@ function removeAliens() {
  */
 function mainMovement() {
     movesLeft = rightMovesAllRows()
-    intervalID = setInterval(moveRight, (300 - difficultyScore))
+    intervalID = setInterval(moveRight, (800 - difficultyScore))
 }
 
 /**
@@ -164,11 +180,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left"
         movesLeft = leftMovesAllRows()
-        intervalID = setInterval(moveLeft, (300 - difficultyScore))
+        intervalID = setInterval(moveLeft, (800 - difficultyScore))
     } else {
         movement = "right"
         movesLeft = rightMovesAllRows()
-        intervalID = setInterval(moveRight, (300 - difficultyScore))
+        intervalID = setInterval(moveRight, (800 - difficultyScore))
     }
 }
 
@@ -264,6 +280,18 @@ function shootRocket() {
 }
 
 /**
+ * Controls rocket firing rate. Change timeout ms to change firing rate.
+ */
+function rocketTimer() {
+    if (!rocketCanFire) {
+        setTimeout(() => {
+            rocketCanFire = true
+            waitingForInterval = true
+        }, 1500); //Controls how frequently rockets can be fired
+    }
+}
+
+/**
  * Rocket positioning function. Works in tandem with moveRocket()
  */
 function positionRockets() {
@@ -302,19 +330,7 @@ function moveRocket(rockets) {
             gridCell[cellNum - 20].classList.add("rocket")
         }
     }
-    setTimeout(positionRockets, 500) // Change timeout for rocket speed
-}
-
-/**
- * Controls rocket firing rate. Change timeout ms to change firing rate.
- */
-function rocketTimer() {
-    if (!rocketCanFire) {
-        setTimeout(() => {
-            rocketCanFire = true
-            waitingForInterval = true
-        }, 1000);
-    }
+    setTimeout(positionRockets, 250) // Change timeout for rocket speed
 }
 
 /**
@@ -381,20 +397,4 @@ function scoreIncrease() {
     if (score === 36) {
         victory()
     }
-}
-
-/**
- * Removes everything from the grid and replaces it with the victory banner.
- */
-function victory() {
-    document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`
-    return
-}
-
-/**
- * Removes everything from the grid and replaces it with the game over banner.
- */
-function gameOver() {
-    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`
-    return
 }
