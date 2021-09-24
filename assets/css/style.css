@@ -8,6 +8,15 @@ font-family: 'Space Mono', monospace; */
     padding: 0;
 }
 
+/* General page background for mobile screens*/
+
+body {
+    background-image: url(../images/portrait-background.png);
+    background-repeat: no-repeat;
+    background-size: 110%;
+    color: white;
+}
+
 /* Navigation styling */
 
 .navigation {
@@ -15,6 +24,7 @@ font-family: 'Space Mono', monospace; */
     display: inline-grid;
     grid-template-columns: 15% 20% 30% 20% 15%;
     border-bottom: 2px solid #000;
+    background-color: rgba(116, 181, 255, 0.7);
 }
 
 /* Make grid start from second column */
@@ -51,9 +61,9 @@ font-family: 'Space Mono', monospace; */
     display: inline-grid;
     grid-template-columns: repeat(20, 5%);
     grid-template-rows: repeat(20, 5%);
-    border: solid 1px black;
+    border: solid 5px #74B5FF;
     border-radius: 10px;
-    background-color: rgba(000, 000, 000, 0.7);
+    background-color: rgba(000, 000, 000, 0.8);
 }
 
 .alien {

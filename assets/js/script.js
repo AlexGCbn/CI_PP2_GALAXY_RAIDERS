@@ -1,7 +1,6 @@
 document.getElementById("start-button").addEventListener("click", createGrids);
 document.getElementById("right-button").addEventListener("click", moveShipRight);
 document.getElementById("left-button").addEventListener("click", moveShipLeft);
-document.getElementById("initiate-button").addEventListener("click", mainMovement);
 document.getElementById("shoot-button").addEventListener("click", shootRocket);
 window.addEventListener("keydown", gameButtons);
 window.addEventListener("keyup", clearMovementInterval);
@@ -139,6 +138,9 @@ function createGrids() {
 
     // Start rocket positioning function
     positionRockets();
+
+    // Start the game
+    mainMovement()
 }
 
 var gridCell = document.getElementsByClassName("empty-cell");
