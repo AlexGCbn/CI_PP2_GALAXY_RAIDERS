@@ -204,18 +204,16 @@ function moveLeft() {
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
-    // let lastAlien = document.getElementsByClassName("alien").length
-    // let lastAlienPosition = document.getElementsByClassName("alien")[lastAlien]
-    // for (let x = 380; x < 400; x++) {
-    //     if (lastAlienPosition.nextElementSibling === gridCell[x]) {
-    //         gameOver()
-    //     } else {
-            currentPosition += 20
-            removeAliens()
-            positionAliens()
-            switchMovement()
+    for (let x = 361; x < 380; x++) {
+        if (gridCell[x].classList.contains("alien")) {
+            console.log(x + "=" + gridCell[x])
+            gameOver()
         }
     }
+    currentPosition += 20
+    removeAliens()
+    positionAliens()
+    switchMovement()
 }
 
 
@@ -379,8 +377,10 @@ function scoreIncrease() {
  */
 function victory() {
     document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`
+    return
 }
 
 function gameOver() {
     document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`
+    return
 }
