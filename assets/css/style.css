@@ -72,7 +72,7 @@ main {
     background-color: rgba(000, 000, 000, 0.8);
 }
 
-#game-buttons {
+#game-buttons, #start-game {
     height: 10%;
     width: 90vw;
     max-width: 80vh;
@@ -80,12 +80,22 @@ main {
     margin: auto;
     display: grid;
     grid-template-columns: repeat(5, 20%);
+    grid-row-start: 2;
 }
 
-#game-buttons > button {
+#game-buttons > button, #start-game > button {
     font-size: 2rem;
     background: transparent;
     color: white;
+}
+
+#left-button {
+    grid-column-start: 2;
+}
+
+#start-button {
+    margin-top: 30px;
+    grid-column-start: 3;
 }
 
 .alien {
