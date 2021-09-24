@@ -7,10 +7,16 @@ window.addEventListener("keydown", gameButtons)
 window.addEventListener("keyup", clearMovementInterval)
 
 // Set Aliens global variable
+// var aliens = [
+//     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+//     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+//     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
+// ]
+
 var aliens = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
+    1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    21, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    41, 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ]
 
 // Set current position global variable
@@ -25,8 +31,9 @@ var intervalID = null;
 // Global variables needed for functions to communicate
 var movement = "right"
 var movesLeft = 0
-var rightMoves = 6
-var leftMoves = 6
+var rightMoves = 0
+var leftMoves = 0
+var oppositeExtraMoves = 0
 
 // Global variable for ship position
 var shipPosition = 390
@@ -57,17 +64,19 @@ function rightMovesAllRows() {
     let aliensReverse2 = aliensRow2.slice().reverse()
     let aliensRow3 = aliens.slice(24, 36)
     let aliensReverse3 = aliensRow3.slice().reverse()
-    rightMoves = leftMoves
+    rightMoves = 0
+    console.log("RIGHT moves are: " + rightMoves)
 
     for (let i = 0; i < 12; i++) {
         if (aliensReverse1[i] === 0 && aliensReverse2[i] === 0 && aliensReverse3[i] === 0) {
             rightMoves++
+            console.log("Add 1 to RIGHT moves. Total: " + rightMoves)
         } else {
             break
         }
     }
 
-    return rightMoves
+    return rightMoves + 6 + leftMoves
 }
 
 /**
@@ -77,17 +86,19 @@ function leftMovesAllRows() {
     let aliensRow1 = aliens.slice(0, 12)
     let aliensRow2 = aliens.slice(12, 24)
     let aliensRow3 = aliens.slice(24, 36)
-    leftMoves = rightMoves
+    leftMoves = 0
+    console.log("LEFT moves are: " + leftMoves)
 
     for (let i = 0; i < 12; i++) {
         if (aliensRow1[i] === 0 && aliensRow2[i] === 0 && aliensRow3[i] === 0) {
             leftMoves++
+            console.log("Add 1 to LEFT moves. Total: " + rightMoves)
         } else {
             break
         }
     }
 
-    return leftMoves
+    return leftMoves + 6 + rightMoves
 }
 
 /**
@@ -142,9 +153,7 @@ function removeAliens() {
  */
 function mainMovement() {
     movesLeft = rightMovesAllRows()
-    console.log(movesLeft)
-    rightMovesAllRows()
-    intervalID = setInterval(moveRight, (100 - difficultyScore))
+    intervalID = setInterval(moveRight, (300 - difficultyScore))
 }
 
 /**
@@ -155,11 +164,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left"
         movesLeft = leftMovesAllRows()
-        intervalID = setInterval(moveLeft, (100 - difficultyScore))
+        intervalID = setInterval(moveLeft, (300 - difficultyScore))
     } else {
         movement = "right"
         movesLeft = rightMovesAllRows()
-        intervalID = setInterval(moveRight, (100 - difficultyScore))
+        intervalID = setInterval(moveRight, (300 - difficultyScore))
     }
 }
 
@@ -168,7 +177,7 @@ function switchMovement() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveRight() {
-
+    console.log("Moving right " + movesLeft + " times")
     if (movesLeft > 0) {
         currentPosition++
         removeAliens()
@@ -185,7 +194,7 @@ function moveRight() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveLeft() {
-
+    console.log("Moving left " + movesLeft + " times")
     if (movesLeft > 0) {
         currentPosition -= 1
         removeAliens()
@@ -221,7 +230,6 @@ function moveDown() {
  * to the next element and removing it from the current one.
  */
 function moveShipRight() {
-    // let shipPosition = document.getElementsByClassName("spaceship")[0];
 
     if (!gridCell[shipPosition + 1].classList.contains("unused-cell")) {
         gridCell[shipPosition + 1].classList.add("spaceship")
@@ -235,7 +243,6 @@ function moveShipRight() {
  * to the previous element and removing it from the current one.
  */
 function moveShipLeft() {
-    // let shipPosition = document.getElementsByClassName("spaceship")[0];
 
     if (!gridCell[shipPosition - 1].classList.contains("unused-cell")) {
         gridCell[shipPosition - 1].classList.add("spaceship")
@@ -283,7 +290,10 @@ function moveRocket(rockets) {
     let cellNum = 0
     for (let i = 0; i < rockets.length; i++) {
         cellNum = rockets[i]
-        if (gridCell[cellNum - 20].classList.contains("alien")) {
+        if (gridCell[cellNum].classList.contains("alien")) {
+            cellNum = cellNum + 20
+            explodeAlien(cellNum)
+        } else if (gridCell[cellNum - 20].classList.contains("alien")) {
             explodeAlien(cellNum)
         } else if (gridCell[cellNum - 20].classList.contains("unused-cell")) {
             gridCell[cellNum].classList.remove("rocket")
@@ -292,7 +302,7 @@ function moveRocket(rockets) {
             gridCell[cellNum - 20].classList.add("rocket")
         }
     }
-    setTimeout(positionRockets, 225) // Change timeout for rocket speed
+    setTimeout(positionRockets, 500) // Change timeout for rocket speed
 }
 
 /**
@@ -351,13 +361,15 @@ function clearMovementInterval(e) {
 function explodeAlien(cellNum) {
     let arrayIndex = aliens.indexOf(cellNum - 19 - currentPosition)
     gridCell[cellNum].classList.remove("rocket")
+    gridCell[cellNum + 20].classList.remove("rocket")
+    gridCell[cellNum - 20].classList.remove("rocket")
     gridCell[cellNum - 20].classList.remove("alien")
     gridCell[cellNum - 20].classList.add("boom")
     aliens[arrayIndex] = 0
     scoreIncrease()
     difficultyScore = score * 10
-    console.log(1000 - difficultyScore)
-    setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom")}, 100)
+    setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom")}, 50)
+    console.log("BOOM ON CELL " + cellNum)
 }
 
 /**
