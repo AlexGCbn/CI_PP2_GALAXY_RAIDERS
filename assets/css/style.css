@@ -11,10 +11,11 @@ font-family: 'Space Mono', monospace; */
 /* General page background for mobile screens*/
 
 body {
-    background-image: url(../images/portrait-background.png);
+    background-image: url(../images/portrait-background-small.png);
     background-repeat: no-repeat;
-    background-size: 110%;
+    background-size: cover;
     color: white;
+    min-height: 100vh;
 }
 
 /* Navigation styling */
@@ -23,7 +24,7 @@ body {
     width: 100%;
     display: inline-grid;
     grid-template-columns: 15% 20% 30% 20% 15%;
-    border-bottom: 2px solid #000;
+    border-bottom: 3px solid #000;
     background-color: rgba(116, 181, 255, 0.7);
 }
 
@@ -51,13 +52,18 @@ body {
     text-align: center;
 }
 
+main {
+    text-align: center;
+}
+
 /* Game area styling */
 
 #game-area {
-    margin: 5% 2% 5% 2%;
-    width: 96%;
-    max-width: 60vh;
-    height: 60vh;
+    margin: 20px auto;
+    width: 90vw;
+    max-width: 80vh;
+    height: 90vw;
+    max-height: 80vh;
     display: inline-grid;
     grid-template-columns: repeat(20, 5%);
     grid-template-rows: repeat(20, 5%);
@@ -92,4 +98,22 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 50%;
+}
+
+/* Style for medium screen sizes */
+@media only screen and (min-width: 1000px) {
+    
+    body {
+        background-image: url(../images/portrait-background-large.png);
+    }
+
+}
+
+/* Style for large screen sizes */
+@media only screen and (min-width: 1200px) and (min-height: 900px) {
+    
+    body {
+        background-image: url(../images/landscape-background.png);
+    }
+
 }
