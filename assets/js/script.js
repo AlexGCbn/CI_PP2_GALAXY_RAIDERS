@@ -27,7 +27,6 @@ var movement = "right";
 var movesLeft = 0;
 var rightMoves = 0;
 var leftMoves = 0;
-var oppositeExtraMoves = 0;
 
 // Global variable for ship position
 var shipPosition = 390;
@@ -210,7 +209,7 @@ function moveRight() {
  * Calls functions to remove all aliens then place them again.
  */
 function moveLeft() {
-    console.log("Moving left " + movesLeft + " times")
+    console.log("Moving left " + movesLeft + " times");
     if (movesLeft > 0) {
         currentPosition -= 1;
         removeAliens();
@@ -315,9 +314,9 @@ function positionRockets() {
  * Makes all rockets either move up one space or disappear.
  */
 function moveRocket(rockets) {
-    let cellNum = 0
+    let cellNum = 0;
     for (let i = 0; i < rockets.length; i++) {
-        cellNum = rockets[i]
+        cellNum = rockets[i];
         if (gridCell[cellNum].classList.contains("alien")) {
             cellNum = cellNum + 20;
             explodeAlien(cellNum);
@@ -360,10 +359,10 @@ function gameButtons(e) {
 function clearMovementInterval(e) {
     if (e.key === "ArrowRight") {
         shipMovingRight = false;
-        clearInterval(moveRightInterval)
+        clearInterval(moveRightInterval);
     } else if (e.key === "ArrowLeft") {
         shipMovingLeft = false;
-        clearInterval(moveLeftInterval)
+        clearInterval(moveLeftInterval);
     } else if (e.key === "Control") {
         shipShooting = false;
         clearInterval(shipShootingInterval);
@@ -384,7 +383,7 @@ function explodeAlien(cellNum) {
     aliens[arrayIndex] = 0;
     scoreIncrease();
     difficultyScore = score * 10;
-    setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom")}, 50);
+    setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
     console.log("BOOM ON CELL " + cellNum);
 }
 
