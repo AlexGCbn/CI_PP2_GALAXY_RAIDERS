@@ -204,9 +204,8 @@ function moveLeft() {
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
-    for (let x = 361; x < 380; x++) {
+    for (let x = 360; x < 380; x++) {
         if (gridCell[x].classList.contains("alien")) {
-            console.log(x + "=" + gridCell[x])
             gameOver()
         }
     }
@@ -380,6 +379,9 @@ function victory() {
     return
 }
 
+/**
+ * Removes everything from the grid and replaces it with the game over banner.
+ */
 function gameOver() {
     document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`
     return
