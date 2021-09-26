@@ -6,6 +6,7 @@ font-family: 'Space Mono', monospace; */
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Space Mono', monospace;
 }
 
 /* General page background for mobile screens*/
@@ -68,10 +69,14 @@ main {
     text-align: center;
 }
 
+#scoreboard {
+    padding: 5px;
+}
+
 /* Game area styling */
 
 #game-area {
-    margin: 20px auto;
+    margin: 10px auto;
     width: 90vw;
     max-width: 80vh;
     height: 90vw;
@@ -115,10 +120,6 @@ main {
     color: white;
     border: none;
 }
-
-/* #left-button {
-    grid-column-start: 2;
-} */
 
 #shoot-button:active {
     color: red;
