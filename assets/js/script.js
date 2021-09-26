@@ -379,10 +379,10 @@ function explodeAlien(cellNum) {
     gridCell[cellNum - 20].classList.add("boom");
     aliens[arrayIndex] = 0;
     scoreIncrease();
-    if (difficultyScore < 500) {
-        difficultyScore = score;
+    if (difficultyScore < 700) {
+        difficultyScore = score / 2;
     } else {
-        difficultyScore = 500;
+        difficultyScore = 700;
     }
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
 }
@@ -426,10 +426,14 @@ function victory() {
         case 1000: {
             shootingRate = 750;
             break;}
+        case 750: {
+            shootingRate = 550;
+            break;
+        }
     }
     console.log(shootingRate)
     currentPosition = 21;
-    difficultyScore -= 200;
+    difficultyScore = difficultyScore / 2;
 
     movement = "right";
     movesLeft = 0;
