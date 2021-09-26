@@ -247,6 +247,9 @@ function moveShipRight() {
         gridCell[shipPosition].classList.remove("spaceship");
         shipPosition++;
     }
+
+    document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
+    document.getElementById("right-button").style.background = "red"
 }
 
 /**
@@ -260,6 +263,9 @@ function moveShipLeft() {
         gridCell[shipPosition].classList.remove("spaceship");
         shipPosition--;
     }
+
+    document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
+    document.getElementById("left-button").style.color = "red"
 }
 
 /**
@@ -272,6 +278,8 @@ function shootRocket() {
         waitingForInterval = false;
         rocketTimer();
     } 
+
+    document.getElementById("shoot-button").style.color = "red"
 }
 
 /**
@@ -356,12 +364,17 @@ function clearMovementInterval(e) {
     if (e.key === "ArrowRight") {
         shipMovingRight = false;
         clearInterval(moveRightInterval);
+        document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`
+        document.getElementById("right-button").style.color = "inherit"
     } else if (e.key === "ArrowLeft") {
         shipMovingLeft = false;
         clearInterval(moveLeftInterval);
+        document.getElementById("left-button").innerHTML = `<i class="far fa-caret-square-left"></i>`;
+        document.getElementById("left-button").style.color = "inherit"
     } else if (e.key === "Control") {
         shipShooting = false;
         clearInterval(shipShootingInterval);
+        document.getElementById("shoot-button").style.color = "inherit"
     }
 }
 

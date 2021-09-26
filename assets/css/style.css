@@ -146,9 +146,10 @@ main {
     grid-template-columns: 30% 30% 30%;
     grid-row-start: 2;
     column-gap: 5%;
+    overflow: visible;
 }
 
-#game-buttons > button, #start-game > button {
+#game-buttons button, #start-game button {
     font-size: 2rem;
     background: transparent;
     color: white;
@@ -156,15 +157,15 @@ main {
 }
 
 #shoot-button:active {
-    color: red;
+    background: radial-gradient(closest-side, red, transparent);
 }
 
 #left-button:active {
-    color: red;
+    background: radial-gradient(closest-side, red, transparent);
 }
 
 #right-button:active {
-    color: red;
+    background: radial-gradient(closest-side, red, transparent);
 }
 
 
