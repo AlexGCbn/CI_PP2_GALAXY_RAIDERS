@@ -52,7 +52,7 @@ body {
 #navigation a {
     text-decoration: none;
     color: inherit;
-    font-size: 70%;
+    font-size: 4vw;
 }
 
 #logo {
@@ -187,14 +187,10 @@ main {
     #navigation {
         grid-template-columns: 15% 20% 30% 20% 15%;
     }
-/* 
-    #navigation a {
-        font-size: 2rem;
-    }
 
-    #logo a {
-        font-size: 3rem;
-    } */
+    #navigation a {
+        font-size: 2vw;
+    }
 
 }
 
@@ -203,6 +199,10 @@ main {
     
     body {
         background-image: url(../images/landscape-background.png);
+    }
+
+    #navigation a {
+        font-size: 1.8vw;
     }
 
 }
