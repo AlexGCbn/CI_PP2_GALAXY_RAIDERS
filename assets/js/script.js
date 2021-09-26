@@ -249,7 +249,7 @@ function moveShipRight() {
     }
 
     document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
-    document.getElementById("right-button").style.background = "red"
+    document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)"
 }
 
 /**
@@ -265,7 +265,7 @@ function moveShipLeft() {
     }
 
     document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
-    document.getElementById("left-button").style.color = "red"
+    document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)"
 }
 
 /**
@@ -279,7 +279,7 @@ function shootRocket() {
         rocketTimer();
     } 
 
-    document.getElementById("shoot-button").style.color = "red"
+    document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)"
 }
 
 /**
@@ -366,15 +366,18 @@ function clearMovementInterval(e) {
         clearInterval(moveRightInterval);
         document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`
         document.getElementById("right-button").style.color = "inherit"
+        document.getElementById("right-button").style.background = "inherit"
     } else if (e.key === "ArrowLeft") {
         shipMovingLeft = false;
         clearInterval(moveLeftInterval);
         document.getElementById("left-button").innerHTML = `<i class="far fa-caret-square-left"></i>`;
         document.getElementById("left-button").style.color = "inherit"
+        document.getElementById("left-button").style.background = "inherit"
     } else if (e.key === "Control") {
         shipShooting = false;
         clearInterval(shipShootingInterval);
         document.getElementById("shoot-button").style.color = "inherit"
+        document.getElementById("shoot-button").style.background = "inherit"
     }
 }
 

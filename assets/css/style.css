@@ -135,6 +135,7 @@ main {
 
 #start-button {
     grid-column-start: 3;
+    background: transparent;
 }
 
 #game-buttons {
