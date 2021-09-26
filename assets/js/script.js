@@ -6,11 +6,11 @@ window.addEventListener("keydown", gameButtons);
 window.addEventListener("keyup", clearMovementInterval);
 
 // Set Aliens global variables
-var aliensStartingPositions = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
-];
+// const aliensStartingPositions = [
+    // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    // 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+    // 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
+// ];
 
 var aliens = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
@@ -51,27 +51,7 @@ var shipShooting = false;
 // Global score variables
 var score = 0;
 var difficultyScore = 0;
-var powerUp = 0;
-
-/**
- * Removes everything from the grid and replaces it with the victory banner.
- */
-function victory() {
-    aliens = aliensStartingPositions;
-    powerUp += 300;
-    currentPosition = 21;
-}
-
-/**
- * Removes everything from the grid and replaces it with the game over banner.
- */
-function gameOver() {
-    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`;
-    clearInterval(moveLeftInterval);
-    clearInterval(moveRightInterval);
-    clearInterval(shipShootingInterval);
-    return;
-}
+var shootingRate = 1500;
 
 /**
  * Calculates if there are destroyed columns in aliens array to the right, so it can add more moves.
@@ -287,7 +267,7 @@ function rocketTimer() {
         setTimeout(() => {
             rocketCanFire = true;
             waitingForInterval = true;
-        }, (1500 - powerUp)); //Controls how frequently rockets can be fired
+        }, shootingRate); //Controls how frequently rockets can be fired
     }
 }
 
@@ -399,10 +379,10 @@ function explodeAlien(cellNum) {
     gridCell[cellNum - 20].classList.add("boom");
     aliens[arrayIndex] = 0;
     scoreIncrease();
-    if (difficultyScore < 400) {
-        difficultyScore = score * 10;
+    if (difficultyScore < 500) {
+        difficultyScore = score;
     } else {
-        difficultyScore = 400;
+        difficultyScore = 500;
     }
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
 }
@@ -411,17 +391,66 @@ function explodeAlien(cellNum) {
  * Increases score and checks for victory or defeat.
  */
 function scoreIncrease() {
-    score++;
+    if (difficultyScore < 100) {
+        score += 9;
+    } else if (difficultyScore < 250) {
+        score += 13;
+    } else {
+        score += 20;
+    }
     document.getElementById("score").innerHTML = `${score}`;
     document.getElementById("scoreboard").classList.add("score-increase")
     setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase")}, 500)
-    console.log(aliens.every(checkAliens))
     if (aliens.every(checkAliens)) {
+        console.log("VICTORY!")
         victory();
     }
 }
 
+/**
+ * Resets aliens and currentPosition. Powers ship up. 
+ */
+function victory() {
+    aliens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+        21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+        41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52];
+    switch (shootingRate) {
+        case 1500: {
+            shootingRate = 1250;
+            break;
+        }
+        case 1250: {
+            shootingRate = 1000;
+            break;
+        }
+        case 1000: {
+            shootingRate = 750;
+            break;}
+    }
+    console.log(shootingRate)
+    currentPosition = 21;
+    difficultyScore -= 200;
+
+    movement = "right";
+    movesLeft = 0;
+    rightMoves = 0;
+    leftMoves = 0;
+    clearInterval(intervalID);
+    positionAliens();
+    mainMovement();
+}
+
+/**
+ * Removes everything from the grid and replaces it with the game over banner.
+ */
+function gameOver() {
+    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`;
+    clearInterval(moveLeftInterval);
+    clearInterval(moveRightInterval);
+    clearInterval(shipShootingInterval);
+    return;
+}
+
 function checkAliens(alien) {
-    console.log(alien)
     return alien === 0;
 }
