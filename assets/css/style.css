@@ -16,6 +16,10 @@ body {
     background-size: cover;
     color: white;
     min-height: 100vh;
+
+    /* Disable double-tap zoom (mostly for iOS devices)
+    Credits: https://dev.to/jasperreddin/disabling-viewport-zoom-on-ios-14-web-browsers-l13 */
+    touch-action: pan-y;
 }
 
 /* Navigation styling */
