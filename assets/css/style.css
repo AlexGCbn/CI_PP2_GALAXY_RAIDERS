@@ -156,20 +156,24 @@ main {
     color: white;
     border: none;
     outline: none;
+    padding: 10px;
+    margin: -10px;
 }
 
 #shoot-button:active {
-    background: radial-gradient(closest-side, red, transparent);
+    background: radial-gradient(red, transparent);
+    background-repeat: no-repeat;
 }
 
 #left-button:active {
-    background: radial-gradient(closest-side, red, transparent);
+    background: radial-gradient(red, transparent);
+    background-repeat: no-repeat;
 }
 
 #right-button:active {
     background: radial-gradient(closest-side, red, transparent);
+    background-repeat: no-repeat;
 }
-
 
 /* Functional style rules for game */
 .alien {

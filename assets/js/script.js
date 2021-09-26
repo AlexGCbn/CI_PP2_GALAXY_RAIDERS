@@ -247,9 +247,6 @@ function moveShipRight() {
         gridCell[shipPosition].classList.remove("spaceship");
         shipPosition++;
     }
-
-    document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
-    document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)"
 }
 
 /**
@@ -263,9 +260,6 @@ function moveShipLeft() {
         gridCell[shipPosition].classList.remove("spaceship");
         shipPosition--;
     }
-
-    document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
-    document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)"
 }
 
 /**
@@ -278,8 +272,6 @@ function shootRocket() {
         waitingForInterval = false;
         rocketTimer();
     } 
-
-    document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)"
 }
 
 /**
@@ -346,14 +338,22 @@ function gameButtons(e) {
         setTimeout(moveShipRight, 10);
         moveRightInterval = setInterval(moveShipRight, 100);
         shipMovingRight = true;
+
+        document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
+        document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)"
     } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
         setTimeout(moveShipLeft, 10);
         moveLeftInterval = setInterval(moveShipLeft, 100);
         shipMovingLeft = true;
+
+        document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
+        document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)"
     } else if (e.key === "Control" && !shipShooting) {
         shootRocket();
         shipShootingInterval = setInterval(shootRocket, 1);
         shipShooting = true;
+
+        document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)"
     }
 }
 
