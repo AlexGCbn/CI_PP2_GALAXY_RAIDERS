@@ -6,57 +6,60 @@ window.addEventListener("keydown", gameButtons);
 window.addEventListener("keyup", clearMovementInterval);
 
 // Set Aliens global variables
-const aliensStartingPositions = [
+var aliensStartingPositions = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ];
 
-const aliens = [
+var aliens = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ];
 
 // Set current position global variable
-const currentPosition = 21;
+var currentPosition = 21;
 
-const unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+var unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
     16, 17, 18, 19, 20, 380, 399];
 
 // Interval ID to be able to clear the movement interval in future functions
 var intervalID = null;
 
 // Global variables needed for functions to communicate
-const movement = "right";
-const movesLeft = 0;
-const rightMoves = 0;
-const leftMoves = 0;
+var movement = "right";
+var movesLeft = 0;
+var rightMoves = 0;
+var leftMoves = 0;
 
 // Global variable for ship position
-const shipPosition = 390;
+var shipPosition = 390;
 
 // Global variable to control rocket fire
-const rocketCanFire = true;
-const waitingForInterval = false;
+var rocketCanFire = true;
+var waitingForInterval = false;
 
 // Global interval IDs for keyboard buttons
 var moveRightInterval = null;
-const shipMovingRight = false;
+var shipMovingRight = false;
 var moveLeftInterval = null;
-const shipMovingLeft = false;
+var shipMovingLeft = false;
 var shipShootingInterval = null;
-const shipShooting = false;
+var shipShooting = false;
 
-// Global score variable
+// Global score variables
 var score = 0;
 var difficultyScore = 0;
+var powerUp = 0;
 
 /**
  * Removes everything from the grid and replaces it with the victory banner.
  */
 function victory() {
     aliens = aliensStartingPositions;
+    powerUp += 300;
+    currentPosition = 21;
 }
 
 /**
@@ -168,7 +171,7 @@ function removeAliens() {
  */
 function mainMovement() {
     movesLeft = rightMovesAllRows();
-    intervalID = setInterval(moveRight, (800 - difficultyScore));
+    intervalID = setInterval(moveRight, (1000 - difficultyScore));
 }
 
 /**
@@ -179,11 +182,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left";
         movesLeft = leftMovesAllRows();
-        intervalID = setInterval(moveLeft, (800 - difficultyScore));
+        intervalID = setInterval(moveLeft, (1000 - difficultyScore));
     } else {
         movement = "right";
         movesLeft = rightMovesAllRows();
-        intervalID = setInterval(moveRight, (800 - difficultyScore));
+        intervalID = setInterval(moveRight, (1000 - difficultyScore));
     }
 }
 
@@ -284,7 +287,7 @@ function rocketTimer() {
         setTimeout(() => {
             rocketCanFire = true;
             waitingForInterval = true;
-        }, 1500); //Controls how frequently rockets can be fired
+        }, (1500 - powerUp)); //Controls how frequently rockets can be fired
     }
 }
 
@@ -396,7 +399,11 @@ function explodeAlien(cellNum) {
     gridCell[cellNum - 20].classList.add("boom");
     aliens[arrayIndex] = 0;
     scoreIncrease();
-    difficultyScore = score * 10;
+    if (difficultyScore < 400) {
+        difficultyScore = score * 10;
+    } else {
+        difficultyScore = 400;
+    }
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
 }
 
