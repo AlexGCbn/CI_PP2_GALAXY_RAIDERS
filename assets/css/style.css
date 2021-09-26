@@ -30,19 +30,29 @@ body {
     max-height: 15vh;
     display: inline-grid;
     grid-template-columns: 5% 25% 40% 25% 5%;
-    border-bottom: 3px solid #000;
-    background-color: rgba(116, 181, 255, 0.7);
+    border-bottom: 3px solid rgba(89, 132, 163, 1);
+    background-color: rgba(0, 0, 0, 0.7);
     overflow: hidden;
 }
 
 /* Make grid start from second column */
 #nav-button1 {
+    width: 85%;
+    height: 60%;
+    text-align: center;
     grid-column-start: 2;
-    margin-right: 0;
+    background-color: rgba(89, 132, 163, 0.9);
+    border: 2px solid rgba(54, 34, 100, 0.9);
+    border-radius: 10px;
 }
 
 #nav-button2 {
-    margin-left: 0;
+    width: 85%;
+    height: 60%;
+    text-align: center;
+    background-color: rgba(89, 132, 163, 1);
+    border: 2px solid rgba(54, 34, 100, 0.9);
+    border-radius: 10px;
 }
 
 #navigation > * {
@@ -50,6 +60,11 @@ body {
 }
 
 #navigation a {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
     text-decoration: none;
     color: inherit;
     font-size: 4vw;
@@ -57,6 +72,7 @@ body {
 
 #logo {
     line-height: 100%;
+    font-size: 200%;
 }
 
 #logo a {
@@ -98,7 +114,7 @@ main {
     display: inline-grid;
     grid-template-columns: repeat(20, 5%);
     grid-template-rows: repeat(20, 5%);
-    border: solid 5px #74B5FF;
+    border: solid 5px rgba(89, 132, 163, 1);
     border-radius: 10px;
     background-color: rgba(000, 000, 000, 0.8);
 }
