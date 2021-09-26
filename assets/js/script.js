@@ -388,6 +388,8 @@ function explodeAlien(cellNum) {
 function scoreIncrease() {
     score++;
     document.getElementById("score").innerHTML = `${score}`;
+    document.getElementById("scoreboard").classList.add("score-increase")
+    setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase")}, 500)
     if (score === 36) {
         victory();
     }

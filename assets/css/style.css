@@ -73,6 +73,17 @@ main {
     padding: 5px;
 }
 
+.score-increase {
+    animation-name: scoreincrease;
+    animation-duration: 500ms;
+}
+
+@keyframes scoreincrease {
+    0% {font-size: 100%;}
+    50% {font-size: 150%;}
+    100% {font-size: 100%;}
+}
+
 /* Game area styling */
 
 #game-area {
