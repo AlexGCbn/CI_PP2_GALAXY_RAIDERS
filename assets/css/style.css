@@ -71,6 +71,9 @@ main {
 
 #scoreboard {
     padding: 5px;
+    overflow: visible;
+    height: 25px;
+    max-height: 25px;
 }
 
 .score-increase {
@@ -79,9 +82,9 @@ main {
 }
 
 @keyframes scoreincrease {
-    0% {font-size: 100%;}
-    50% {font-size: 150%;}
-    100% {font-size: 100%;}
+    0% {font-size: 100%; color: inherit;}
+    50% {font-size: 150%; color: red;}
+    100% {font-size: 100%; color: inherit;}
 }
 
 /* Game area styling */
