@@ -379,11 +379,6 @@ function explodeAlien(cellNum) {
     gridCell[cellNum - 20].classList.add("boom");
     aliens[arrayIndex] = 0;
     scoreIncrease();
-    if (difficultyScore < 700) {
-        difficultyScore = score / 2;
-    } else {
-        difficultyScore = 700;
-    }
     setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
 }
 
@@ -391,12 +386,22 @@ function explodeAlien(cellNum) {
  * Increases score and checks for victory or defeat.
  */
 function scoreIncrease() {
-    if (difficultyScore < 100) {
-        score += 9;
-    } else if (difficultyScore < 250) {
-        score += 13;
-    } else {
-        score += 20;
+    switch (difficultyScore) {
+        case 0:
+            score += 10;
+            break;
+        case 150:
+            score += 15;
+            break;
+        case 400:
+            score += 20;
+            break;
+        case 600:
+            score += 25;
+            break;
+        case 700:
+            score += 30;
+            break;
     }
     document.getElementById("score").innerHTML = `${score}`;
     document.getElementById("scoreboard").classList.add("score-increase")
@@ -415,25 +420,25 @@ function victory() {
         21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
         41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52];
     switch (shootingRate) {
-        case 1500: {
+        case 1500:
             shootingRate = 1250;
+            difficultyScore = 150;
             break;
-        }
-        case 1250: {
+        case 1250:
             shootingRate = 1000;
+            difficultyScore = 400;
             break;
-        }
-        case 1000: {
+        case 1000:
             shootingRate = 750;
-            break;}
-        case 750: {
-            shootingRate = 550;
+            difficultyScore = 600;
             break;
-        }
+        case 750:
+            shootingRate = 550;
+            difficultyScore = 700;
+            break;
     }
     console.log(shootingRate)
     currentPosition = 21;
-    difficultyScore = difficultyScore / 2;
 
     movement = "right";
     movesLeft = 0;
@@ -448,7 +453,8 @@ function victory() {
  * Removes everything from the grid and replaces it with the game over banner.
  */
 function gameOver() {
-    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER</h2>`;
+    document.getElementById("game-area").style.display = "inline";
+    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER! Score: ${score}</h2>`;
     clearInterval(moveLeftInterval);
     clearInterval(moveRightInterval);
     clearInterval(shipShootingInterval);
