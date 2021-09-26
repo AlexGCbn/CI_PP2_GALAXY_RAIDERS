@@ -5,42 +5,48 @@ document.getElementById("shoot-button").addEventListener("click", shootRocket);
 window.addEventListener("keydown", gameButtons);
 window.addEventListener("keyup", clearMovementInterval);
 
-// Set Aliens global variable
-var aliens = [
+// Set Aliens global variables
+const aliensStartingPositions = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
+];
+
+const aliens = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ];
 
 // Set current position global variable
-var currentPosition = 21;
+const currentPosition = 21;
 
-var unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+const unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
     16, 17, 18, 19, 20, 380, 399];
 
 // Interval ID to be able to clear the movement interval in future functions
 var intervalID = null;
 
 // Global variables needed for functions to communicate
-var movement = "right";
-var movesLeft = 0;
-var rightMoves = 0;
-var leftMoves = 0;
+const movement = "right";
+const movesLeft = 0;
+const rightMoves = 0;
+const leftMoves = 0;
 
 // Global variable for ship position
-var shipPosition = 390;
+const shipPosition = 390;
 
 // Global variable to control rocket fire
-var rocketCanFire = true;
-var waitingForInterval = false;
+const rocketCanFire = true;
+const waitingForInterval = false;
 
 // Global interval IDs for keyboard buttons
 var moveRightInterval = null;
-var shipMovingRight = false;
+const shipMovingRight = false;
 var moveLeftInterval = null;
-var shipMovingLeft = false;
+const shipMovingLeft = false;
 var shipShootingInterval = null;
-var shipShooting = false;
+const shipShooting = false;
 
 // Global score variable
 var score = 0;
@@ -50,11 +56,7 @@ var difficultyScore = 0;
  * Removes everything from the grid and replaces it with the victory banner.
  */
 function victory() {
-    document.getElementById("game-area").innerHTML = `<h2 id="victory-banner">VICTORY!</h2>`;
-    clearInterval(moveLeftInterval);
-    clearInterval(moveRightInterval);
-    clearInterval(shipShootingInterval);
-    return;
+    aliens = aliensStartingPositions;
 }
 
 /**
@@ -303,7 +305,7 @@ function positionRockets() {
         }
         indexNum++;
     }
-    setTimeout(moveRocket(rocketIndex), 250);
+    setTimeout(moveRocket(rocketIndex), 250); 
 }
 
 /**
@@ -406,7 +408,13 @@ function scoreIncrease() {
     document.getElementById("score").innerHTML = `${score}`;
     document.getElementById("scoreboard").classList.add("score-increase")
     setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase")}, 500)
-    if (score === 36) {
+    console.log(aliens.every(checkAliens))
+    if (aliens.every(checkAliens)) {
         victory();
     }
+}
+
+function checkAliens(alien) {
+    console.log(alien)
+    return alien === 0;
 }
