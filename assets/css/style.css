@@ -104,8 +104,9 @@ main {
     text-align: center;
     margin: 20px auto 0 auto;
     display: grid;
-    grid-template-columns: repeat(5, 20%);
+    grid-template-columns: 30% 30% 30%;
     grid-row-start: 2;
+    column-gap: 5%;
 }
 
 #game-buttons > button, #start-game > button {
@@ -115,9 +116,9 @@ main {
     border: none;
 }
 
-#left-button {
+/* #left-button {
     grid-column-start: 2;
-}
+} */
 
 #shoot-button:active {
     color: red;
