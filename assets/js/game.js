@@ -120,7 +120,7 @@ function createGrids() {
     positionRockets();
 
     // Start the game
-    mainMovement()
+    mainMovement();
 }
 
 var gridCell = document.getElementsByClassName("empty-cell");
@@ -208,15 +208,17 @@ function moveLeft() {
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
 function moveDown() {
-    for (let x = 360; x < 380; x++) {
-        if (gridCell[x].classList.contains("alien")) {
-            gameOver();
+    if (gameActive) {
+        for (let x = 360; x < 380; x++) {
+            if (gridCell[x].classList.contains("alien")) {
+                gameOver();
+            }
         }
+        currentPosition += 20;
+        removeAliens();
+        positionAliens();
+        switchMovement();
     }
-    currentPosition += 20;
-    removeAliens();
-    positionAliens();
-    switchMovement();
 }
 
 
@@ -329,20 +331,20 @@ function gameButtons(e) {
             shipMovingRight = true;
     
             document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
-            document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)"
+            document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)";
         } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
             setTimeout(moveShipLeft, 10);
             moveLeftInterval = setInterval(moveShipLeft, 100);
             shipMovingLeft = true;
     
             document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
-            document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)"
+            document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)";
         } else if (e.key === "Control" && !shipShooting) {
             shootRocket();
             shipShootingInterval = setInterval(shootRocket, 1);
             shipShooting = true;
     
-            document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)"
+            document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)";
         }
     }
 }
@@ -355,20 +357,20 @@ function clearMovementInterval(e) {
         if (e.key === "ArrowRight") {
             shipMovingRight = false;
             clearInterval(moveRightInterval);
-            document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`
-            document.getElementById("right-button").style.color = "inherit"
-            document.getElementById("right-button").style.background = "inherit"
+            document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`;
+            document.getElementById("right-button").style.color = "inherit";
+            document.getElementById("right-button").style.background = "inherit";
         } else if (e.key === "ArrowLeft") {
             shipMovingLeft = false;
             clearInterval(moveLeftInterval);
             document.getElementById("left-button").innerHTML = `<i class="far fa-caret-square-left"></i>`;
-            document.getElementById("left-button").style.color = "inherit"
-            document.getElementById("left-button").style.background = "inherit"
+            document.getElementById("left-button").style.color = "inherit";
+            document.getElementById("left-button").style.background = "inherit";
         } else if (e.key === "Control") {
             shipShooting = false;
             clearInterval(shipShootingInterval);
-            document.getElementById("shoot-button").style.color = "inherit"
-            document.getElementById("shoot-button").style.background = "inherit"
+            document.getElementById("shoot-button").style.color = "inherit";
+            document.getElementById("shoot-button").style.background = "inherit";
         }
     }
 }
@@ -411,16 +413,15 @@ function scoreIncrease() {
             break;
     }
     document.getElementById("score").innerHTML = `${score}`;
-    document.getElementById("scoreboard").classList.add("score-increase")
-    setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase")}, 500)
+    document.getElementById("scoreboard").classList.add("score-increase");
+    setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase")}, 500);
     if (aliens.every(checkAliens)) {
-        console.log("VICTORY!")
         victory();
     }
 }
 
 /**
- * Resets aliens and currentPosition. Powers ship up. 
+ * Resets aliens and currentPosition. Makes ship shoot faster. Increases difficulty. 
  */
 function victory() {
     aliens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
@@ -444,7 +445,6 @@ function victory() {
             difficultyScore = 700;
             break;
     }
-    console.log(shootingRate)
     currentPosition = 21;
 
     movement = "right";
