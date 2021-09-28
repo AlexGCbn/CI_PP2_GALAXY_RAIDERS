@@ -153,7 +153,7 @@ function removeAliens() {
  */
 function mainMovement() {
     movesLeft = rightMovesAllRows();
-    intervalID = setInterval(moveRight, (100 - difficultyScore));
+    intervalID = setInterval(moveRight, (1000 - difficultyScore));
 }
 
 /**
@@ -164,11 +164,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left";
         movesLeft = leftMovesAllRows();
-        intervalID = setInterval(moveLeft, (100 - difficultyScore));
+        intervalID = setInterval(moveLeft, (1000 - difficultyScore));
     } else {
         movement = "right";
         movesLeft = rightMovesAllRows();
-        intervalID = setInterval(moveRight, (100 - difficultyScore));
+        intervalID = setInterval(moveRight, (1000 - difficultyScore));
     }
 }
 

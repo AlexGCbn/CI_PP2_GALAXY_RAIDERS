@@ -23,6 +23,11 @@ body {
     touch-action: pan-y;
 }
 
+/* Content wrapper so footer can always be on the bottom */
+#content {
+    min-height: calc(100vh - 50px);
+}
+
 /* Navigation styling */
 
 #navigation {
@@ -157,7 +162,7 @@ main {
     width: 90vw;
     max-width: 80vh;
     text-align: center;
-    margin: 20px auto 0 auto;
+    margin: 20px auto 10px auto;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     grid-row-start: 2;
@@ -190,6 +195,19 @@ main {
 #right-button:active {
     background: radial-gradient(closest-side, red, transparent);
     background-repeat: no-repeat;
+}
+
+/* Footer styling */
+
+.social-media {
+    margin-top: -3px;
+    height: 50px;
+    text-align: center;
+    border-top: 3px solid rgba(89, 132, 163, 1);
+}
+
+.social-media li {
+    display: inline;
 }
 
 /* Functional style rules for game */
