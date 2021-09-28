@@ -129,11 +129,14 @@ var gridCell = document.getElementsByClassName("empty-cell");
  * Function to position aliens. It takes the current position variable so it can be called any time.
  */
 function positionAliens() {
-    for (let alien of aliens) {
-        if (alien > 0) {
-        gridCell[currentPosition - 1 + alien].classList.add("alien");
+    if (gameActive) {
+        for (let alien of aliens) {
+            if (alien > 0) {
+            gridCell[currentPosition - 1 + alien].classList.add("alien");
+            }
         }
     }
+    
 }
 
 /** Function to remove all aliens.
@@ -150,7 +153,7 @@ function removeAliens() {
  */
 function mainMovement() {
     movesLeft = rightMovesAllRows();
-    intervalID = setInterval(moveRight, (1000 - difficultyScore));
+    intervalID = setInterval(moveRight, (100 - difficultyScore));
 }
 
 /**
@@ -161,11 +164,11 @@ function switchMovement() {
     if (movement === "right") {
         movement = "left";
         movesLeft = leftMovesAllRows();
-        intervalID = setInterval(moveLeft, (1000 - difficultyScore));
+        intervalID = setInterval(moveLeft, (100 - difficultyScore));
     } else {
         movement = "right";
         movesLeft = rightMovesAllRows();
-        intervalID = setInterval(moveRight, (1000 - difficultyScore));
+        intervalID = setInterval(moveRight, (100 - difficultyScore));
     }
 }
 
@@ -207,12 +210,13 @@ function moveLeft() {
  * Moves aliens down once.
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
-function moveDown() {
+function moveDown() { 
     if (gameActive) {
         for (let x = 360; x < 380; x++) {
-            if (gridCell[x].classList.contains("alien")) {
-                gameOver();
-            }
+                if (gridCell[x].classList.contains("alien")) {
+                    gameOver();
+                    break;
+                }
         }
         currentPosition += 20;
         removeAliens();

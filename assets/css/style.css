@@ -163,6 +163,7 @@ main {
     grid-row-start: 2;
     column-gap: 5%;
     overflow: visible;
+    user-select: none;
 }
 
 #game-buttons button, #start-game button {
