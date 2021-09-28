@@ -78,7 +78,6 @@ body {
     text-decoration: none;
     color: inherit;
     font-size: 0.8rem;
-    user-select: none;
 }
 
 #logo a {
@@ -174,6 +173,7 @@ main {
     outline: none;
     padding: 10px;
     margin: -10px;
+    user-select: none;
 }
 
 #shoot-button:active {
