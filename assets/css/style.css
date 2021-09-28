@@ -37,14 +37,13 @@ body {
 
 /* Make grid start from second column */
 #nav-button1 {
-    width: 85%;
+    width: 75%;
     height: 50%;
     text-align: center;
     display: inline-block;
     line-height: normal;
     vertical-align: middle;
     grid-column-start: 2;
-    background-color: rgba(89, 132, 163, 0.9);
     border: 2px solid rgba(54, 34, 100, 0.9);
     border-radius: 10px;
     position: relative;
@@ -57,7 +56,6 @@ body {
     display: inline-block;
     line-height: normal;
     vertical-align: middle;
-    background-color: rgba(89, 132, 163, 1);
     border: 2px solid rgba(54, 34, 100, 0.9);
     border-radius: 10px;
     position: relative;
@@ -95,10 +93,10 @@ body {
 }
 
 .nav-active {
-    background: radial-gradient(#0a840a, transparent);
+    background: radial-gradient(#0a840a, transparent)!important;
 }
 
-#navigation a:hover {
+#nav-button1:hover, #nav-button2:hover {
     background: radial-gradient(#0a840a 0%, transparent 50%);
 }
 
@@ -183,7 +181,7 @@ main {
 }
 
 #left-button:active {
-    background: radial-gradient(red, transparent);
+    background: radial-gradient(closest-side, red, transparent);
     background-repeat: no-repeat;
 }
 
@@ -230,16 +228,17 @@ main {
 
     #nav-button1, #nav-button2 {
         width: 55%;
+        max-width: 9vw;
         height: 60%;
     }
 
     #navigation {
         grid-template-columns: 15% 20% 30% 20% 15%;
     }
-/* 
+
     #navigation a {
-        font-size: 2vw;
-    } */
+        font-size: 1rem;
+    }
 
     #logo a {
         font-size: 2rem;
@@ -252,15 +251,6 @@ main {
     body {
         background-image: url(../images/landscape-background.png);
     }
-
-    #nav-button1, #nav-button2 {
-        width: 35%;
-        height: 50%;
-    }
-
-    /* #navigation a {
-        font-size: 1.2vw;
-    } */
 
     #logo a {
         font-size: 2.2rem;
