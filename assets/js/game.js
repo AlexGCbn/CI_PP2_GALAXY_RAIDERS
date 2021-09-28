@@ -6,21 +6,19 @@ window.addEventListener("keydown", gameButtons);
 window.addEventListener("keyup", clearMovementInterval);
 
 // Set Aliens global variables
-// const aliensStartingPositions = [
-    // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    // 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-    // 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
-// ];
-
 var aliens = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
     21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
     41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52
 ];
 
+// Game control, so buttons don't give errors
+gameActive = false;
+
 // Set current position global variable
 var currentPosition = 21;
 
+// Unused cells, so ship and rockets don't move in them
 var unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
     16, 17, 18, 19, 20, 380, 399];
 
@@ -101,6 +99,7 @@ function leftMovesAllRows() {
  * They are created in JS so the HTML file is cleaner and faster to load.
  */
 function createGrids() {
+    gameActive = true;
     for (let x = 0; x < 400; x++) {
         let gridCellCreator = document.createElement("div");
         gridCellCreator.classList.add("empty-cell");
@@ -226,11 +225,12 @@ function moveDown() {
  * to the next element and removing it from the current one.
  */
 function moveShipRight() {
-
-    if (!gridCell[shipPosition + 1].classList.contains("unused-cell")) {
-        gridCell[shipPosition + 1].classList.add("spaceship");
-        gridCell[shipPosition].classList.remove("spaceship");
-        shipPosition++;
+    if (gameActive) {
+        if (!gridCell[shipPosition + 1].classList.contains("unused-cell")) {
+            gridCell[shipPosition + 1].classList.add("spaceship");
+            gridCell[shipPosition].classList.remove("spaceship");
+            shipPosition++;
+        }
     }
 }
 
@@ -239,11 +239,12 @@ function moveShipRight() {
  * to the previous element and removing it from the current one.
  */
 function moveShipLeft() {
-
-    if (!gridCell[shipPosition - 1].classList.contains("unused-cell")) {
-        gridCell[shipPosition - 1].classList.add("spaceship");
-        gridCell[shipPosition].classList.remove("spaceship");
-        shipPosition--;
+    if (gameActive) {
+        if (!gridCell[shipPosition - 1].classList.contains("unused-cell")) {
+            gridCell[shipPosition - 1].classList.add("spaceship");
+            gridCell[shipPosition].classList.remove("spaceship");
+            shipPosition--;
+        }
     }
 }
 
@@ -251,12 +252,14 @@ function moveShipLeft() {
  * Adds a rocket in front of the spaceship (20 cells before it)
  */
 function shootRocket() {
-    if (rocketCanFire === true) {
-        gridCell[shipPosition - 20].classList.add("rocket");
-        rocketCanFire = false;
-        waitingForInterval = false;
-        rocketTimer();
-    } 
+    if (gameActive) {
+        if (rocketCanFire === true) {
+            gridCell[shipPosition - 20].classList.add("rocket");
+            rocketCanFire = false;
+            waitingForInterval = false;
+            rocketTimer();
+        } 
+    }
 }
 
 /**
@@ -319,26 +322,28 @@ function moveRocket(rockets) {
  * and also stop the ship from moving in 2 directions at the same time.
  */
 function gameButtons(e) {
-    if (e.key === "ArrowRight" && !shipMovingRight && !shipMovingLeft) {
-        setTimeout(moveShipRight, 10);
-        moveRightInterval = setInterval(moveShipRight, 100);
-        shipMovingRight = true;
-
-        document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
-        document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)"
-    } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
-        setTimeout(moveShipLeft, 10);
-        moveLeftInterval = setInterval(moveShipLeft, 100);
-        shipMovingLeft = true;
-
-        document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
-        document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)"
-    } else if (e.key === "Control" && !shipShooting) {
-        shootRocket();
-        shipShootingInterval = setInterval(shootRocket, 1);
-        shipShooting = true;
-
-        document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)"
+    if (gameActive) {
+        if (e.key === "ArrowRight" && !shipMovingRight && !shipMovingLeft) {
+            setTimeout(moveShipRight, 10);
+            moveRightInterval = setInterval(moveShipRight, 100);
+            shipMovingRight = true;
+    
+            document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
+            document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)"
+        } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
+            setTimeout(moveShipLeft, 10);
+            moveLeftInterval = setInterval(moveShipLeft, 100);
+            shipMovingLeft = true;
+    
+            document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
+            document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)"
+        } else if (e.key === "Control" && !shipShooting) {
+            shootRocket();
+            shipShootingInterval = setInterval(shootRocket, 1);
+            shipShooting = true;
+    
+            document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)"
+        }
     }
 }
 
@@ -346,23 +351,25 @@ function gameButtons(e) {
  * Clears interval from gameButtons() function when they keys are released
  */
 function clearMovementInterval(e) {
-    if (e.key === "ArrowRight") {
-        shipMovingRight = false;
-        clearInterval(moveRightInterval);
-        document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`
-        document.getElementById("right-button").style.color = "inherit"
-        document.getElementById("right-button").style.background = "inherit"
-    } else if (e.key === "ArrowLeft") {
-        shipMovingLeft = false;
-        clearInterval(moveLeftInterval);
-        document.getElementById("left-button").innerHTML = `<i class="far fa-caret-square-left"></i>`;
-        document.getElementById("left-button").style.color = "inherit"
-        document.getElementById("left-button").style.background = "inherit"
-    } else if (e.key === "Control") {
-        shipShooting = false;
-        clearInterval(shipShootingInterval);
-        document.getElementById("shoot-button").style.color = "inherit"
-        document.getElementById("shoot-button").style.background = "inherit"
+    if (gameActive) {
+        if (e.key === "ArrowRight") {
+            shipMovingRight = false;
+            clearInterval(moveRightInterval);
+            document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`
+            document.getElementById("right-button").style.color = "inherit"
+            document.getElementById("right-button").style.background = "inherit"
+        } else if (e.key === "ArrowLeft") {
+            shipMovingLeft = false;
+            clearInterval(moveLeftInterval);
+            document.getElementById("left-button").innerHTML = `<i class="far fa-caret-square-left"></i>`;
+            document.getElementById("left-button").style.color = "inherit"
+            document.getElementById("left-button").style.background = "inherit"
+        } else if (e.key === "Control") {
+            shipShooting = false;
+            clearInterval(shipShootingInterval);
+            document.getElementById("shoot-button").style.color = "inherit"
+            document.getElementById("shoot-button").style.background = "inherit"
+        }
     }
 }
 
@@ -453,6 +460,7 @@ function victory() {
  * Removes everything from the grid and replaces it with the game over banner.
  */
 function gameOver() {
+    gameActive = false;
     document.getElementById("game-area").style.display = "inline";
     document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER! Score: ${score}</h2>`;
     clearInterval(moveLeftInterval);
