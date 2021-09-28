@@ -13,7 +13,7 @@ var aliens = [
 ];
 
 // Game control, so buttons don't give errors
-gameActive = false;
+var gameActive = false;
 
 // Set current position global variable
 var currentPosition = 21;
@@ -414,7 +414,7 @@ function scoreIncrease() {
     }
     document.getElementById("score").innerHTML = `${score}`;
     document.getElementById("scoreboard").classList.add("score-increase");
-    setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase")}, 500);
+    setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase");}, 500);
     if (aliens.every(checkAliens)) {
         victory();
     }
