@@ -74,6 +74,8 @@ body {
     text-decoration: none;
     color: inherit;
     font-size: 0.8rem;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
 
 #logo a {
