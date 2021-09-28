@@ -94,6 +94,14 @@ body {
     margin: 0;
 }
 
+.nav-active {
+    background: radial-gradient(#0a840a, transparent);
+}
+
+#navigation a:hover {
+    background: radial-gradient(#0a840a 0%, transparent 50%);
+}
+
 main {
     text-align: center;
 }
