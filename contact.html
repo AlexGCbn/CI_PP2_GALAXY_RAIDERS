@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
+    <!-- EmailJS script -->
+    <script src="/assets/js/email.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("user_L7uacW24qxLqTCAOKYO1W");
+        })();
+    </script>
+    
     <title>Galaxy Raiders</title>
 </head>
 
@@ -35,7 +44,7 @@
         <main>
             <section id="email-section">
                 <h2>Send a feedback email:</h2>
-                <form action="https://api.emailjs.com/api/v1.0/email/send-form" method="POST">
+                <form action="https://api.emailjs.com/api/v1.0/email/send-form" method="POST" id="feedback-form">
                     <label for="fname">Name:</label><br>
                     <input type="text" id="fname" name="fname" placeholder="John Smith" required><br>
                     <label for="email">Email:</label><br>
@@ -69,13 +78,7 @@
         </ul>
     </footer>
 
-    <script src="/assets/js/email.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("user_L7uacW24qxLqTCAOKYO1W");
-        })();
-    </script>
+    
 </body>
 
 </html>
