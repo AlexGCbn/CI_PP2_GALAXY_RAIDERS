@@ -48,8 +48,8 @@ body {
     line-height: normal;
     vertical-align: middle;
     grid-column-start: 2;
-    border: 2px solid rgba(54, 34, 100, 0.9);
-    border-radius: 10px;
+    /* border: 2px solid rgba(54, 34, 100, 0.9);
+    border-radius: 10px; */
     position: relative;
 }
 
@@ -60,8 +60,8 @@ body {
     display: inline-block;
     line-height: normal;
     vertical-align: middle;
-    border: 2px solid rgba(54, 34, 100, 0.9);
-    border-radius: 10px;
+    /* border: 2px solid rgba(54, 34, 100, 0.9);
+    border-radius: 10px; */
     position: relative;
 }
 
@@ -90,8 +90,7 @@ body {
     text-align: center;
     line-height: 100%;
     font-size: 1.8rem;
-    letter-spacing: 2px;
-    color: black;
+    letter-spacing: 4px;
     padding: 5px;
     position: relative;
     padding: 5px;
@@ -101,17 +100,19 @@ body {
 /* Logo glowing effect. Credits: https://css-tricks.com/how-to-create-neon-text-with-css/ */
 .logo-active {
     text-shadow:
-        0 0 6px #fff,
-        0 0 12px #fff, 
-        0 0 25px #fff;
+        0 0 8px #000,
+        0 0 12px #C82108, 
+        0 0 20px #C82108,
+        0 0 30px #C82108;
 }
 
 .nav-active {
-    background: radial-gradient(#0a840a, transparent)!important;
+    background: radial-gradient(#C82108 0%, transparent 80%)!important;
+
 }
 
 #nav-button1:hover, #nav-button2:hover {
-    background: radial-gradient(#0a840a 0%, transparent 50%);
+    background: radial-gradient(#C82108 0%, transparent 50%);
 }
 
 main {
@@ -132,7 +133,7 @@ main {
 
 @keyframes scoreincrease {
     0% {font-size: 100%; color: inherit;}
-    50% {font-size: 150%; color: red;}
+    50% {font-size: 150%; color: #C82108;}
     100% {font-size: 100%; color: inherit;}
 }
 
@@ -192,17 +193,17 @@ main {
 }
 
 #shoot-button:active {
-    background: radial-gradient(closest-side, red, transparent);
+    background: radial-gradient(closest-side, #C82108, transparent);
     background-repeat: no-repeat;
 }
 
 #left-button:active {
-    background: radial-gradient(closest-side, red, transparent);
+    background: radial-gradient(closest-side, #C82108, transparent);
     background-repeat: no-repeat;
 }
 
 #right-button:active {
-    background: radial-gradient(closest-side, red, transparent);
+    background: radial-gradient(closest-side, #C82108, transparent);
     background-repeat: no-repeat;
 }
 
