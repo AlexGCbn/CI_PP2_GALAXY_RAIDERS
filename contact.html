@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Galaxy Raiders arcade alien shooting game">
     <meta name="keywords" content="space game, galaxy raiders, alien shooter, space arcade">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -33,7 +33,20 @@
         </header>
 
         <main>
-
+            <section id="email-section">
+                <h2>Send a feedback email:</h2>
+                <form action="https://api.emailjs.com/api/v1.0/email/send-form" method="POST">
+                    <label for="fname">Name:</label><br>
+                    <input type="text" id="fname" name="fname" placeholder="John Smith" required><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" name="email" id="email" placeholder="johnsmith@email.com"><br>
+                    <label for="feedback">Feedback:</label><br>
+                    <textarea name="feedback" id="feedback" rows="10" required></textarea><br>
+                </form>
+            </section>
+            <section id="social-section">
+                <h2>Here's where you can find me:</h2>
+            </section>
         </main>
     </div>
 
@@ -55,7 +68,12 @@
         </ul>
     </footer>
 
-    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("user_L7uacW24qxLqTCAOKYO1W");
+        })();
+    </script>
 </body>
 
 </html>

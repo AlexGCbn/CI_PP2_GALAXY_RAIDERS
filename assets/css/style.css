@@ -32,7 +32,7 @@ body {
 /* NAVIGATION STYLING */
 #navigation {
     width: 100%;
-    height: 100px;
+    height: 90px;
     position: fixed;
     top: 0;
     display: inline-grid;
@@ -87,13 +87,13 @@ body {
     height: 100%;
     font-family: 'Anton', sans-serif;
     text-align: center;
-    line-height: 100%;
+    line-height: 120%;
     font-size: 1.8rem;
     letter-spacing: 4px;
     position: relative;
-    margin: 5% 0 5% 0;
+    padding: 5% 0 5% 0;
     top: 0;
-    padding: 0;
+    margin: 0;
 }
 
 /* Logo glowing effect. Credits: https://css-tricks.com/how-to-create-neon-text-with-css/ */
@@ -243,6 +243,26 @@ main {
 
 #about-game p, #how-to p {
     margin-bottom: 10px;
+}
+
+/* CONTACT PAGE STYLING */
+#email-section, #social-section {
+    width: 70%;
+    height: auto;
+    margin: 5% auto 5% auto;
+    padding: 3%;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 3px solid rgba(89, 132, 163, 1);
+    border-radius: 10px;
+}
+
+#fname, #email {
+    width: 70%;
+}
+
+#feedback {
+    width: 100%;
 }
 
 /* Functional style rules for game */
