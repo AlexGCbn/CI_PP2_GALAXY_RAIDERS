@@ -99,28 +99,30 @@ function leftMovesAllRows() {
  * They are created in JS so the HTML file is cleaner and faster to load.
  */
 function createGrids() {
-    gameActive = true;
-    for (let x = 0; x < 400; x++) {
-        let gridCellCreator = document.createElement("div");
-        gridCellCreator.classList.add("empty-cell");
-        if (unusedCells.includes(x)) {
-        gridCellCreator.classList.add("unused-cell");
+    if (!gameActive) {
+        gameActive = true;
+        for (let x = 0; x < 400; x++) {
+            let gridCellCreator = document.createElement("div");
+            gridCellCreator.classList.add("empty-cell");
+            if (unusedCells.includes(x)) {
+            gridCellCreator.classList.add("unused-cell");
+            }
+            document.getElementById("game-area").appendChild(gridCellCreator);
         }
-        document.getElementById("game-area").appendChild(gridCellCreator);
+
+        positionAliens();
+        
+
+        // Position spaceship
+        let gridCell = document.getElementsByClassName("empty-cell");
+        gridCell[shipPosition].classList.add("spaceship");
+
+        // Start rocket positioning function
+        positionRockets();
+
+        // Start the game
+        mainMovement();
     }
-
-    positionAliens();
-    
-
-    // Position spaceship
-    let gridCell = document.getElementsByClassName("empty-cell");
-    gridCell[shipPosition].classList.add("spaceship");
-
-    // Start rocket positioning function
-    positionRockets();
-
-    // Start the game
-    mainMovement();
 }
 
 var gridCell = document.getElementsByClassName("empty-cell");

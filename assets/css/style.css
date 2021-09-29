@@ -48,8 +48,6 @@ body {
     line-height: normal;
     vertical-align: middle;
     grid-column-start: 2;
-    /* border: 2px solid rgba(54, 34, 100, 0.9);
-    border-radius: 10px; */
     position: relative;
 }
 
@@ -60,8 +58,6 @@ body {
     display: inline-block;
     line-height: normal;
     vertical-align: middle;
-    /* border: 2px solid rgba(54, 34, 100, 0.9);
-    border-radius: 10px; */
     position: relative;
 }
 
@@ -82,6 +78,7 @@ body {
     text-decoration: none;
     color: inherit;
     font-size: 0.8rem;
+    letter-spacing: 3px;
 }
 
 #logo a {
