@@ -44,12 +44,15 @@
             <section id="email-section">
                 <h2>Send a feedback email:</h2>
                 <form role="form" id="feedback-form">
-                    <label for="fname">Name:</label><br>
+                    <label for="fname"><i class="fas fa-user"></i> Name:</label><br>
                     <input type="text" id="fname" name="from_name" placeholder="John Smith" required><br>
-                    <label for="email">Email:</label><br>
+                    <p class="error-message"></p><br>
+                    <label for="email"><i class="fas fa-envelope"></i> Email:</label><br>
                     <input type="email" name="reply_to" id="email" placeholder="johnsmith@email.com"><br>
-                    <label for="feedback">Feedback:</label><br>
-                    <textarea name="message" id="feedback" rows="10" required></textarea><br>
+                    <p class="error-message"></p><br>
+                    <label for="feedback"><i class="fas fa-comment-dots"></i> Feedback:</label><br>
+                    <textarea name="message" id="feedback" rows="10" required placeholder="Your feedback here"></textarea><br>
+                    <p class="error-message"></p><br>
                     <input type="submit" value="Submit" id="submit-button">
                 </form>
                 <p>Please note: This form is active and the data that you send through it is sent to me directly.</p>

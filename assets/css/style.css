@@ -247,7 +247,7 @@ main {
 
 /* CONTACT PAGE STYLING */
 #email-section, #social-section {
-    width: 70%;
+    width: 80%;
     height: auto;
     margin: 5% auto 5% auto;
     padding: 3%;
@@ -258,11 +258,31 @@ main {
 }
 
 #fname, #email {
-    width: 70%;
+    width: 100%;
+    height: 20px;
 }
 
 #feedback {
     width: 100%;
+    height: 70px;
+    border-radius: 5px;
+}
+
+#feedback-form input {
+    border-radius: 5px;
+}
+
+#submit-button {
+    width: 60px;
+    height: 30px;
+    font-family: inherit;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Form validation styles */
+.validation-failed, .failed-icon {
+    color: red;
 }
 
 /* Functional style rules for game */
@@ -317,6 +337,19 @@ main {
 
     #logo a {
         font-size: 2rem;
+    }
+
+    #email-section, #social-section {
+        width: 70%;
+    }
+
+    #fname, #email {
+        width: 70%;
+        height: 20px;
+    }
+
+    #feedback {
+        width: 70%;
     }
 }
 

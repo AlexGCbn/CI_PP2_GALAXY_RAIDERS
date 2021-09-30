@@ -10,6 +10,10 @@ function emailSubmit(event) {
     emailjs.sendForm("service_tghuhj4", "template_vzaxweo", form)
         .then(() => { alert("Thank you for your feedback!") },
         (error) => { console.log("Failed")});
-
-    
 };
+
+function validation(field) {
+    if (field.value.trim() === "") {
+        field.style.border = "2px solid red"
+    }
+}
