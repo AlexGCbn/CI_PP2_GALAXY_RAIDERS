@@ -219,6 +219,28 @@ main {
     border-top: 2px solid rgba(89, 132, 163, 1);
 }
 
+#footer-left {
+    padding: 10px 0 0 30px
+}
+
+#footer-left a{
+    width: 20px;
+    height: 20px;
+    font-size: 1.3rem;
+    margin: 0 5px 0 5px;
+    color: #fff;
+}
+
+.social-link {
+    height: 40px;
+    width: 40px;
+    text-shadow:
+        0 0 8px #000,
+        0 0 12px #C82108, 
+        0 0 20px #C82108,
+        0 0 30px #C82108;
+}
+
 /* ABOUT PAGE STYLING */
 #about-game, #how-to {
     width: 70%;
