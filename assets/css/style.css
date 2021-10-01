@@ -26,7 +26,7 @@ body {
 /* Content wrapper so footer can always be on the bottom */
 #content {
     padding-top: 100px;
-    min-height: calc(100vh - 45px);
+    min-height: calc(100vh - 50px);
 }
 
 /* NAVIGATION STYLING */
@@ -165,6 +165,14 @@ main {
 #start-button {
     grid-column-start: 3;
     outline: none;
+    font-size: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    width: fit-content;
+    margin: auto;
+    background-color: rgba(000, 000, 000, 0.7);
+    border-radius: 5px;
+    color: #fff;
 }
 
 #game-buttons {
@@ -180,7 +188,7 @@ main {
     user-select: none;
 }
 
-#game-buttons button, #start-game button {
+#game-buttons button {
     font-size: 2rem;
     background: transparent;
     color: white;
@@ -207,22 +215,11 @@ main {
 }
 
 /* Footer styling */
-.social-media {
-    margin-top: -3px;
-    height: 45px;
-    padding-top: 5px;
-    text-align: center;
-    border-top: 3px solid rgba(89, 132, 163, 1);
+#footer-container {
+    height: 50px;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-}
-
-.social-media li {
-    display: inline;
-}
-
-.social-media i {
-    font-size: 2.5rem;
-    color: rgba(89, 132, 163, 1);
+    border-top: 2px solid rgba(89, 132, 163, 1);
 }
 
 /* ABOUT PAGE STYLING */
@@ -341,6 +338,10 @@ main {
 
     #logo a {
         font-size: 2rem;
+    }
+
+    #start-button {
+        font-size: 1.6rem;
     }
 
     #email-section, #social-section {
