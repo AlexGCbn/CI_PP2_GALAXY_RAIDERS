@@ -15,7 +15,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    min-height: 100vh;
     font-family: 'Space Mono', monospace;
 
     /* Disable double-tap zoom (mostly for iOS devices)
@@ -26,7 +25,7 @@ body {
 /* Content wrapper so footer can always be on the bottom */
 #content {
     padding-top: 100px;
-    min-height: calc(100vh - 50px);
+    min-height: calc(100vh - 150px);
 }
 
 /* NAVIGATION STYLING */
@@ -215,12 +214,19 @@ main {
 #footer-container {
     height: 48px;
     width: 100%;
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.8);
     border-top: 2px solid rgba(89, 132, 163, 1);
 }
 
 #footer-left {
-    padding: 10px 0 0 30px
+    padding-top: 7px;
+}
+
+#hidden {
+    display: none;
 }
 
 #footer-left a{
@@ -239,6 +245,10 @@ main {
         0 0 12px #C82108, 
         0 0 20px #C82108,
         0 0 30px #C82108;
+}
+
+#footer-center {
+    padding-top: 7px;
 }
 
 /* ABOUT PAGE STYLING */
@@ -371,6 +381,19 @@ main {
     #feedback {
         width: 70%;
     }
+
+    /* FOOTER STYLING */
+    #footer-left {
+        padding-top: 9px;
+    }
+    
+    #hidden {
+        display: initial;
+    }
+    
+    /* #footer-left a{
+        font-size: 1.3rem;
+    } */
 }
 
 /* Style for large screen sizes */
