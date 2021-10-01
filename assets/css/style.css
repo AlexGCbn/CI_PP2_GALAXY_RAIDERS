@@ -152,7 +152,7 @@ main {
     background-color: rgba(000, 000, 000, 0.8);
 }
 
-#start-game {
+/* #start-game {
     width: 90vw;
     max-width: 80vh;
     text-align: center;
@@ -160,11 +160,11 @@ main {
     display: grid;
     grid-template-columns: repeat(5, 20%);
     grid-row-start: 2;
-}
+} */
 
 #start-button {
-    grid-column-start: 3;
-    outline: none;
+    grid-column-start: 2;
+    /* outline: none;
     font-size: 1rem;
     font-family: 'Space Mono', monospace;
     font-size: 1.2rem;
@@ -172,17 +172,22 @@ main {
     margin: auto;
     background-color: rgba(000, 000, 000, 0.7);
     border-radius: 5px;
-    color: #fff;
+    color: #fff; */
+    font-size: 2rem;
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    user-select: none;
 }
 
 #game-buttons {
     width: 90vw;
     max-width: 80vh;
     text-align: center;
-    margin: 20px auto 30px auto;
+    margin: 0 auto 30px auto;
     display: grid;
     grid-template-columns: 30% 30% 30%;
-    grid-row-start: 2;
     column-gap: 5%;
     overflow: visible;
     user-select: none;
@@ -195,8 +200,20 @@ main {
     border: none;
     outline: none;
     padding: 10px;
-    margin: -10px;
+    margin: 0;
     user-select: none;
+}
+
+#left-button {
+    grid-row-start: 2;
+}
+
+#shoot-button {
+    grid-row-start: 2;
+}
+
+#right-button {
+    grid-row-start: 2;
 }
 
 #shoot-button:active {
