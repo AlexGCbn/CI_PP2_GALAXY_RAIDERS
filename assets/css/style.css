@@ -185,7 +185,7 @@ main {
     width: 90vw;
     max-width: 80vh;
     text-align: center;
-    margin: 0 auto 30px auto;
+    margin: 5px auto 30px auto;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     column-gap: 5%;
