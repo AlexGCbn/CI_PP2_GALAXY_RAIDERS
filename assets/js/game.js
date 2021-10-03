@@ -337,20 +337,20 @@ function gameButtons(e) {
             shipMovingRight = true;
     
             document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
-            document.getElementById("right-button").style.background = "radial-gradient(closest-side, red, transparent)";
+            document.getElementById("right-button").style.background = "radial-gradient(closest-side, #C82108, transparent)";
         } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
             setTimeout(moveShipLeft, 10);
             moveLeftInterval = setInterval(moveShipLeft, 100);
             shipMovingLeft = true;
     
             document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
-            document.getElementById("left-button").style.background = "radial-gradient(closest-side, red, transparent)";
+            document.getElementById("left-button").style.background = "radial-gradient(closest-side, #C82108, transparent)";
         } else if (e.key === "Control" && !shipShooting) {
             shootRocket();
             shipShootingInterval = setInterval(shootRocket, 1);
             shipShooting = true;
     
-            document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, red, transparent)";
+            document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, #C82108, transparent)";
         }
     }
 }
@@ -364,19 +364,16 @@ function clearMovementInterval(e) {
             shipMovingRight = false;
             clearInterval(moveRightInterval);
             document.getElementById("right-button").innerHTML = `<i class="far fa-caret-square-right"></i>`;
-            document.getElementById("right-button").style.color = "inherit";
-            document.getElementById("right-button").style.background = "inherit";
+            document.getElementById("right-button").style.background = "transparent";
         } else if (e.key === "ArrowLeft") {
             shipMovingLeft = false;
             clearInterval(moveLeftInterval);
             document.getElementById("left-button").innerHTML = `<i class="far fa-caret-square-left"></i>`;
-            document.getElementById("left-button").style.color = "inherit";
-            document.getElementById("left-button").style.background = "inherit";
+            document.getElementById("left-button").style.background = "transparent";
         } else if (e.key === "Control") {
             shipShooting = false;
             clearInterval(shipShootingInterval);
-            document.getElementById("shoot-button").style.color = "inherit";
-            document.getElementById("shoot-button").style.background = "inherit";
+            document.getElementById("shoot-button").style.background = "transparent";
         }
     }
 }

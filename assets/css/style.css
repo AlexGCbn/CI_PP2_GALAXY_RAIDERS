@@ -160,6 +160,7 @@ main {
     background-color: rgba(000, 000, 000, 0.8);
 }
 
+/* Game buttons styling */
 #game-buttons {
     width: 90vw;
     max-width: 80vh;
@@ -180,6 +181,7 @@ main {
     padding: 10px;
     margin: 0;
     user-select: none;
+    background-repeat: no-repeat;
 }
 
 #start-button {
@@ -198,37 +200,17 @@ main {
     grid-row-start: 2;
 }
 
+/* Button active states that provide red glow. Important tag added so they can be used together with buttons. */
 #shoot-button:active {
-    text-shadow:
-        0 0 8px #000,
-        0 0 12px #C82108, 
-        0 0 20px #C82108,
-        0 0 30px #C82108,
-        0 0 40px #C82108;
-    /* background: radial-gradient(closest-side, #C82108, transparent);
-    background-repeat: no-repeat; */
+    background: radial-gradient(closest-side, #C82108, transparent)!important;
 }
 
 #left-button:active {
-    text-shadow:
-        0 0 8px #000,
-        0 0 12px #C82108, 
-        0 0 20px #C82108,
-        0 0 30px #C82108,
-        0 0 40px #C82108;
-    /* background: radial-gradient(closest-side, #C82108, transparent);
-    background-repeat: no-repeat; */
+    background: radial-gradient(closest-side, #C82108, transparent)!important;
 }
 
 #right-button:active {
-    text-shadow:
-        0 0 8px #000,
-        0 0 12px #C82108, 
-        0 0 20px #C82108,
-        0 0 30px #C82108,
-        0 0 40px #C82108;
-    /* background: radial-gradient(closest-side, #C82108, transparent);
-    background-repeat: no-repeat; */
+    background: radial-gradient(closest-side, #C82108, transparent)!important;
 }
 
 /* Footer styling */
@@ -343,11 +325,7 @@ main {
         0 0 30px #C82108;
 }
 
-/* Form validation styles */
-.validation-failed, .failed-icon {
-    color: red;
-}
-
+/* Form validation style */
 .error-message {
     color: red;
 }

@@ -6,25 +6,27 @@ const errorClasses = document.getElementsByClassName("error-message");
 
 document.getElementById("feedback-form").addEventListener("submit", validationStart);
 
+/**
+ * EmailJS function to send form as email.
+ */
 function emailSubmit() {
     // event.preventDefault();
-    console.log("Sending email!");
     emailjs.sendForm("service_tghuhj4", "template_vzaxweo", form)
         .then(() => { alert("Thank you for your feedback!"); },
-        (error) => { console.log("Failed");});
+        (error) => { alert("Form submission failed!");});
 }
 
+/**
+ * Starts validation and if it passes calls the email submit function.
+ */
 function validationStart(event) {
     event.preventDefault();
-
-    console.log("Pressed submit");
 
     let firstCheck = nameValidation(fullName, 0);
     let secondCheck = emailValidation(formEmail, 1);
     let thirdCheck = messageValidation(feedbackMessage, 2);
     
     if (firstCheck && secondCheck && thirdCheck) {
-        console.log("errorClasses");
         emailSubmit();
     }
 }
@@ -46,7 +48,6 @@ function nameValidation(field, classNr) {
     } else {
         errorClasses[classNr].innerHTML = "";
         field.style.border = "2px solid green";
-        console.log("Validated");
         return true;
     }
 }
@@ -66,7 +67,6 @@ function emailValidation(field, classNr) {
     } else {
         errorClasses[classNr].innerHTML = "";
         field.style.border = "2px solid green";
-        console.log("Validated");
         return true;
     }
 }
@@ -87,7 +87,6 @@ function messageValidation(field, classNr) {
     } else {
         errorClasses[classNr].innerHTML = "";
         field.style.border = "2px solid green";
-        console.log("Validated");
         return true;
     }
 }

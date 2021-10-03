@@ -34,16 +34,18 @@
         </header>
 
         <main>
-            <!-- Main game area -->
+            <!-- Score area -->
             <div id="scoreboard">
                 <h3>Score: <span id="score">0</span></h3>
             </div>
             <!-- Game wrapper made to stop a bug that caused the buttons to move up when the game started. -->
             <div id="game-wrapper">
+                <!-- Game area. It is empty as JS creates the content. -->
                 <div id="game-area">
 
                 </div>
             </div>
+            <!-- Game buttons area. -->
             <div id="game-buttons">
                 <button id="start-button"><i class="far fa-play-circle"></i></button>
                 <button id="left-button" ontouchstart=""><i class="far fa-caret-square-left"></i></button>
