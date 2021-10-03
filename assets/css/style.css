@@ -102,14 +102,17 @@ body {
         0 0 12px #C82108, 
         0 0 20px #C82108,
         0 0 30px #C82108;
+    /* Important rule to stop hover effect */
+    background: none!important; 
 }
 
 .nav-active {
+    /* Important rule to stop hover effect */
     background: radial-gradient(#C82108 0%, transparent 80%)!important;
 
 }
 
-#nav-button1:hover, #nav-button2:hover {
+#nav-button1:hover, #nav-button2:hover, #logo:hover {
     background: radial-gradient(#C82108 0%, transparent 50%);
 }
 
@@ -319,11 +322,25 @@ main {
 }
 
 #submit-button {
-    width: 60px;
+    width: 70px;
     height: 30px;
     font-family: inherit;
     font-weight: bold;
     margin-bottom: 20px;
+    /* Webkit appearance to stop button from changing on iOS */
+    -webkit-appearance: none;
+}
+
+#social-section a{
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    font-size: 1.3rem;
+    text-shadow:
+        0 0 8px #000,
+        0 0 12px #C82108, 
+        0 0 20px #C82108,
+        0 0 30px #C82108;
 }
 
 /* Form validation styles */
