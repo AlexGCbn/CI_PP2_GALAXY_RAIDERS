@@ -359,6 +359,33 @@ main {
     border-radius: 50%;
 }
 
+/* 404 PAGE STYLING */
+#lost-page {
+    width: 600px;
+    max-width: 95%;
+    margin: 100px auto;
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid rgba(89, 132, 163, 1);
+    border-radius: 10px;
+}
+
+#lost-page h2 {
+    margin-top: 3%;
+}
+
+#lost-page button {
+    background: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    margin: 2% 0 3% 0;
+}
+
+#lost-page a {
+    color: #fff;
+}
+
 /* Style for medium screen sizes */
 @media only screen and (min-width: 1000px) {
     
