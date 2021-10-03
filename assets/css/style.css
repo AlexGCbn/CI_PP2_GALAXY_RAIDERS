@@ -196,18 +196,36 @@ main {
 }
 
 #shoot-button:active {
-    background: radial-gradient(closest-side, #C82108, transparent);
-    background-repeat: no-repeat;
+    text-shadow:
+        0 0 8px #000,
+        0 0 12px #C82108, 
+        0 0 20px #C82108,
+        0 0 30px #C82108,
+        0 0 40px #C82108;
+    /* background: radial-gradient(closest-side, #C82108, transparent);
+    background-repeat: no-repeat; */
 }
 
 #left-button:active {
-    background: radial-gradient(closest-side, #C82108, transparent);
-    background-repeat: no-repeat;
+    text-shadow:
+        0 0 8px #000,
+        0 0 12px #C82108, 
+        0 0 20px #C82108,
+        0 0 30px #C82108,
+        0 0 40px #C82108;
+    /* background: radial-gradient(closest-side, #C82108, transparent);
+    background-repeat: no-repeat; */
 }
 
 #right-button:active {
-    background: radial-gradient(closest-side, #C82108, transparent);
-    background-repeat: no-repeat;
+    text-shadow:
+        0 0 8px #000,
+        0 0 12px #C82108, 
+        0 0 20px #C82108,
+        0 0 30px #C82108,
+        0 0 40px #C82108;
+    /* background: radial-gradient(closest-side, #C82108, transparent);
+    background-repeat: no-repeat; */
 }
 
 /* Footer styling */
@@ -221,15 +239,15 @@ main {
     border-top: 2px solid rgba(89, 132, 163, 1);
 }
 
-#footer-left {
+#footer-left, #footer-right {
     padding-top: 7px;
 }
 
-#hidden {
+.hidden {
     display: none;
 }
 
-#footer-left a{
+#footer-left a, #footer-right a, #footer-center a{
     width: 20px;
     height: 20px;
     font-size: 1.3rem;
@@ -237,7 +255,7 @@ main {
     color: #fff;
 }
 
-.social-link {
+.social-link, #footer-center a {
     height: 40px;
     width: 40px;
     text-shadow:
@@ -248,7 +266,9 @@ main {
 }
 
 #footer-center {
-    padding-top: 7px;
+    line-height: 70%;
+    font-size: 1.5rem;
+    padding-top: 5px;
 }
 
 /* ABOUT PAGE STYLING */
@@ -386,14 +406,14 @@ main {
     #footer-left {
         padding-top: 9px;
     }
-    
-    #hidden {
-        display: initial;
+
+    #footer-left, #footer-right, #footer-center {
+        font-size: 1.3rem;
     }
     
-    /* #footer-left a{
-        font-size: 1.3rem;
-    } */
+    .hidden {
+        display: initial;
+    }
 }
 
 /* Style for large screen sizes */
