@@ -1,7 +1,7 @@
 # Galaxy Raiders
 In order to view the live site, click [here](https://alexgcbn.github.io/CI_PP2_GALAXY_RAIDERS/index.html).
 
-![Website mockup](assets/docs/amiresponsive.png)
+![Website mockup](docs/amiresponsive.png)
 
 Galaxy Raiders is a personal remake of the classic game "Space invaders". The intent of the project is to provide users with a representation of the game, along with some information about the game and the person who developed the page. It was intended to keep the game as close to the original as possible in terms of gameplay, yet there might be some key differences. Even so, the website strives to provide the user with a pleasant and fun way to pass time and maybe relive some childhood memories.
 
@@ -63,7 +63,7 @@ Galaxy Raiders is a personal remake of the classic game "Space invaders". The in
 We have a total of 3 pages, along with a 404 page. They include the below features.
 
 ### Navbar:
-![Navbar image](assets/docs/images/navbar.png)
+![Navbar image](docs/images/navbar.png)
 * Provides easy to use navigation across all pages.
 * Is static on screen, to reduce scrolling.
 * Provides visual cues on hover and for active page.
@@ -72,7 +72,7 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 8
 
 ### Scoreboard:
-![Scoreboard image](assets/docs/images/scoreboard.png)
+![Scoreboard image](docs/images/scoreboard.png)
 * Provides game score, which is updated live.
 * Provides visual cue every time the score increases with animation.
 * Resets every time the game starts.
@@ -80,7 +80,7 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 6
 
 ### Game Area:
-![Game area image](assets/docs/images/game-area.png)
+![Game area image](docs/images/game-area.png)
 * Main game area, where the game is displayed.
 * Is responsive and becomes as small as possible for mobile devices.
 * Style matches rest of the page.
@@ -88,7 +88,7 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 4
 
 ### Game buttons:
-![Game buttons image](assets/docs/images/game-buttons.png)
+![Game buttons image](docs/images/game-buttons.png)
 * They provide functionality to the game.
 * They are responsive and are on the bottom to fit a horizontal mobile position.
 * They provide visual cues on click.
@@ -96,7 +96,7 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 2
 
 ### Footer:
-![Footer image](assets/docs/images/footer.png)
+![Footer image](docs/images/footer.png)
 * Provides the name of the creator and social media links.
 * Provides a link to jump to top of page.
 * Also provides a link to the contact page, to send a message.
@@ -105,14 +105,14 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 8, 10
 
 ### About game:
-![About game image](assets/docs/images/about-game.png)
+![About game image](docs/images/about-game.png)
 * Provides information on the original game and why this one exists.
 * Provides statement about non-affiliation.
 
 #### User stories covered: 3
 
 ### Game instructions:
-![Game instructions image](assets/docs/images/instructions.png)
+![Game instructions image](docs/images/instructions.png)
 * Provides information on how to play the game.
 * Has both mobile and keyboard controls.
 * Explains what happens when the board is cleared.
@@ -120,7 +120,7 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 1
 
 ### Feedback form:
-![Feedback form image](assets/docs/images/feedback.png)
+![Feedback form image](docs/images/feedback.png)
 * Form that requests basic user information.
 * Sends them to my email through EmailJS.
 * Validates all fields and provides visual feedback if they are not completed correctly.
@@ -128,7 +128,7 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 #### User stories covered: 5, 9
 
 ### About me:
-![About me image](assets/docs/images/about-me.png)
+![About me image](docs/images/about-me.png)
 * Basic information about creator.
 * Basic information about relation to project.
 * Provides links to creator's GitHub and LinkedIn.
@@ -171,37 +171,53 @@ The website also contains a footer that has the same social links, along with a 
 <details>
 <summary>Home page</summary>
 
-![Home page wireframe image](assets/docs/wireframes/home-wireframe.png)
+![Home page wireframe image](docs/wireframes/home-wireframe.png)
 </details>
 
 <details>
 <summary>About page</summary>
 
-![About page wireframe image](assets/docs/wireframes/about-wireframe.png)
+![About page wireframe image](docs/wireframes/about-wireframe.png)
 </details>
 
 <details>
 <summary>Contact page</summary>
 
-![Contact page wireframe image](assets/docs/wireframes/contact-wireframe.png)
+![Contact page wireframe image](docs/wireframes/contact-wireframe.png)
 </details>
 
 ## Technologies used:
 
 ### Languages
-  * LANGUAGE
+  * HTML
+  * CSS
+  * JavaScript
 
 ### Frameworks and tools
-  * FRAMEWORK
+  * GitHub
+  * VSCode
+  * Balsamiq
+  * EmailJS
+  * Adobe Illustrator
+  * Google Fonts
+  * Favicon.io
+  * Font Awesome
+  * [Pixel Space Background Generator](https://deep-fold.itch.io/space-background-generator)
 
 ## Testing:
 ### Validation
 <details>
 <summary> HTML </summary>
-The W3C Markup Validation Service was used to validate HTML code. All pages passed with no errors or warnings to show.
+The W3C Markup Validation Service was used to validate HTML code. All pages passed with no errors. The only warnings are related to the EmailJS script, which should be used as is.
 
 ### Home:
 ![Home page html validation](docs/images/home-html-valid.png)
+
+### About:
+![About page html validation](docs/images/about-html-valid.png)
+
+### Contact:
+![Contact page html validation](docs/images/contact-html-valid.png)
 
 </details>
 <details>
