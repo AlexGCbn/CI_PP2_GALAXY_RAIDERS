@@ -85,12 +85,60 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 
 #### User stories covered: 4
 
+### Game buttons:
+![Game buttons image](assets/docs/images/game-buttons.png)
+* They provide functionality to the game.
+* They are responsive and are on the bottom to fit a horizontal mobile position.
+* They provide visual cues on click.
+
+#### User stories covered: 2
+
+### Footer:
+![Footer image](assets/docs/images/footer.png)
+* Provides the name of the creator and social media links.
+* Provides a link to jump to top of page.
+* Also provides a link to the contact page, to send a message.
+* Text disappears on small screens.
+
+#### User stories covered: 8, 10
+
+### About game:
+![About game image](assets/docs/images/about-game.png)
+* Provides information on the original game and why this one exists.
+* Provides statement about non-affiliation.
+
+#### User stories covered: 3
+
+### Game instructions:
+![Game instructions image](assets/docs/images/instructions.png)
+* Provides information on how to play the game.
+* Has both mobile and keyboard controls.
+* Explains what happens when the board is cleared.
+
+#### User stories covered: 1
+
+### Feedback form:
+![Feedback form image](assets/docs/images/feedback.png)
+* Form that requests basic user information.
+* Sends them to my email through EmailJS.
+* Validates all fields and provides visual feedback if they are not completed correctly.
+
+#### User stories covered: 5, 9
+
+### About me:
+![About me image](assets/docs/images/about-me.png)
+* Basic information about creator.
+* Basic information about relation to project.
+* Provides links to creator's GitHub and LinkedIn.
+
+#### User stories covered: 7, 10
+
 ## Design:
 
-DESIGN INFO
+The website was designed with the word "retro" in mind. 
+The artwork is pixelated and even the fonts try to keep the oldschool arcade games style.
 
 ### Colours:
-
 
 
 ### Fonts:
