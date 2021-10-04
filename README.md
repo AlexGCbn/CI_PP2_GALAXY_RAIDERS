@@ -151,10 +151,20 @@ The artwork for the spaceship and aliens was taken from [this kit here.](https:/
 All credits go to the creator of the kit.
 
 ### Fonts:
-FONTS INFO
+[Anton](https://fonts.google.com/specimen/Anton?query=anton) was used for the page's logo, as it is simple yet fits the space style.
+
+[Space Mono](https://fonts.google.com/specimen/Space+Mono?query=space+mono) was chosen because it looks like a retro "computer" font.
 
 ### Structure: 
-STRUCTURE INFO
+The website's structure is simple, with a main page and two additional. 
+We have a navbar on the top of the page that is fixed, to eliminate scrolling up. Most users are used to this layout from most pages online. 
+The logo is also the main page's link. The other two pages are "About" and "Contact". The content of the pages is self explanatory.
+The user can always understand which page they are on by the red "aura" on the page name. A smaller red aura appears on hover.
+* GALAXY RAIDERS (Home): The game area is decorated with a scoreboard on top and the game buttons on the bottom.
+* About: Two sections here. The first has information about the game with a bit of a backstory. The second contains the instructions.
+* Contact: Two more sections. First, we have a feedback form. It validates the data and, if successfully validated, sends an email. The second section contains some very basic information about the creator and links to GitHub and LinkedIn.
+
+The website also contains a footer that has the same social links, along with a link to the feedback form and a "back to top" button.
 
 ### Wireframes:
 
