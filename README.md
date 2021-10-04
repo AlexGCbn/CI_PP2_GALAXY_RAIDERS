@@ -1,7 +1,7 @@
 # Galaxy Raiders
 In order to view the live site, click [here](https://alexgcbn.github.io/CI_PP2_GALAXY_RAIDERS/index.html).
 
-![Website mockup](assets/readme-images/amiresponsive.png)
+![Website mockup](assets/docs/amiresponsive.png)
 
 Galaxy Raiders is a personal remake of the classic game "Space invaders". The intent of the project is to provide users with a representation of the game, along with some information about the game and the person who developed the page. It was intended to keep the game as close to the original as possible in terms of gameplay, yet there might be some key differences. Even so, the website strives to provide the user with a pleasant and fun way to pass time and maybe relive some childhood memories.
 
@@ -61,10 +61,29 @@ Galaxy Raiders is a personal remake of the classic game "Space invaders". The in
 We have a total of 3 pages, along with a 404 page. They include the below features.
 
 ### Navbar:
-![Navbar image](LINK)
-* INFO
+![Navbar image](assets/docs/images/navbar.png)
+* Provides easy to use navigation across all pages.
+* Is static on screen, to reduce scrolling.
+* Provides visual cues on hover and for active page.
+* Is responsive and becomes smaller on mobile screens.
 
-#### User stories covered: 
+#### User stories covered: 8
+
+### Scoreboard:
+![Scoreboard image](assets/docs/images/scoreboard.png)
+* Provides game score, which is updated live.
+* Provides visual cue every time the score increases with animation.
+* Resets every time the game starts.
+
+#### User stories covered: 6
+
+### Game Area:
+![Game area image](assets/docs/images/game-area.png)
+* Main game area, where the game is displayed.
+* Is responsive and becomes as small as possible for mobile devices.
+* Style matches rest of the page.
+
+#### User stories covered: 4
 
 ## Design:
 
