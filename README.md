@@ -281,8 +281,8 @@ All pages passed with no errors.
 
 The website was tested on the following devices:
 * Windows desktop PC (various components) running Windows 10
-  * Chrome Version 92.0.4515.159
-  * Edge Version 92.0.902.78
+  * Chrome Version 94.0.4606.61
+  * Edge Version 94.0.992.38
 * iPhone 12 Pro
   * Safari 
 * Various devices from users who tested for feedback

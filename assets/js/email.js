@@ -10,7 +10,6 @@ document.getElementById("feedback-form").addEventListener("submit", validationSt
  * EmailJS function to send form as email.
  */
 function emailSubmit() {
-    // event.preventDefault();
     emailjs.sendForm("service_tghuhj4", "template_vzaxweo", form)
         .then(() => { alert("Thank you for your feedback!"); },
         (error) => { alert("Form submission failed!");});
