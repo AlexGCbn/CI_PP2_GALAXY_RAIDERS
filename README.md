@@ -44,16 +44,18 @@ Galaxy Raiders is a personal remake of the classic game "Space invaders". The in
 
 ## Goals:
 ### Development goals:
-* Have a fully functional and accessible website.
+* Have a fully responsive and accessible website.
 * Provide a consistent experience throughout the pages.
-* Have a consistent style throughout the pages.
 * Provide easy navigation.
 * Have a design that fits the game.
+* Develop the website with as much interactiveness as possible.
+* Be able to get feedback that has passed through validation.
 
 ### Target audience goals:
 * Provide a theme that fits the era and game style.
 * Have more than one ways for people to contact the owner.
 * Have easy to use and understand navigation.
+* Provide feedback to each user.
 
 ## Features:
 
@@ -137,9 +139,16 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 
 The website was designed with the word "retro" in mind. 
 The artwork is pixelated and even the fonts try to keep the oldschool arcade games style.
+Even though the design is mostly simple, functionality was the priority here.
 
-### Colours:
+### Colours & background:
+The colours and the page's background were mostly created by the [Pixel Space Background Generator](https://deep-fold.itch.io/space-background-generator). All credits go to the creator of the tool.
 
+The rest of the page's colours were drawn from the image the tool created.
+
+### Artwork:
+The artwork for the spaceship and aliens was taken from [this kit here.](https://bizmasterstudios.itch.io/spaceship-creation-kit)
+All credits go to the creator of the kit.
 
 ### Fonts:
 FONTS INFO
