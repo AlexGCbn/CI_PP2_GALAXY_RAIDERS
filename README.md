@@ -223,8 +223,7 @@ The W3C Markup Validation Service was used to validate HTML code. All pages pass
 <details>
 <summary> CSS </summary>
 The W3C CSS Validation Service (Jigsaw) was used to validate CSS code.   
-When performing the URI validation, we get 12 errors and many warnings. Those errors and warnings are related to Bootstrap.  
-If we perform the code validation, we can see that there are no errors or warnings, as seen in the images below.  
+Both the URI and the direct code input pass with no errors. Some warnings that appear are either related to FontAwesome, or the "-webkit-" command that I have added for iOS devices.
 
 ### URI validation:
 ![CSS URI validation result image](docs/images/page-css-valid.png)
