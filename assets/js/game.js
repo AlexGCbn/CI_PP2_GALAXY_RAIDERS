@@ -464,14 +464,19 @@ function victory() {
  */
 function gameOver() {
     gameActive = false;
-    document.getElementById("game-area").style.display = "inline";
-    document.getElementById("game-area").innerHTML = `<h2 id="game-over-banner">GAME OVER! Score: ${score}</h2>`;
+    document.getElementById("game-wrapper").style.display = "inline";
+    document.getElementById("game-wrapper").innerHTML = `<h2 id="game-over-banner">GAME OVER! Score: ${score}</h2>`;
+    document.getElementById("game-buttons").innerHTML = `<button id="reload-button" aria-label="Reload game button."><i class="fas fa-redo"></i></button>`;
+    document.getElementById("reload-button").addEventListener("click", () => {location.reload();});
     clearInterval(moveLeftInterval);
     clearInterval(moveRightInterval);
     clearInterval(shipShootingInterval);
     return;
 }
 
+/**
+ * Check if alien in array index is 0, to know if it has been destroyed.
+ */
 function checkAliens(alien) {
     return alien === 0;
 }

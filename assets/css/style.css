@@ -188,7 +188,7 @@ main {
     background-repeat: no-repeat;
 }
 
-#start-button {
+#start-button, #reload-button {
     grid-column-start: 2;
 }
 
