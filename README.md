@@ -169,11 +169,22 @@ The website also contains a footer that has the same social links, along with a 
 ### Wireframes:
 
 <details>
-<summary>PAGE NAME</summary>
+<summary>Home page</summary>
 
-![IMAGE DESCRIPTION](IMAGE LINK)
+![Home page wireframe image](assets/docs/wireframes/home-wireframe.png)
 </details>
 
+<details>
+<summary>About page</summary>
+
+![About page wireframe image](assets/docs/wireframes/about-wireframe.png)
+</details>
+
+<details>
+<summary>Contact page</summary>
+
+![Contact page wireframe image](assets/docs/wireframes/contact-wireframe.png)
+</details>
 
 ## Technologies used:
 
