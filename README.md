@@ -231,13 +231,33 @@ Both the URI and the direct code input pass with no errors. Some warnings that a
 ### Code validation:
 ![CSS code validation result image](docs/images/code-css-valid.png)
 </details>
+
+<details>
+<summary> JavaScript </summary>
+JavaScript was tested on JSHint.com. ES6 was enabled in Configuration.
+Both files pass with no errors. There is an undefined variable for the email file, yet that is related to EmailJS.
+
+### game.js:
+![Game Javascript validation](docs/images/js-game-valid.png)
+
+### email.js:
+![Email Javascript validation](docs/images/js-email-valid.png)
+
+</details>
+
 <details>
 <summary> Performance </summary>
 Website performance was tested with Google Developer Tools Lighthouse.   
-All pages passed the tests with near perfect results.
+All pages passed the tests with perfect results.
 
 ### Home:
 ![Home page performance validation](docs/images/home-lh-valid.png)
+
+### About:
+![About page performance validation](docs/images/about-lh-valid.png)
+
+### Contact:
+![Contact page performance validation](docs/images/contact-lh-valid.png)
 
 </details>
 
@@ -248,6 +268,12 @@ All pages passed with no errors.
 
 ### Home:
 ![Home page accessibility validation](docs/images/home-wave-valid.png)
+
+### About:
+![About page accessibility validation](docs/images/about-wave-valid.png)
+
+### Contact:
+![Contact page accessibility validation](docs/images/contact-wave-valid.png)
 
 </details>
 
