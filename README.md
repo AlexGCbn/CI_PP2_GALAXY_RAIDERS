@@ -448,4 +448,14 @@ The live link can be found here - https://alexgcbn.github.io/CI_PP2_GALAXY_RAIDE
 
 ## Credits:
 
-* ADD CREDITS HERE
+* All background images were created with the [Pixel Space Background Generator](https://deep-fold.itch.io/space-background-generator)
+* All game pixel artwork was taken from [this creator kit](https://bizmasterstudios.itch.io/spaceship-creation-kit)
+* Icons were taken from Font Awesome. 
+* Email API is from [EmailJS](https://www.emailjs.com/)
+* Steps on how to link the 404 page were found in [this GitHub post](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site)
+* Code that needed credit has been credited in comment form.
+
+## Acknowledgements:
+
+I would like to thank everyone that is testing my projects as they have been providing amazing feedback. Your contribution is appreciated!
+Also, a big thank you to my mentor, Mo Shami, for pushing me but also showing me the right path. It wouldn't be the same without your wisdom on the subject!
