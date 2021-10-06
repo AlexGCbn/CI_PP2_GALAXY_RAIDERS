@@ -293,6 +293,18 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 ### User stories testing:
 
+1. Understand how to play the game.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| How to play section | Navigate and read | See the game instructions | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![IMAGE DESCRIPTION](FEATURE IMAGE)
+
+</details>
+
 1. USER STORY
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
@@ -304,6 +316,8 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 ![IMAGE DESCRIPTION](FEATURE IMAGE)
 
 </details>
+
+
 
 ## Bugs
 

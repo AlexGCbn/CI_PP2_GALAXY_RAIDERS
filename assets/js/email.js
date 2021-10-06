@@ -33,10 +33,10 @@ function validationStart(event) {
 // Validation functions inspired by https://www.codexworld.com/how-to/validate-first-last-name-with-regular-expression-using-javascript/
 
 /**
- * Name validation function. Checks if name contains appropriate letters and is not empty.
+ * Name validation function. Checks if name contains appropriate letters and is not empty. Credits: https://regexr.com/39c7p
  */
 function nameValidation(field, classNr) {
-    let regName = /^[a-z]([-']?[a-z]+)*( [a-z]([-']?[a-z]+)*)+$/;
+    let regName = /(^[A-Za-z]{3,16})([ ]{0,1})([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})?([ ]{0,1})?([A-Za-z]{3,16})/;
     if (field.value.trim() === "") {
         errorClasses[classNr].innerHTML = "Please provide a full name.";
         field.style.border = "2px solid red";
