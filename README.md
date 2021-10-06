@@ -458,5 +458,5 @@ The live link can be found here - https://alexgcbn.github.io/CI_PP2_GALAXY_RAIDE
 
 ## Acknowledgements:
 
-I would like to thank everyone that is testing my projects as they have been providing amazing feedback. Your contribution is appreciated!
-Also, a big thank you to my mentor, Mo Shami, for pushing me but also showing me the right path. It wouldn't be the same without your wisdom on the subject!
+#### I would like to thank everyone that is testing my projects as they have been providing amazing feedback. Your contribution is appreciated!
+#### Also, a big thank you to my mentor, Mo Shami, for pushing me but also showing me the right path. It wouldn't be the same without your wisdom on the subject!
