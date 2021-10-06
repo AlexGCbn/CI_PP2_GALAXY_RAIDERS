@@ -301,25 +301,135 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 <details><summary>Screenshots</summary>
 
-![IMAGE DESCRIPTION](FEATURE IMAGE)
+![How to play section image](docs/stories/story-instructions.png)
 
 </details>
 
-1. USER STORY
+2. Have easy to use controls for the game.
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| FEATURE | ACTION | EXPECTED RESULT | Works as expected |
+| Game buttons | Use them to play game | Start game / Move ship / Shoot | Works as expected |
 
 <details><summary>Screenshots</summary>
 
-![IMAGE DESCRIPTION](FEATURE IMAGE)
+![How to play section image](docs/stories/story-buttons.png)
+
+</details>
+
+3. Learn more about the game's origins.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| About game section | Navigate to it and read | Have basic information about game | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![Game buttons section image](docs/stories/story-about-game.png)
+
+</details>
+
+4. Play the game!
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Game | Press start and play | Game starts and functions | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![Game section image](docs/stories/story-game.png)
+![Game active image](docs/stories/story-game-active.png)
+
+</details>
+
+5. Be able to provide feedback.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Feedback form | Input data and send form | Data is validated and sent | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![Feedback section image](docs/stories/story-feedback.png)
+![Feedback section image with wrong data](docs/stories/story-feedback-wrong.png)
+![Feedback section image with sent form](docs/stories/story-feedback-sent.png)
+
+</details>
+
+6. See my score, so I can compare it to previous runs.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Score section | See the score section while playing game | See live score | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![Score section image](docs/stories/story-score.png)
+![Score section image with increased score](docs/stories/story-score-increased.png)
+
+</details>
+
+7. See how to get in touch with the creator.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| About me section | Navigate to contact section and find info | See options of getting in touch with creator | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![About me section image](docs/stories/story-about-me.png)
+![Feedback section image](docs/stories/story-feedback.png)
+
+</details>
+
+8. Be able to navigate the website easily.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Navigation bar | Scroll to top | Have links for pages | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![About me section image](docs/stories/story-navigation.png)
+
+</details>
+
+9. Be able to receive feedback emails.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| Feedback form / EmailJS | Receive feedback emails from completed form | Receive emails in inbox | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![Feedback section image with sent form](docs/stories/story-feedback-sent.png)
+![Email with sent form](docs/stories/story-email-1.png)
+![Email with sent form and additional data](docs/stories/story-email-2.png)
+
+</details>
+
+10. Provide information about myself and how to contact me.
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-------------|------------|---------------------|-------------------|
+| About me section | Navigate to contact section and find info | See options of getting in touch with creator | Works as expected |
+
+<details><summary>Screenshots</summary>
+
+![About me section image](docs/stories/story-about-me.png)
+![Feedback section image](docs/stories/story-feedback.png)
 
 </details>
 
 
-
 ## Bugs
+
+All bugs have been fixed. The only ones remaining are not bugs, but browser limitations mainly on iOS devices. They do not limit the functionality, yet they have two differences that I have found:
+* The game buttons do not cast the red aura when pressed.
+* The submit button is blue.
+There are workarounds with "webkit", yet I have not managed to use it.
+
+The following are fixed bugs:
 
 1. BUG DESCRIPTION
    * BUG FIX DESCRIPTION
