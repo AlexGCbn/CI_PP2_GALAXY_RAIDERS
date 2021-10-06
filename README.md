@@ -23,6 +23,7 @@ Galaxy Raiders is a personal remake of the classic game "Space invaders". The in
 7. [Bugs](#bugs)
 8. [Deployment](#deployment)
 9. [Credits](#credits)
+10. [Acknowledgements](#acknowledgements)
 
 ## User Stories:
 
