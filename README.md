@@ -431,8 +431,12 @@ There are workarounds with "webkit", yet I have not managed to use it.
 
 The following are fixed bugs:
 
-1. BUG DESCRIPTION
-   * BUG FIX DESCRIPTION
+1. The aliens would move out of borders.
+   * This bug was fixed mainly by applying a function that calculates how many times aliens need to move each time they move down and switch direction.
+2. Rockets would hit aliens that were behind other aliens.
+   * The fix for this bug was to make the rocket also detect if an alien moved on top of it, instead of only detecting next cell.
+3. When the play button was pressed, the game buttons would move a few pixels up. The rest of the page would stay as is.
+   * This was fixed by adding a wrapper around the game area. The buttons would move because of the JS functions that manipulated the area.
 
 ## Deployment:
 * The site was deployed to GitHub pages. The steps to deploy are as follows: 
@@ -440,7 +444,7 @@ The following are fixed bugs:
   * From the source section drop-down menu, select the Master Branch
   * Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
-The live link can be found here - LINK
+The live link can be found here - https://alexgcbn.github.io/CI_PP2_GALAXY_RAIDERS/index.html
 
 ## Credits:
 
