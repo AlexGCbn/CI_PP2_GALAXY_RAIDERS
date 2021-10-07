@@ -535,6 +535,25 @@ The following are fixed bugs:
 
 The live link can be found here - https://alexgcbn.github.io/CI_PP2_GALAXY_RAIDERS/index.html
 
+To run this project locally, you will need to clone the repository
+1. Login to GitHub (https://wwww.github.com)
+2. Select the repository AlexGCbn/CI_PP2_GALAXY_RAIDERS
+3. Click the Code button and copy the HTTPS url, for example: https://github.com/AlexGCbn/CI_PP2_GALAXY_RAIDERS.git
+4. In your IDE, open a terminal and run the git clone command, for example 
+
+```git clone https://github.com/AlexGCbn/CI_PP2_GALAXY_RAIDERS.git```
+
+5. The repository will now be cloned in your workspace
+
+Please note that, to use the code you need to change the EmailJS user_ID, service_ID and template_ID.
+To get yours, do the following:
+
+1. Go to https://www.emailjs.com/
+2. Create an account or sign in with your account.
+3. If you do not have one already, create a Service with your email.
+4. If you do not have one already, create a template.
+5. Copy your User ID, Service ID and Template ID and add them to the email.js file, where the previous ones are. Lines 13 and 23.
+
 ## Credits:
 
 * All background images were created with the [Pixel Space Background Generator](https://deep-fold.itch.io/space-background-generator)
