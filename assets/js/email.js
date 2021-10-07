@@ -11,8 +11,8 @@ document.getElementById("feedback-form").addEventListener("submit", validationSt
  */
 function emailSubmit() {
     emailjs.sendForm("service_tghuhj4", "template_vzaxweo", form)
-        .then(() => { alert("Thank you for your feedback!"); form.reset();},
-        (error) => { alert("Form submission failed!");});
+        .then(() => { alert("Thank you for your feedback!"); form.reset(); },
+            (error) => { alert("Form submission failed!"); });
 }
 
 /**
@@ -25,7 +25,7 @@ function validationStart(event) {
     let firstCheck = nameValidation(fullName, 0);
     let secondCheck = emailValidation(formEmail, 1);
     let thirdCheck = messageValidation(feedbackMessage, 2);
-    
+
     if (firstCheck && secondCheck && thirdCheck) {
         emailSubmit();
     }

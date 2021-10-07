@@ -19,7 +19,7 @@ var gameActive = false;
 var currentPosition = 21;
 
 // Unused cells, so ship and rockets don't move in them
-var unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
+var unusedCells = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
     16, 17, 18, 19, 20, 380, 399];
 
 // Interval ID to be able to clear the movement interval in future functions
@@ -105,13 +105,13 @@ function createGrids() {
             let gridCellCreator = document.createElement("div");
             gridCellCreator.classList.add("empty-cell");
             if (unusedCells.includes(x)) {
-            gridCellCreator.classList.add("unused-cell");
+                gridCellCreator.classList.add("unused-cell");
             }
             document.getElementById("game-area").appendChild(gridCellCreator);
         }
 
         positionAliens();
-        
+
 
         // Position spaceship
         let gridCell = document.getElementsByClassName("empty-cell");
@@ -134,11 +134,11 @@ function positionAliens() {
     if (gameActive) {
         for (let alien of aliens) {
             if (alien > 0) {
-            gridCell[currentPosition - 1 + alien].classList.add("alien");
+                gridCell[currentPosition - 1 + alien].classList.add("alien");
             }
         }
     }
-    
+
 }
 
 /** Function to remove all aliens.
@@ -212,13 +212,13 @@ function moveLeft() {
  * Moves aliens down once.
  * Removes the aliens, places them again to the correct cells and then switches the movement.
  */
-function moveDown() { 
+function moveDown() {
     if (gameActive) {
         for (let x = 360; x < 380; x++) {
-                if (gridCell[x].classList.contains("alien")) {
-                    gameOver();
-                    break;
-                }
+            if (gridCell[x].classList.contains("alien")) {
+                gameOver();
+                break;
+            }
         }
         currentPosition += 20;
         removeAliens();
@@ -266,7 +266,7 @@ function shootRocket() {
             rocketCanFire = false;
             waitingForInterval = false;
             rocketTimer();
-        } 
+        }
     }
 }
 
@@ -299,7 +299,7 @@ function positionRockets() {
         }
         indexNum++;
     }
-    setTimeout(moveRocket(rocketIndex), 250); 
+    setTimeout(moveRocket(rocketIndex), 250);
 }
 
 /**
@@ -335,21 +335,21 @@ function gameButtons(e) {
             setTimeout(moveShipRight, 10);
             moveRightInterval = setInterval(moveShipRight, 100);
             shipMovingRight = true;
-    
+
             document.getElementById("right-button").innerHTML = `<i class="fas fa-caret-square-right"></i>`;
             document.getElementById("right-button").style.background = "radial-gradient(closest-side, #C82108, transparent)";
         } else if (e.key === "ArrowLeft" && !shipMovingLeft && !shipMovingRight) {
             setTimeout(moveShipLeft, 10);
             moveLeftInterval = setInterval(moveShipLeft, 100);
             shipMovingLeft = true;
-    
+
             document.getElementById("left-button").innerHTML = `<i class="fas fa-caret-square-left"></i>`;
             document.getElementById("left-button").style.background = "radial-gradient(closest-side, #C82108, transparent)";
         } else if (e.key === "Control" && !shipShooting) {
             shootRocket();
             shipShootingInterval = setInterval(shootRocket, 1);
             shipShooting = true;
-    
+
             document.getElementById("shoot-button").style.background = "radial-gradient(closest-side, #C82108, transparent)";
         }
     }
@@ -391,7 +391,7 @@ function explodeAlien(cellNum) {
     gridCell[cellNum - 20].classList.add("boom");
     aliens[arrayIndex] = 0;
     scoreIncrease();
-    setTimeout(() => {gridCell[cellNum - 20].classList.remove("boom");}, 50);
+    setTimeout(() => { gridCell[cellNum - 20].classList.remove("boom"); }, 50);
 }
 
 /**
@@ -417,7 +417,7 @@ function scoreIncrease() {
     }
     document.getElementById("score").innerHTML = `${score}`;
     document.getElementById("scoreboard").classList.add("score-increase");
-    setTimeout(() => {document.getElementById("scoreboard").classList.remove("score-increase");}, 500);
+    setTimeout(() => { document.getElementById("scoreboard").classList.remove("score-increase"); }, 500);
     if (aliens.every(checkAliens)) {
         victory();
     }
@@ -467,7 +467,7 @@ function gameOver() {
     document.getElementById("game-wrapper").style.display = "inline";
     document.getElementById("game-wrapper").innerHTML = `<h2 id="game-over-banner">GAME OVER! Score: ${score}</h2>`;
     document.getElementById("game-buttons").innerHTML = `<button id="reload-button" aria-label="Reload game button."><i class="fas fa-redo"></i></button>`;
-    document.getElementById("reload-button").addEventListener("click", () => {location.reload();});
+    document.getElementById("reload-button").addEventListener("click", () => { location.reload(); });
     clearInterval(moveLeftInterval);
     clearInterval(moveRightInterval);
     clearInterval(shipShootingInterval);
