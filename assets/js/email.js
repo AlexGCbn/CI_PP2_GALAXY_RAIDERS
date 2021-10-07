@@ -20,6 +20,7 @@ function emailSubmit() {
  */
 function validationStart(event) {
     event.preventDefault();
+    emailjs.init("user_L7uacW24qxLqTCAOKYO1W");
 
     let firstCheck = nameValidation(fullName, 0);
     let secondCheck = emailValidation(formEmail, 1);
