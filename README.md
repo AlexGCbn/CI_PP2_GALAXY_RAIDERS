@@ -301,45 +301,45 @@ The website was tested on the following devices:
 ### Chrome Version 94.0.4606.71
 1. Open page.
 ![Main page image](docs/testing/chrome/1.png)
-2. Press Play button.
+2. Press Play button. \
 ![Game started image](docs/testing/chrome/2.png)
-3. Play the game until all aliens have been defeated at least once, so it will start again.
+3. Play the game until all aliens have been defeated at least once, so it will start again. \
 ![First game loop image](docs/testing/chrome/3.png)
-4. Get a Game Over screen after aliens got to the bottom.
+4. Get a Game Over screen after aliens got to the bottom. \
 ![Game over image](docs/testing/chrome/4.png)
-5. Navigate to Contact page.
+5. Navigate to Contact page. \
 ![Contact page image](docs/testing/chrome/5.png)
-6. Complete feedback form and submit it.
+6. Complete feedback form and submit it. \
 ![Submitted form image](docs/testing/chrome/6.png)
 ![Email received image](docs/testing/chrome/6c.png)
 
 ### Microsoft Edge Version 94.0.992.38
-1. Open page.
+1. Open page. \
 ![Main page image](docs/testing/edge/1.png)
-2. Press Play button.
+2. Press Play button. \
 ![Game started image](docs/testing/edge/2.png)
-3. Play the game until all aliens have been defeated at least once, so it will start again.
+3. Play the game until all aliens have been defeated at least once, so it will start again. \
 ![First game loop image](docs/testing/edge/3.png)
-4. Get a Game Over screen after aliens got to the bottom.
+4. Get a Game Over screen after aliens got to the bottom. \
 ![Game over image](docs/testing/edge/4.png)
-5. Navigate to Contact page.
+5. Navigate to Contact page. \
 ![Contact page image](docs/testing/edge/5.png)
-6. Complete feedback form and submit it.
+6. Complete feedback form and submit it. \
 ![Submitted form image](docs/testing/edge/6.png)
 ![Email received image](docs/testing/edge/6c.png)
 
 ### Mozilla Firefox Version 93.0 
 1. Open page.
 ![Main page image](docs/testing/firefox/1.png)
-2. Press Play button.
+2. Press Play button. \
 ![Game started image](docs/testing/firefox/2.png)
-3. Play the game until all aliens have been defeated at least once, so it will start again.
+3. Play the game until all aliens have been defeated at least once, so it will start again. \
 ![First game loop image](docs/testing/firefox/3.png)
-4. Get a Game Over screen after aliens got to the bottom.
+4. Get a Game Over screen after aliens got to the bottom. \
 ![Game over image](docs/testing/firefox/4.png)
-5. Navigate to Contact page.
+5. Navigate to Contact page. \
 ![Contact page image](docs/testing/firefox/5.png)
-6. Complete feedback form and submit it.
+6. Complete feedback form and submit it. \
 ![Submitted form image](docs/testing/firefox/6.png)
 ![Email received image](docs/testing/firefox/6c.png)
 
@@ -348,17 +348,17 @@ The website was tested on the following devices:
 <details><summary>iPhone 12 Pro</summary>
 
 ### Safari
-1. Open page.
+1. Open page. \
 ![Main page image](docs/testing/ios-safari/1.png)
-2. Press Play button.
+2. Press Play button. \
 ![Game started image](docs/testing/ios-safari/2.png)
-3. Play the game until all aliens have been defeated at least once, so it will start again.
+3. Play the game until all aliens have been defeated at least once, so it will start again. \
 ![First game loop image](docs/testing/ios-safari/3.png)
-4. Get a Game Over screen after aliens got to the bottom.
+4. Get a Game Over screen after aliens got to the bottom. \
 ![Game over image](docs/testing/ios-safari/4.png)
-5. Navigate to Contact page.
+5. Navigate to Contact page. \
 ![Contact page image](docs/testing/ios-safari/5.png)
-6. Complete feedback form and submit it.
+6. Complete feedback form and submit it. \
 ![Submitted form image](docs/testing/ios-safari/6.png)
 ![Email received image](docs/testing/ios-safari/6c.png)
 
