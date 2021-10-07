@@ -136,6 +136,13 @@ We have a total of 3 pages, along with a 404 page. They include the below featur
 
 #### User stories covered: 7, 10
 
+### 404 Page:
+![404 page image image](docs/images/404.png)
+* Provides information that there has been an error. 
+* Keeps the page styling and provides the option of either going home, or using the navigation bar.
+
+#### User stories covered: 8
+
 ## Design:
 
 The website was designed with the word "retro" in mind. 
@@ -298,11 +305,13 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| How to play section | Navigate and read | See the game instructions | Works as expected |
+| How to play section | Navigate to About page | Find and read the instructions | Works as expected |
+| Game buttons | Start the game and try the buttons | See the game move according to buttons pressed | Works as expected |
 
 <details><summary>Screenshots</summary>
 
 ![How to play section image](docs/stories/story-instructions.png)
+![Buttons section image](docs/stories/story-buttons.png)
 
 </details>
 
@@ -314,7 +323,7 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 <details><summary>Screenshots</summary>
 
-![How to play section image](docs/stories/story-buttons.png)
+![Buttons section image](docs/stories/story-buttons.png)
 
 </details>
 
@@ -322,11 +331,11 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| About game section | Navigate to it and read | Have basic information about game | Works as expected |
+| About game section | Navigate to About page | Find and read the About game section | Works as expected |
 
 <details><summary>Screenshots</summary>
 
-![Game buttons section image](docs/stories/story-about-game.png)
+![Game information section image](docs/stories/story-about-game.png)
 
 </details>
 
@@ -334,7 +343,7 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Game | Press start and play | Game starts and functions | Works as expected |
+| Game | Navigate to home page and press the Play button | Game starts and buttons work | Works as expected |
 
 <details><summary>Screenshots</summary>
 
@@ -347,11 +356,13 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Feedback form | Input data and send form | Data is validated and sent | Works as expected |
+| Feedback form | Navigate to Contact page, complete form and submit it | Get feedback about whether it was sent or what was wrong | Works as expected |
+| Feedback form | Navigate to footer and press the message bubble. Complete the form and submit it | Get feedback about whether it was sent or what was wrong | Works as expected |
 
 <details><summary>Screenshots</summary>
 
 ![Feedback section image](docs/stories/story-feedback.png)
+![Footer message bubble image](docs/stories/story-footer-message.png)
 ![Feedback section image with wrong data](docs/stories/story-feedback-wrong.png)
 ![Feedback section image with sent form](docs/stories/story-feedback-sent.png)
 
@@ -361,7 +372,7 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Score section | See the score section while playing game | See live score | Works as expected |
+| Score section | While playing game, look at the score section on top of page | See current score and see it increasing when playing | Works as expected |
 
 <details><summary>Screenshots</summary>
 
@@ -374,12 +385,14 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| About me section | Navigate to contact section and find info | See options of getting in touch with creator | Works as expected |
+| About me section | Navigate to contact section and find About Me information | See options of getting in touch with creator with links that open in new tab | Works as expected |
+| About me section | Navigate to footer and see creator contact options | Have links that open in a new tab towards the creator's pages | Works as expected |
 
 <details><summary>Screenshots</summary>
 
 ![About me section image](docs/stories/story-about-me.png)
 ![Feedback section image](docs/stories/story-feedback.png)
+![Footer social section image](docs/stories/story-footer-contact.png)
 
 </details>
 
@@ -387,11 +400,13 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| Navigation bar | Scroll to top | Have links for pages | Works as expected |
+| Navigation bar | Scroll to top and click on navigation links | Open the clicked page | Works as expected |
+| Footer | Scroll to bottom and click the back to top button | Page scrolls to top | Works as expected |
 
 <details><summary>Screenshots</summary>
 
 ![About me section image](docs/stories/story-navigation.png)
+![Footer back to top button image](docs/stories/story-footer-top.png)
 
 </details>
 
@@ -413,12 +428,14 @@ As the website was designed mobile-first, it fits mobile browsers perfectly whil
 
 | **Feature** | **Action** | **Expected Result** | **Actual Result** |
 |-------------|------------|---------------------|-------------------|
-| About me section | Navigate to contact section and find info | See options of getting in touch with creator | Works as expected |
+| About me section | Navigate to contact section and find About Me information | See options of getting in touch with creator with links that open in new tab | Works as expected |
+| About me section | Navigate to footer and see creator contact options | Have links that open in a new tab towards the creator's pages | Works as expected |
 
 <details><summary>Screenshots</summary>
 
 ![About me section image](docs/stories/story-about-me.png)
 ![Feedback section image](docs/stories/story-feedback.png)
+![Footer social section image](docs/stories/story-footer-contact.png)
 
 </details>
 

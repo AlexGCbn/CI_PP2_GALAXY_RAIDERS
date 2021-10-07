@@ -394,6 +394,7 @@ main {
         background-image: url(../images/portrait-background-large.png);
     }
 
+    /* NAVIGATION STYLING */
     #nav-button1, #nav-button2 {
         width: 55%;
         max-width: 9vw;
@@ -412,10 +413,12 @@ main {
         font-size: 2rem;
     }
 
+    /* ABOUT US STYLING */
     #email-section, #social-section {
         width: 70%;
     }
 
+    /* CONTACT US STYLING */
     #fname, #email {
         width: 70%;
         height: 20px;
