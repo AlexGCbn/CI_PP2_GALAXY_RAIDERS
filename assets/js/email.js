@@ -11,7 +11,7 @@ document.getElementById("feedback-form").addEventListener("submit", validationSt
  */
 function emailSubmit() {
     emailjs.sendForm("service_tghuhj4", "template_vzaxweo", form)
-        .then(() => { alert("Thank you for your feedback!"); },
+        .then(() => { alert("Thank you for your feedback!"); form.reset();},
         (error) => { alert("Form submission failed!");});
 }
 
